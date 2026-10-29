@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NYC Transit 3D</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="map"></div>
+
+  <aside id="panel" class="hidden">
+    <header>
+      <div>
+        <h1>NYC Transit 3D</h1>
+        <p class="sub">Subway network over 3D buildings</p>
+      </div>
+      <button id="panel-close" type="button" aria-label="Close panel">×</button>
+    </header>
+
+    <div class="live">
+      <span class="live-dot"></span>
+      <span>Live</span>
+      <span id="live-status">connecting…</span>
+    </div>
+
+    <section>
+      <h2>View</h2>
+      <div id="views-mode" class="views-mode">
+        <button type="button" data-view="city" class="active">3D city</button>
+        <button type="button" data-view="night">Night lights</button>
+        <button type="button" data-view="hex">Hex grid</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Lines</h2>
+      <div id="routes" class="routes"></div>
+      <div class="row-buttons">
+        <button id="all-on" type="button">Show all</button>
+        <button id="all-off" type="button">Hide all</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Layers</h2>
+      <label class="toggle"><input type="checkbox" id="tg-trains" checked /> Live trains</label>
+      <label class="toggle"><input type="checkbox" id="tg-buildings" checked /> 3D buildings</label>
+      <label class="toggle"><input type="checkbox" id="tg-stations" checked /> Stations</label>
+      <label class="toggle"><input type="checkbox" id="tg-rotate" /> Auto-rotate</label>
+    </section>
+
+    <section>
+      <h2>Fly to</h2>
+      <div id="views" class="views"></div>
+    </section>
+
+    <footer>
+      Data: MTA GTFS + GTFS-realtime, data.ny.gov · Map: OpenFreeMap, © OpenStreetMap contributors
+    </footer>
+  </aside>
+
+  <button id="panel-toggle" type="button" aria-label="Open panel">
+    <span class="tag-icon">☰</span>
+    <span>Lines</span>
+    <span class="live-dot"></span>
+    <span id="tag-count"></span>
+  </button>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <div id="legend" hidden></div>
+
+  <script src="realtime.js"></script>
+  <script src="views.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

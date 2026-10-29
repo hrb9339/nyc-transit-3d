@@ -1,0 +1,1 @@
+{"bounds": [-74.27, 40.48, -73.68, 40.93], "source": "VIIRS DNB annual V2.2 2025", "units": "nW/cm2/sr", "stretch": "log10(radiance + 1), 0 to 2.5"}
