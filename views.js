@@ -1,18 +1,29 @@
-// Map views: the default 3D city, a top-down night-lights view (VIIRS), and the
-// hexagonal analysis grid. Data comes from scripts/build_hexgrid.py and scripts/gee_ntl.py.
+// Map views: the default 3D city, a top-down night-lights view (VIIRS), the hexagonal
+// analysis grid, and distance to the nearest subway station.
+// Data comes from scripts/build_hexgrid.py and scripts/gee_ntl.py.
 
 const Views = (() => {
   const NYC_BOUNDS = [[-74.26, 40.49], [-73.70, 40.92]];
   const NTL_RAMP = ["#000000", "#1a0b3d", "#5c1a6b", "#b8326b", "#f0703a", "#fbc54a", "#fff7d6"];
+  // Straight-line distance from cell center to nearest station, in meters.
+  const DIST_BANDS = [
+    { max: 400, color: "#1a9850", label: "0–400 m" },
+    { max: 800, color: "#a6d96a", label: "400–800 m" },
+    { max: 1600, color: "#fee08b", label: "800–1,600 m" },
+    { max: 3200, color: "#f46d43", label: "1,600–3,200 m" },
+    { max: Infinity, color: "#a50026", label: "3,200 m+" },
+  ];
 
   let map;
   let current = "city";
   let ntlMeta = null;   // null until loaded; false if not generated yet
   let hasHexNtl = false;
+  let distStats = null; // { median, shares: [fraction of cells per band] }
 
   const CITY_LAYERS = ["buildings-3d"];
   const NIGHT_LAYERS = ["ntl-raster"];
   const HEX_LAYERS = ["hex-fill", "hex-line"];
+  const DIST_LAYERS = ["dist-fill", "dist-line"];
 
   // ---------- Data ----------
 
@@ -43,6 +54,17 @@ const Views = (() => {
     hasHexNtl = grid.features.some((f) => f.properties.ntl_mean != null);
     map.addSource("hexgrid", { type: "geojson", data: grid });
 
+    const dists = grid.features.map((f) => f.properties.nearest_station_m).sort((a, b) => a - b);
+    let lower = -Infinity;
+    distStats = {
+      median: dists[Math.floor(dists.length / 2)],
+      shares: DIST_BANDS.map(({ max }) => {
+        const share = dists.filter((d) => d > lower && d <= max).length / dists.length;
+        lower = max;
+        return share;
+      }),
+    };
+
     // Night lights on a log scale (radiance spans ~1 to 300+), else station count.
     const fill = hasHexNtl
       ? ["interpolate", ["linear"], ["ln", ["+", ["coalesce", ["get", "ntl_mean"], 0], 1]],
@@ -63,9 +85,21 @@ const Views = (() => {
       },
     });
 
+    const distFill = ["step", ["get", "nearest_station_m"], DIST_BANDS[0].color];
+    DIST_BANDS.slice(0, -1).forEach((band, i) => distFill.push(band.max + 1, DIST_BANDS[i + 1].color));
+    map.addLayer({
+      id: "dist-fill", type: "fill", source: "hexgrid",
+      layout: { visibility: "none" },
+      paint: { "fill-color": distFill, "fill-opacity": 0.88 },
+    }, "subway-glow");
+    map.addLayer({
+      id: "dist-line", type: "line", source: "hexgrid",
+      layout: { visibility: "none" },
+      paint: { "line-color": "rgba(0,0,0,0.3)", "line-width": 0.5 },
+    }, "subway-glow");
+
     const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 8 });
-    map.on("mousemove", "hex-fill", (e) => {
-      if (current !== "hex") return;
+    const showPopup = (e) => {
       const p = e.features[0].properties;
       const names = JSON.parse(p.station_names || "[]");
       const rows = [
@@ -89,8 +123,11 @@ const Views = (() => {
         tr.insertCell().textContent = v;
       }
       popup.setLngLat(e.lngLat).setDOMContent(wrap).addTo(map);
-    });
-    map.on("mouseleave", "hex-fill", () => popup.remove());
+    };
+    for (const layer of ["hex-fill", "dist-fill"]) {
+      map.on("mousemove", layer, showPopup);
+      map.on("mouseleave", layer, () => popup.remove());
+    }
   }
 
   // ---------- Switching ----------
@@ -110,17 +147,19 @@ const Views = (() => {
     show(CITY_LAYERS, name === "city" && document.getElementById("tg-buildings").checked);
     show(NIGHT_LAYERS, name === "night");
     show(HEX_LAYERS, name === "hex");
+    show(DIST_LAYERS, name === "distance");
 
-    // Let the lights read as the main picture in the night view.
-    map.setPaintProperty("subway-lines", "line-opacity", name === "night" ? 0.35 : 1);
-    map.setPaintProperty("subway-glow", "line-opacity", name === "night" ? 0 : 0.35);
+    // Let the lights or the distance colors read as the main picture.
+    const muted = name === "night" || name === "distance";
+    map.setPaintProperty("subway-lines", "line-opacity", muted ? 0.35 : 1);
+    map.setPaintProperty("subway-glow", "line-opacity", muted ? 0 : 0.35);
 
     if (name === "city") {
       legend(null);
       map.easeTo({ center: [-73.94, 40.72], zoom: 11, pitch: 50, bearing: -20, duration: 1500 });
     } else {
       map.fitBounds(NYC_BOUNDS, { pitch: 0, bearing: 0, padding: 30, duration: 1500 });
-      legend(name === "night" ? nightLegend() : hexLegend());
+      legend({ night: nightLegend, hex: hexLegend, distance: distanceLegend }[name]());
     }
   }
 
@@ -139,6 +178,16 @@ const Views = (() => {
       <div class="legend-bar" style="background:${gradient}"></div>
       <div class="legend-scale"><span>0</span><span>6</span><span>45</span><span>300+</span></div>
       <div class="legend-note">Radiance, nW/cm²/sr (log scale) · ${ntlMeta.source}</div>`;
+  }
+
+  function distanceLegend() {
+    const rows = DIST_BANDS.map((band, i) => `<div class="legend-band">
+        <i style="background:${band.color}"></i><span>${band.label}</span>
+        <b>${Math.round(distStats.shares[i] * 100)}%</b>
+      </div>`).join("");
+    return `<div class="legend-title">Distance to nearest subway station</div>
+      ${rows}
+      <div class="legend-note">Share of hexagons, straight-line from cell center · median ${distStats.median.toLocaleString()} m</div>`;
   }
 
   function hexLegend() {
