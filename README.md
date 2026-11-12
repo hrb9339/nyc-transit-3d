@@ -54,6 +54,40 @@ Outputs in `data/ntl/`:
 
 To rerun: `earthengine authenticate` once, then `python scripts/gee_ntl.py --project ml-ntl-dataset`.
 
+## Per-hexagon features
+
+Each `scripts/features_*.py` writes one table to `data/features/`, one row per hexagon, keyed by `hex_id`. Every file starts with `#` comment lines listing its sources (with links), what each column means, and caveats. Read them with:
+
+```python
+pd.read_csv("data/features/hex_features.csv", comment="#")
+```
+
+| Table | Script | What it has | Sources |
+|---|---|---|---|
+| `neighborhoods.csv` | `features_neighborhoods.py` | 2020 NTA and CDTA of each hexagon, flag for non-residential NTAs (parks, airports, cemeteries) | NYC DCP NTAs |
+| `landuse.csv` | `features_landuse.py` | Share of land by use, including land nobody lives on (parks, cemeteries, airports, rail yards); housing units; residential, office, retail and industrial floor area; built density | PLUTO 26v2 + MapPLUTO outlines for large lots |
+| `destinations.csv` | `features_destinations.py` | Hospitals, clinics, colleges, museums, libraries, courthouses, government offices, ferry landings, shopping centers, major stadiums and arenas; distance to nearest hospital and college | NYC Facilities Database, PLUTO |
+| `ntl_trend.csv` | `features_ntl_trend.py` | Mean night light for every year 2014–2025, change and growth per year | VIIRS annual V2.1 + V2.2 (Earth Engine) |
+| `walk.csv` | `features_walk.py` | Walking distance along streets to the nearest subway entrance, detour ratio, area and stations reachable in an 800 m walk, intersection density | OpenStreetMap (BBBike extract), MTA subway entrances |
+| `proposals.csv` | `features_proposals.py` | Distance to the Interborough Express, Second Avenue Subway Phase 2 and Utica Avenue alignments. **For validation only, not a model input** | OpenStreetMap; line geometry in `data/proposals.geojson` |
+| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (94 columns) | All of the above |
+
+Rebuild everything (raw downloads go to `data/raw/`, which is git-ignored, about 350 MB):
+
+```bash
+pip install geopandas osmium scipy earthengine-api
+curl -o data/raw/NewYork.osm.pbf https://download.bbbike.org/osm/bbbike/NewYork/NewYork.osm.pbf
+python scripts/features_neighborhoods.py
+python scripts/features_landuse.py        # before destinations (downloads PLUTO)
+python scripts/features_destinations.py
+python scripts/features_ntl_trend.py --project ml-ntl-dataset
+python scripts/features_proposals.py
+python scripts/features_walk.py           # ~2 minutes
+python scripts/features_merge.py
+```
+
+Teammates adding a dataset: write `scripts/features_<name>.py` that calls `write_features()` from `scripts/features_common.py` (it enforces the header and a description for every column), then rerun `features_merge.py`.
+
 ## Files
 
 - `index.html`, `style.css`, `app.js`: the frontend

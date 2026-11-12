@@ -1,0 +1,1422 @@
+# Neighborhood (2020 NTA) of each hexagon
+# Built 2026-11-11 by scripts/features_neighborhoods.py
+#
+# Sources:
+#   - NYC Department of City Planning, 2020 Neighborhood Tabulation Areas (NYC Open Data 9nt8-h7nd): https://data.cityofnewyork.us/City-Government/2020-Neighborhood-Tabulation-Areas-NTAs-/9nt8-h7nd
+#
+# Columns:
+#   hex_id: hexagon id (matches data/hexgrid.geojson)
+#   nta2020: 2020 NTA code covering the largest share of the hexagon's land
+#   ntaname: NTA name
+#   cdta2020: Community District Tabulation Area code (groups of NTAs; 71 citywide incl. large parks and airports)
+#   cdtaname: CDTA name
+#   nta_share: share of the hexagon's land inside that NTA (0-1)
+#   nta_count: number of NTAs covering at least 5% of the hexagon
+#   nonresidential_nta: 1 if the main NTA is a non-residential NTA (ntatype 5-9: large park, cemetery, airport, military base, Rikers Island), else 0
+#
+# Notes:
+#   Areas computed in UTM 18N (EPSG:32618) on the shoreline-clipped hexagons.
+#
+hex_id,nta2020,ntaname,cdta2020,cdtaname,nta_share,nta_count,nonresidential_nta
+r001c001,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.998,1,0
+r001c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.995,1,0
+r002c001,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r002c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r002c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.999,1,0
+r002c004,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.691,2,0
+r003c000,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.986,1,0
+r003c001,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r003c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r003c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.638,2,0
+r003c004,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.999,1,0
+r003c005,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.997,1,0
+r003c006,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.997,1,0
+r004c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.999,1,0
+r004c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.963,1,0
+r004c004,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.96,1,0
+r004c005,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r004c006,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r004c007,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.998,1,0
+r004c008,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.993,1,0
+r005c001,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.994,1,0
+r005c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r005c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.698,2,0
+r005c004,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r005c005,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r005c006,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r005c007,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r005c008,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r005c009,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.996,1,0
+r006c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.999,1,0
+r006c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r006c004,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.898,2,0
+r006c005,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r006c006,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r006c007,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r006c008,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r006c009,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.995,1,0
+r006c010,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.875,2,0
+r006c011,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.997,1,0
+r006c012,SI9593,Great Kills Park,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.998,1,1
+r007c001,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.997,1,0
+r007c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r007c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.626,2,0
+r007c004,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.891,2,0
+r007c005,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.953,1,0
+r007c006,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r007c007,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r007c008,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r007c009,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.879,2,0
+r007c010,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r007c011,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.995,1,0
+r007c012,SI9593,Great Kills Park,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.991,1,1
+r008c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.999,1,0
+r008c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r008c004,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),0.42,3,0
+r008c005,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),0.987,1,0
+r008c006,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),0.83,2,0
+r008c007,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.833,2,0
+r008c008,SI0304,Annadale-Huguenot-Prince's Bay-Woodrow,SI03,SI03 South Shore (CD 3 Approximation),0.595,3,0
+r008c009,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.97,1,0
+r008c010,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r008c011,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r008c012,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.805,2,0
+r008c013,SI9593,Great Kills Park,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.996,1,1
+r008c014,SI9593,Great Kills Park,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.995,1,1
+r008c032,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.996,1,1
+r009c002,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.997,1,0
+r009c003,SI0305,Tottenville-Charleston,SI03,SI03 South Shore (CD 3 Approximation),0.982,1,0
+r009c004,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),0.875,2,0
+r009c005,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r009c006,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r009c007,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),0.936,2,0
+r009c008,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.857,2,0
+r009c009,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r009c010,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r009c011,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r009c012,SI9593,Great Kills Park,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.59,3,1
+r009c013,SI9593,Great Kills Park,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.818,2,1
+r009c014,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),0.921,2,0
+r009c031,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),1.0,1,1
+r009c032,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.968,1,1
+r009c033,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.997,1,1
+r010c005,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),0.656,3,1
+r010c006,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),0.653,2,1
+r010c007,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r010c008,SI0303,Arden Heights-Rossville,SI03,SI03 South Shore (CD 3 Approximation),0.98,1,0
+r010c009,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.789,2,0
+r010c010,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.941,2,0
+r010c011,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r010c012,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.707,2,0
+r010c013,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),0.861,2,0
+r010c014,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),1.0,1,0
+r010c015,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),0.995,1,0
+r010c016,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.665,2,0
+r010c032,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.725,2,1
+r010c033,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.742,2,0
+r010c034,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.522,2,1
+r010c035,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.996,1,1
+r010c036,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.997,1,1
+r011c005,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),1.0,1,1
+r011c006,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),0.962,1,1
+r011c007,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),0.623,2,1
+r011c008,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.775,3,1
+r011c009,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r011c010,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.592,2,0
+r011c011,SI0302,Great Kills-Eltingville,SI03,SI03 South Shore (CD 3 Approximation),0.96,1,0
+r011c012,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),0.709,2,0
+r011c013,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),0.81,2,0
+r011c014,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.538,2,0
+r011c015,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.731,2,0
+r011c016,SI9592,Miller Field,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.881,2,1
+r011c032,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r011c033,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r011c034,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.725,2,0
+r011c035,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.771,2,1
+r011c036,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.913,2,1
+r011c037,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.997,1,1
+r012c005,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),0.997,1,1
+r012c006,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),1.0,1,1
+r012c007,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),0.776,2,1
+r012c008,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.803,2,1
+r012c009,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.361,3,1
+r012c010,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r012c011,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.796,2,0
+r012c012,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),0.625,2,0
+r012c013,SI0301,Oakwood-Richmondtown,SI03,SI03 South Shore (CD 3 Approximation),0.906,2,0
+r012c014,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.947,2,0
+r012c015,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.67,2,0
+r012c016,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.7,2,0
+r012c017,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.625,2,0
+r012c025,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.996,1,0
+r012c026,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.997,1,0
+r012c027,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.997,1,0
+r012c028,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.991,1,0
+r012c036,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.995,1,0
+r012c037,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.758,2,1
+r012c038,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),1.0,1,1
+r012c039,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.765,2,0
+r012c040,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r013c005,SI0391,Freshkills Park (South),SI03,SI03 South Shore (CD 3 Approximation),0.635,2,1
+r013c006,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.716,2,1
+r013c007,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,1
+r013c008,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.935,2,1
+r013c009,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.978,1,0
+r013c010,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.674,2,0
+r013c011,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r013c012,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r013c013,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.889,2,0
+r013c014,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.786,2,0
+r013c015,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r013c016,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r013c017,SI0202,New Dorp-Midland Beach,SI02,SI02 Mid-Island (CD 2 Approximation),0.841,2,0
+r013c018,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),0.972,1,0
+r013c024,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.999,1,0
+r013c025,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),1.0,1,0
+r013c026,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.974,1,0
+r013c027,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),1.0,1,0
+r013c028,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.666,2,0
+r013c029,BK1303,Brighton Beach,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.938,2,0
+r013c030,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.926,2,0
+r013c031,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.999,1,0
+r013c032,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.995,1,0
+r013c035,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.995,1,1
+r013c036,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.612,2,1
+r013c038,QN8492,Jacob Riis Park-Fort Tilden-Breezy Point Tip,QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.528,2,1
+r013c039,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),1.0,1,0
+r013c040,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r013c041,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r014c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.901,2,0
+r014c007,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.58,2,1
+r014c008,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,1
+r014c009,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.512,2,1
+r014c010,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r014c011,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.558,2,0
+r014c012,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r014c013,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r014c014,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r014c015,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.585,3,0
+r014c016,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),0.767,2,0
+r014c017,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),0.705,2,0
+r014c018,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r014c019,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r014c025,BK1302,Coney Island-Sea Gate,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.88,2,0
+r014c026,BK1391,Calvert Vaux Park,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.781,2,1
+r014c027,BK1301,Gravesend (South),BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.554,2,0
+r014c028,BK1301,Gravesend (South),BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.612,2,0
+r014c029,BK1303,Brighton Beach,BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.473,4,0
+r014c030,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.815,2,0
+r014c031,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.999,1,0
+r014c032,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.839,2,0
+r014c033,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.586,2,1
+r014c034,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.993,1,1
+r014c036,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.618,2,1
+r014c037,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r014c038,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.995,1,1
+r014c039,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.996,1,1
+r014c040,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),1.0,1,0
+r014c041,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.999,1,0
+r014c042,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.998,1,0
+r014c043,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.673,2,0
+r014c044,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.999,1,0
+r015c005,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.993,1,0
+r015c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c007,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.531,2,0
+r015c008,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.999,1,1
+r015c009,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.78,2,0
+r015c010,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c011,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.668,2,0
+r015c012,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c013,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c014,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c015,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.646,2,0
+r015c016,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c017,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c018,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r015c019,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),0.899,2,0
+r015c025,BK1103,Gravesend (West),BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.912,2,0
+r015c026,BK1301,Gravesend (South),BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.613,2,0
+r015c027,BK1301,Gravesend (South),BK13,BK13 Coney Island-Brighton Beach (CD 13 Approximation),0.709,2,0
+r015c028,BK1501,Gravesend (East)-Homecrest,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.521,2,0
+r015c029,BK1501,Gravesend (East)-Homecrest,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.533,3,0
+r015c030,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),1.0,1,0
+r015c031,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),1.0,1,0
+r015c032,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.922,2,0
+r015c033,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.843,2,1
+r015c034,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.981,1,1
+r015c035,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.861,2,1
+r015c036,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r015c037,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.996,1,1
+r015c038,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.999,1,1
+r015c041,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.999,1,1
+r015c042,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.439,3,0
+r015c043,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.998,1,0
+r015c044,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.999,1,0
+r015c045,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.999,1,0
+r015c046,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.999,1,0
+r015c047,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.989,1,0
+r015c048,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.994,1,0
+r015c049,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.995,1,0
+r016c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.994,1,0
+r016c007,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c008,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.561,2,0
+r016c009,SI0291,Freshkills Park (North),SI02,SI02 Mid-Island (CD 2 Approximation),0.518,2,1
+r016c010,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c011,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c012,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.818,2,0
+r016c013,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c014,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c015,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c016,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.853,2,0
+r016c017,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c018,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r016c019,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),0.901,2,0
+r016c020,SI9561,Fort Wadsworth,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.998,1,1
+r016c025,BK1102,Bath Beach,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.982,1,0
+r016c026,BK1103,Gravesend (West),BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.828,2,0
+r016c027,BK1103,Gravesend (West),BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.969,1,0
+r016c028,BK1501,Gravesend (East)-Homecrest,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.557,2,0
+r016c029,BK1501,Gravesend (East)-Homecrest,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),1.0,1,0
+r016c030,BK1502,Madison,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.502,3,0
+r016c031,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.736,2,0
+r016c032,BK1503,Sheepshead Bay-Manhattan Beach-Gerritsen Beach,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.905,2,0
+r016c033,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.992,1,1
+r016c034,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.814,2,1
+r016c035,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.971,1,1
+r016c036,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r016c037,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.997,1,1
+r016c039,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r016c040,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r016c041,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),1.0,1,1
+r016c042,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.908,2,0
+r016c043,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.998,1,0
+r016c044,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.683,2,0
+r016c045,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.999,1,0
+r016c046,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.896,2,0
+r016c047,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.924,2,0
+r016c048,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.783,2,0
+r016c049,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),1.0,1,0
+r016c050,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.999,1,0
+r016c051,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.991,1,0
+r017c005,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.999,1,0
+r017c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r017c007,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r017c008,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.961,1,0
+r017c009,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r017c010,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r017c011,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.574,3,0
+r017c012,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.875,2,0
+r017c013,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),0.992,1,0
+r017c014,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r017c015,SI0203,Todt Hill-Emerson Hill-Lighthouse Hill-Manor Heights,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r017c016,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),0.562,2,0
+r017c017,SI0201,Grasmere-Arrochar-South Beach-Dongan Hills,SI02,SI02 Mid-Island (CD 2 Approximation),0.651,2,0
+r017c018,SI0103,Rosebank-Shore Acres-Park Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.597,2,0
+r017c019,SI9561,Fort Wadsworth,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.602,2,1
+r017c020,SI9561,Fort Wadsworth,SI95,SI95 Great Kills Park-Fort Wadsworth (JIA 95 Approximation),0.993,1,1
+r017c022,BK1061,Fort Hamilton,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),1.0,1,1
+r017c023,BK1091,Dyker Beach Park,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.436,3,1
+r017c024,BK1102,Bath Beach,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.998,1,0
+r017c025,BK1101,Bensonhurst,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.759,2,0
+r017c026,BK1103,Gravesend (West),BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.566,2,0
+r017c027,BK1103,Gravesend (West),BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.979,1,0
+r017c028,BK1501,Gravesend (East)-Homecrest,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.896,2,0
+r017c029,BK1501,Gravesend (East)-Homecrest,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.614,2,0
+r017c030,BK1502,Madison,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),1.0,1,0
+r017c031,BK1502,Madison,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.592,3,0
+r017c032,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.809,2,1
+r017c033,BK1891,Marine Park-Plumb Island,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.742,3,1
+r017c034,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.507,2,0
+r017c035,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.725,2,1
+r017c036,BK5691,Barren Island-Floyd Bennett Field,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.998,1,1
+r017c039,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r017c040,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.978,1,1
+r017c042,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.734,2,0
+r017c043,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.506,2,1
+r017c045,QN1402,Rockaway Beach-Arverne-Edgemere,QN14,QN14 The Rockaways (CD 14 Approximation),0.587,2,0
+r017c046,QN1491,Rockaway Community Park,QN14,QN14 The Rockaways (CD 14 Approximation),0.868,2,1
+r017c047,QN1491,Rockaway Community Park,QN14,QN14 The Rockaways (CD 14 Approximation),0.523,3,1
+r017c048,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),1.0,1,0
+r017c049,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),1.0,1,0
+r017c050,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),1.0,1,0
+r018c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r018c007,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r018c008,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r018c009,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r018c010,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.813,2,0
+r018c011,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),0.947,2,0
+r018c012,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r018c013,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),0.976,1,0
+r018c014,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),0.754,2,0
+r018c015,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),0.796,2,0
+r018c016,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.651,3,0
+r018c017,SI0103,Rosebank-Shore Acres-Park Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.643,3,0
+r018c018,SI0103,Rosebank-Shore Acres-Park Hill,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r018c019,SI0103,Rosebank-Shore Acres-Park Hill,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r018c022,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.764,2,0
+r018c023,BK1061,Fort Hamilton,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.372,3,1
+r018c024,BK1091,Dyker Beach Park,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.538,3,1
+r018c025,BK1101,Bensonhurst,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.623,2,0
+r018c026,BK1101,Bensonhurst,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),1.0,1,0
+r018c027,BK1101,Bensonhurst,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.973,1,0
+r018c028,BK1204,Mapleton-Midwood (West),BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.534,4,0
+r018c029,BK1501,Gravesend (East)-Homecrest,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.395,3,0
+r018c030,BK1502,Madison,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.563,2,0
+r018c031,BK1502,Madison,BK15,BK15 Sheepshead Bay-Gravesend (East) (CD 15 Approximation),0.539,2,0
+r018c032,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.899,2,0
+r018c033,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.966,1,0
+r018c034,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.999,1,0
+r018c035,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.528,2,0
+r018c036,BK1892,McGuire Fields,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.996,1,1
+r018c038,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r018c040,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.983,1,1
+r018c041,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.996,1,1
+r018c042,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.985,1,1
+r018c043,QN1403,Breezy Point-Belle Harbor-Rockaway Park-Broad Channel,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r018c045,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.988,1,1
+r018c046,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.998,1,1
+r018c047,QN1491,Rockaway Community Park,QN14,QN14 The Rockaways (CD 14 Approximation),0.998,1,1
+r018c048,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r018c049,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.998,1,0
+r018c050,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.997,1,0
+r019c005,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.995,1,0
+r019c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r019c007,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),1.0,1,0
+r019c008,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.861,2,0
+r019c009,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.604,2,0
+r019c010,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.753,2,0
+r019c011,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r019c012,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r019c013,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r019c014,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),0.834,2,0
+r019c015,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.896,2,0
+r019c016,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.992,1,0
+r019c017,SI0102,Tompkinsville-Stapleton-Clifton-Fox Hills,SI01,SI01 North Shore (CD 1 Equivalent),0.837,2,0
+r019c018,SI0103,Rosebank-Shore Acres-Park Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.691,2,0
+r019c021,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.998,1,0
+r019c022,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.987,1,0
+r019c023,BK1002,Dyker Heights,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.523,3,0
+r019c024,BK1002,Dyker Heights,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.804,2,0
+r019c025,BK1101,Bensonhurst,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.996,1,0
+r019c026,BK1101,Bensonhurst,BK11,BK11 Bensonhurst-Bath Beach (CD 11 Approximation),0.907,2,0
+r019c027,BK1204,Mapleton-Midwood (West),BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.835,2,0
+r019c028,BK1204,Mapleton-Midwood (West),BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.965,1,0
+r019c029,BK1403,Midwood,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),1.0,1,0
+r019c030,BK1403,Midwood,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.716,3,0
+r019c031,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.631,2,0
+r019c032,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.807,2,0
+r019c033,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.553,2,0
+r019c034,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.999,1,0
+r019c035,BK1892,McGuire Fields,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.642,2,1
+r019c037,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.999,1,1
+r019c038,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.998,1,1
+r019c041,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.615,2,1
+r019c042,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.941,2,1
+r019c043,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.66,2,1
+r019c044,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.997,1,1
+r019c045,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.999,1,1
+r019c046,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.998,1,1
+r019c047,QN1401,Far Rockaway-Bayswater,QN14,QN14 The Rockaways (CD 14 Approximation),0.616,2,0
+r019c048,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.524,2,1
+r020c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.999,1,0
+r020c007,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.996,1,0
+r020c008,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.604,2,0
+r020c009,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r020c010,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r020c011,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.643,3,0
+r020c012,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),0.566,2,0
+r020c013,SI0105,Westerleigh-Castleton Corners,SI01,SI01 North Shore (CD 1 Equivalent),0.676,2,0
+r020c014,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.644,2,0
+r020c015,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r020c016,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r020c017,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.737,2,0
+r020c018,SI0102,Tompkinsville-Stapleton-Clifton-Fox Hills,SI01,SI01 North Shore (CD 1 Equivalent),0.843,2,0
+r020c021,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.999,1,0
+r020c022,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),1.0,1,0
+r020c023,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),1.0,1,0
+r020c024,BK1002,Dyker Heights,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.915,2,0
+r020c025,BK1002,Dyker Heights,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.911,2,0
+r020c026,BK1202,Borough Park,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.493,2,0
+r020c027,BK1202,Borough Park,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.542,2,0
+r020c028,BK1204,Mapleton-Midwood (West),BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.82,2,0
+r020c029,BK1403,Midwood,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.718,2,0
+r020c030,BK1403,Midwood,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.993,1,0
+r020c031,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.836,2,0
+r020c032,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),1.0,1,0
+r020c033,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.961,1,0
+r020c034,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),1.0,1,0
+r020c035,BK1802,Marine Park-Mill Basin-Bergen Beach,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.484,4,0
+r020c036,BK1893,Canarsie Park & Pier,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.998,1,1
+r020c038,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),1.0,1,1
+r020c040,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.986,1,1
+r020c042,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.96,1,1
+r020c043,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.999,1,1
+r020c044,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.996,1,1
+r020c045,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.996,1,1
+r020c046,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.634,2,1
+r020c047,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.977,1,1
+r020c048,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.835,2,1
+r021c006,SI0204,New Springville-Willowbrook-Bulls Head-Travis,SI02,SI02 Mid-Island (CD 2 Approximation),0.51,2,0
+r021c007,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.993,1,0
+r021c008,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r021c009,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r021c010,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r021c011,SI0106,Port Richmond,SI01,SI01 North Shore (CD 1 Equivalent),0.918,2,0
+r021c012,SI0106,Port Richmond,SI01,SI01 North Shore (CD 1 Equivalent),0.917,2,0
+r021c013,SI0106,Port Richmond,SI01,SI01 North Shore (CD 1 Equivalent),0.599,2,0
+r021c014,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r021c015,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r021c016,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.953,1,0
+r021c017,SI0102,Tompkinsville-Stapleton-Clifton-Fox Hills,SI01,SI01 North Shore (CD 1 Equivalent),0.736,2,0
+r021c018,SI0102,Tompkinsville-Stapleton-Clifton-Fox Hills,SI01,SI01 North Shore (CD 1 Equivalent),0.999,1,0
+r021c021,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),1.0,1,0
+r021c022,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),1.0,1,0
+r021c023,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.872,2,0
+r021c024,BK1002,Dyker Heights,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.671,4,0
+r021c025,BK1202,Borough Park,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.977,1,0
+r021c026,BK1202,Borough Park,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),1.0,1,0
+r021c027,BK1202,Borough Park,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.712,3,0
+r021c028,BK1402,Flatbush (West)-Ditmas Park-Parkville,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.76,3,0
+r021c029,BK1402,Flatbush (West)-Ditmas Park-Parkville,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.463,3,0
+r021c030,BK1401,Flatbush,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.579,4,0
+r021c031,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.798,2,0
+r021c032,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.999,1,0
+r021c033,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.376,3,0
+r021c034,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.999,1,0
+r021c035,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.685,2,0
+r021c036,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.576,2,0
+r021c039,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.997,1,1
+r021c041,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.994,1,1
+r021c042,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),1.0,1,1
+r021c046,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.999,1,1
+r021c047,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r021c048,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.997,1,1
+r022c007,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r022c008,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.999,1,0
+r022c009,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.999,1,0
+r022c010,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.993,1,0
+r022c011,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.777,2,0
+r022c012,SI0106,Port Richmond,SI01,SI01 North Shore (CD 1 Equivalent),0.999,1,0
+r022c013,SI0106,Port Richmond,SI01,SI01 North Shore (CD 1 Equivalent),0.999,1,0
+r022c014,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.708,2,0
+r022c015,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.782,2,0
+r022c016,SI0101,St. George-New Brighton,SI01,SI01 North Shore (CD 1 Equivalent),0.531,2,0
+r022c017,SI0101,St. George-New Brighton,SI01,SI01 North Shore (CD 1 Equivalent),0.908,2,0
+r022c018,SI0101,St. George-New Brighton,SI01,SI01 North Shore (CD 1 Equivalent),0.678,2,0
+r022c022,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),1.0,1,0
+r022c023,BK1001,Bay Ridge,BK10,BK10 Bay Ridge-Dyker Heights (CD 10 Approximation),0.622,2,0
+r022c024,BK0703,Sunset Park (Central),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.811,2,0
+r022c025,BK1201,Sunset Park (East)-Borough Park (West),BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.664,3,0
+r022c026,BK1202,Borough Park,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.794,2,0
+r022c027,BK1202,Borough Park,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.879,2,0
+r022c028,BK1203,Kensington,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.942,2,0
+r022c029,BK1402,Flatbush (West)-Ditmas Park-Parkville,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.862,2,0
+r022c030,BK1401,Flatbush,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.696,2,0
+r022c031,BK1702,East Flatbush-Farragut,BK17,BK17 East Flatbush (CD 17 Approximation),0.999,1,0
+r022c032,BK1702,East Flatbush-Farragut,BK17,BK17 East Flatbush (CD 17 Approximation),0.907,2,0
+r022c033,BK1801,Flatlands,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.716,3,0
+r022c034,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),1.0,1,0
+r022c035,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),1.0,1,0
+r022c036,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),1.0,1,0
+r022c037,BK1893,Canarsie Park & Pier,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.596,3,1
+r022c038,BK5693,Shirley Chisholm State Park,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.999,1,1
+r022c040,BK5692,Jamaica Bay (West),BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.996,1,1
+r022c042,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),0.998,1,1
+r022c043,QN8491,Jamaica Bay (East),QN84,QN84 Jamaica Bay (East) (JIA 84 Approximation),1.0,1,1
+r022c045,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.996,1,1
+r022c046,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.999,1,1
+r022c047,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r022c048,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r022c049,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r022c050,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.817,2,1
+r023c007,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.991,1,0
+r023c008,SI0107,Mariner's Harbor-Arlington-Graniteville,SI01,SI01 North Shore (CD 1 Equivalent),0.993,1,0
+r023c014,SI0104,West New Brighton-Silver Lake-Grymes Hill,SI01,SI01 North Shore (CD 1 Equivalent),0.938,2,0
+r023c015,SI0191,Snug Harbor,SI01,SI01 North Shore (CD 1 Equivalent),0.659,2,1
+r023c016,SI0101,St. George-New Brighton,SI01,SI01 North Shore (CD 1 Equivalent),1.0,1,0
+r023c017,SI0101,St. George-New Brighton,SI01,SI01 North Shore (CD 1 Equivalent),0.999,1,0
+r023c018,SI0101,St. George-New Brighton,SI01,SI01 North Shore (CD 1 Equivalent),0.994,1,0
+r023c022,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.77,2,0
+r023c023,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),1.0,1,0
+r023c024,BK0703,Sunset Park (Central),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.602,2,0
+r023c025,BK1201,Sunset Park (East)-Borough Park (West),BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.554,2,0
+r023c026,BK0771,Green-Wood Cemetery,BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.444,4,1
+r023c027,BK1203,Kensington,BK12,BK12 Borough Park-Kensington (CD 12 Approximation),0.851,2,0
+r023c028,BK1402,Flatbush (West)-Ditmas Park-Parkville,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.64,3,0
+r023c029,BK1401,Flatbush,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.731,2,0
+r023c030,BK1701,East Flatbush-Erasmus,BK17,BK17 East Flatbush (CD 17 Approximation),0.7,2,0
+r023c031,BK1702,East Flatbush-Farragut,BK17,BK17 East Flatbush (CD 17 Approximation),0.478,3,0
+r023c032,BK1703,East Flatbush-Rugby,BK17,BK17 East Flatbush (CD 17 Approximation),0.622,2,0
+r023c033,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.687,3,0
+r023c034,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.976,1,0
+r023c035,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),1.0,1,0
+r023c036,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.606,2,0
+r023c037,BK0504,Spring Creek-Starrett City,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.605,2,0
+r023c038,BK5693,Shirley Chisholm State Park,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.999,1,1
+r023c039,BK5693,Shirley Chisholm State Park,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.837,2,1
+r023c040,QN1091,Spring Creek Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.996,1,1
+r023c043,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.995,1,1
+r023c044,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.999,1,1
+r023c045,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r023c046,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r023c047,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r023c048,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r023c049,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.963,1,1
+r023c050,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.954,1,0
+r024c023,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.998,1,0
+r024c024,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),1.0,1,0
+r024c025,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.555,3,0
+r024c026,BK0771,Green-Wood Cemetery,BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.986,1,1
+r024c027,BK0771,Green-Wood Cemetery,BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.747,2,1
+r024c028,BK0701,Windsor Terrace-South Slope,BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.562,2,0
+r024c029,BK1401,Flatbush,BK14,BK14 Flatbush-Midwood (CD 14 Approximation),0.612,3,0
+r024c030,BK1701,East Flatbush-Erasmus,BK17,BK17 East Flatbush (CD 17 Approximation),0.91,2,0
+r024c031,BK1701,East Flatbush-Erasmus,BK17,BK17 East Flatbush (CD 17 Approximation),0.475,3,0
+r024c032,BK1703,East Flatbush-Rugby,BK17,BK17 East Flatbush (CD 17 Approximation),0.959,1,0
+r024c033,BK1703,East Flatbush-Rugby,BK17,BK17 East Flatbush (CD 17 Approximation),0.625,2,0
+r024c034,BK1704,East Flatbush-Remsen Village,BK17,BK17 East Flatbush (CD 17 Approximation),0.561,4,0
+r024c035,BK0503,East New York-New Lots,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.795,2,0
+r024c036,BK1803,Canarsie,BK18,BK18 Canarsie-Flatlands (CD 18 Approximation),0.523,3,0
+r024c037,BK0504,Spring Creek-Starrett City,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.981,1,0
+r024c038,BK0504,Spring Creek-Starrett City,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.725,2,0
+r024c039,BK5693,Shirley Chisholm State Park,BK56,BK56 Jamaica Bay (West) (JIA 56 Approximation),0.825,3,1
+r024c040,QN1091,Spring Creek Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.729,2,1
+r024c041,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.767,2,0
+r024c042,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.786,2,0
+r024c043,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.997,1,1
+r024c044,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r024c045,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r024c046,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r024c047,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r024c048,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r024c049,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.666,2,1
+r024c050,QN1306,Springfield Gardens (South)-Brookville,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.654,2,0
+r024c051,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r024c052,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r025c023,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),1.0,1,0
+r025c024,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.998,1,0
+r025c025,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.744,2,0
+r025c026,BK0771,Green-Wood Cemetery,BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.42,3,1
+r025c027,BK0701,Windsor Terrace-South Slope,BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.69,2,0
+r025c028,BK5591,Prospect Park,BK55,BK55 Prospect Park (JIA 55 Approximation),0.999,1,1
+r025c029,BK0902,Prospect Lefferts Gardens-Wingate,BK09,BK09 Crown Heights (South) (CD 9 Approximation),0.89,1,0
+r025c030,BK0902,Prospect Lefferts Gardens-Wingate,BK09,BK09 Crown Heights (South) (CD 9 Approximation),0.859,2,0
+r025c031,BK0902,Prospect Lefferts Gardens-Wingate,BK09,BK09 Crown Heights (South) (CD 9 Approximation),0.711,2,0
+r025c032,BK1703,East Flatbush-Rugby,BK17,BK17 East Flatbush (CD 17 Approximation),0.641,2,0
+r025c033,BK1704,East Flatbush-Remsen Village,BK17,BK17 East Flatbush (CD 17 Approximation),0.646,2,0
+r025c034,BK1602,Brownsville,BK16,BK16 Ocean Hill-Brownsville (CD 16 Approximation),0.901,2,0
+r025c035,BK0503,East New York-New Lots,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.859,2,0
+r025c036,BK0503,East New York-New Lots,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),1.0,1,0
+r025c037,BK0503,East New York-New Lots,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.532,2,0
+r025c038,BK0504,Spring Creek-Starrett City,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.613,3,0
+r025c039,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.669,2,0
+r025c040,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.999,1,0
+r025c041,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.997,1,0
+r025c042,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.918,2,1
+r025c043,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r025c044,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r025c045,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r025c046,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),1.0,1,1
+r025c047,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.838,2,1
+r025c048,QN1306,Springfield Gardens (South)-Brookville,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.812,2,0
+r025c049,QN1306,Springfield Gardens (South)-Brookville,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r025c050,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.672,2,0
+r025c051,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r025c052,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.998,1,0
+r026c024,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.9,2,0
+r026c025,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.753,2,0
+r026c026,BK0702,Sunset Park (West),BK07,BK07 Sunset Park-Windsor Terrace (CD 7 Approximation),0.578,4,0
+r026c027,BK0602,Park Slope,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.833,2,0
+r026c028,BK5591,Prospect Park,BK55,BK55 Prospect Park (JIA 55 Approximation),0.831,2,1
+r026c029,BK5591,Prospect Park,BK55,BK55 Prospect Park (JIA 55 Approximation),0.589,3,1
+r026c030,BK0901,Crown Heights (South),BK09,BK09 Crown Heights (South) (CD 9 Approximation),0.673,2,0
+r026c031,BK0901,Crown Heights (South),BK09,BK09 Crown Heights (South) (CD 9 Approximation),0.705,2,0
+r026c032,BK0901,Crown Heights (South),BK09,BK09 Crown Heights (South) (CD 9 Approximation),0.575,5,0
+r026c033,BK1704,East Flatbush-Remsen Village,BK17,BK17 East Flatbush (CD 17 Approximation),0.439,3,0
+r026c034,BK1602,Brownsville,BK16,BK16 Ocean Hill-Brownsville (CD 16 Approximation),1.0,1,0
+r026c035,BK1602,Brownsville,BK16,BK16 Ocean Hill-Brownsville (CD 16 Approximation),0.516,3,0
+r026c036,BK0503,East New York-New Lots,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.843,2,0
+r026c037,BK0503,East New York-New Lots,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.991,1,0
+r026c038,BK0503,East New York-New Lots,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.544,2,0
+r026c039,BK0505,East New York-City Line,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.851,2,0
+r026c040,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),1.0,1,0
+r026c041,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.997,1,0
+r026c042,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.383,3,0
+r026c043,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.61,2,0
+r026c044,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.562,2,1
+r026c045,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.736,3,1
+r026c046,QN8381,John F. Kennedy International Airport,QN83,QN83 JFK International Airport (JIA 83 Approximation),0.578,2,1
+r026c047,QN1306,Springfield Gardens (South)-Brookville,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.772,2,0
+r026c048,QN1306,Springfield Gardens (South)-Brookville,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.999,1,0
+r026c049,QN1306,Springfield Gardens (South)-Brookville,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.961,1,0
+r026c050,QN1306,Springfield Gardens (South)-Brookville,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.962,1,0
+r026c051,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.883,2,0
+r026c052,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.996,1,0
+r027c023,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.997,1,0
+r027c024,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),1.0,1,0
+r027c025,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.911,2,0
+r027c026,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.583,2,0
+r027c027,BK0602,Park Slope,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),1.0,1,0
+r027c028,BK5591,Prospect Park,BK55,BK55 Prospect Park (JIA 55 Approximation),0.53,3,1
+r027c029,BK0802,Crown Heights (North),BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.595,3,0
+r027c030,BK0802,Crown Heights (North),BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.801,2,0
+r027c031,BK0802,Crown Heights (North),BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.867,2,0
+r027c032,BK0802,Crown Heights (North),BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.875,3,0
+r027c033,BK1601,Ocean Hill,BK16,BK16 Ocean Hill-Brownsville (CD 16 Approximation),0.714,2,0
+r027c034,BK1602,Brownsville,BK16,BK16 Ocean Hill-Brownsville (CD 16 Approximation),0.766,3,0
+r027c035,BK0502,East New York (North),BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),1.0,1,0
+r027c036,BK0502,East New York (North),BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.966,1,0
+r027c037,BK0502,East New York (North),BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.388,3,0
+r027c038,BK0505,East New York-City Line,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.983,1,0
+r027c039,QN1003,Howard Beach-Lindenwood,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.634,3,0
+r027c040,QN1002,Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.643,2,0
+r027c041,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.578,2,0
+r027c042,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),1.0,1,0
+r027c043,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),1.0,1,0
+r027c044,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.776,2,0
+r027c045,QN1203,Baisley Park,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.919,2,0
+r027c046,QN1204,Springfield Gardens (North)-Rochdale Village,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.879,2,0
+r027c047,QN1204,Springfield Gardens (North)-Rochdale Village,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.816,2,0
+r027c048,QN1204,Springfield Gardens (North)-Rochdale Village,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.909,2,0
+r027c049,QN1305,Laurelton,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.883,2,0
+r027c050,QN1305,Laurelton,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.839,3,0
+r027c051,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.981,1,0
+r028c024,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),1.0,1,0
+r028c025,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),1.0,1,0
+r028c026,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),1.0,1,0
+r028c027,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.58,2,0
+r028c028,BK0801,Prospect Heights,BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.614,2,0
+r028c029,BK0801,Prospect Heights,BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.464,4,0
+r028c030,BK0802,Crown Heights (North),BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.549,2,0
+r028c031,BK0802,Crown Heights (North),BK08,BK08 Crown Heights (North) (CD 8 Approximation),0.455,3,0
+r028c032,BK0302,Bedford-Stuyvesant (East),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),0.614,2,0
+r028c033,BK0302,Bedford-Stuyvesant (East),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),0.532,3,0
+r028c034,BK1601,Ocean Hill,BK16,BK16 Ocean Hill-Brownsville (CD 16 Approximation),1.0,1,0
+r028c035,BK0502,East New York (North),BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.281,5,0
+r028c036,BK0501,Cypress Hills,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.592,2,0
+r028c037,BK0502,East New York (North),BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.505,2,0
+r028c038,BK0505,East New York-City Line,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.963,1,0
+r028c039,QN1002,Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.535,3,0
+r028c040,QN1002,Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.967,1,0
+r028c041,QN1002,Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.62,2,0
+r028c042,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),1.0,1,0
+r028c043,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),1.0,1,0
+r028c044,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.994,1,0
+r028c045,QN1203,Baisley Park,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.949,2,0
+r028c046,QN1203,Baisley Park,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.978,1,0
+r028c047,QN1204,Springfield Gardens (North)-Rochdale Village,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.772,2,0
+r028c048,QN1204,Springfield Gardens (North)-Rochdale Village,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.967,1,0
+r028c049,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.517,3,0
+r028c050,QN1305,Laurelton,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r028c051,QN1305,Laurelton,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.879,2,0
+r028c052,QN1307,Rosedale,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.978,1,0
+r029c022,MN0191,The Battery-Governors Island-Ellis Island-Liberty Island,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),1.0,1,1
+r029c023,MN0191,The Battery-Governors Island-Ellis Island-Liberty Island,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.999,1,1
+r029c024,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.87,2,0
+r029c025,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.987,1,0
+r029c026,BK0202,Downtown Brooklyn-DUMBO-Boerum Hill,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.58,2,0
+r029c027,BK0203,Fort Greene,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.529,3,0
+r029c028,BK0204,Clinton Hill,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.698,2,0
+r029c029,BK0301,Bedford-Stuyvesant (West),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),0.773,2,0
+r029c030,BK0301,Bedford-Stuyvesant (West),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),1.0,1,0
+r029c031,BK0302,Bedford-Stuyvesant (East),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),0.967,1,0
+r029c032,BK0302,Bedford-Stuyvesant (East),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),1.0,1,0
+r029c033,BK0402,Bushwick (East),BK04,BK04 Bushwick (CD 4 Equivalent),0.343,3,0
+r029c034,BK0402,Bushwick (East),BK04,BK04 Bushwick (CD 4 Equivalent),0.648,2,0
+r029c035,QN0574,Highland Park-Cypress Hills Cemeteries (North),QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.543,3,1
+r029c036,BK0501,Cypress Hills,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.444,3,0
+r029c037,BK0501,Cypress Hills,BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.956,1,0
+r029c038,QN0905,Woodhaven,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.396,4,0
+r029c039,QN0904,Ozone Park (North),QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.78,2,0
+r029c040,QN0904,Ozone Park (North),QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.795,2,0
+r029c041,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.609,3,0
+r029c042,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),0.996,1,0
+r029c043,QN1001,South Ozone Park,QN10,QN10 South Ozone Park-Howard Beach (CD 10 Approximation),1.0,1,0
+r029c044,QN1202,South Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.406,3,0
+r029c045,QN1203,Baisley Park,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.95,1,0
+r029c046,QN1203,Baisley Park,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),1.0,1,0
+r029c047,QN1203,Baisley Park,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.517,3,0
+r029c048,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.888,2,0
+r029c049,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.589,2,0
+r029c050,QN1305,Laurelton,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.609,2,0
+r029c051,QN1305,Laurelton,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.6,4,0
+r030c023,MN0191,The Battery-Governors Island-Ellis Island-Liberty Island,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),1.0,1,1
+r030c024,MN0191,The Battery-Governors Island-Ellis Island-Liberty Island,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.997,1,1
+r030c025,BK0601,Carroll Gardens-Cobble Hill-Gowanus-Red Hook,BK06,BK06 Park Slope-Carroll Gardens (CD 6 Approximation),0.357,4,0
+r030c026,BK0201,Brooklyn Heights,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.664,3,0
+r030c027,BK0202,Downtown Brooklyn-DUMBO-Boerum Hill,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.675,2,0
+r030c028,BK0203,Fort Greene,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.842,2,0
+r030c029,BK0204,Clinton Hill,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.758,2,0
+r030c030,BK0301,Bedford-Stuyvesant (West),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),1.0,1,0
+r030c031,BK0302,Bedford-Stuyvesant (East),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),0.619,2,0
+r030c032,BK0302,Bedford-Stuyvesant (East),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),0.85,2,0
+r030c033,BK0402,Bushwick (East),BK04,BK04 Bushwick (CD 4 Equivalent),0.816,2,0
+r030c034,BK0402,Bushwick (East),BK04,BK04 Bushwick (CD 4 Equivalent),1.0,1,0
+r030c035,QN0574,Highland Park-Cypress Hills Cemeteries (North),QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.398,5,1
+r030c036,QN0574,Highland Park-Cypress Hills Cemeteries (North),QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.922,2,1
+r030c037,QN0574,Highland Park-Cypress Hills Cemeteries (North),QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.607,2,1
+r030c038,BK0571,Highland Park-Cypress Hills Cemeteries (South),BK05,BK05 East New York-Cypress Hills (CD 5 Approximation),0.427,3,1
+r030c039,QN0905,Woodhaven,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),1.0,1,0
+r030c040,QN0905,Woodhaven,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.788,3,0
+r030c041,QN0902,Richmond Hill,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.524,3,0
+r030c042,QN0903,South Richmond Hill,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.784,3,0
+r030c043,QN0903,South Richmond Hill,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.649,2,0
+r030c044,QN1202,South Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.406,4,0
+r030c045,QN1202,South Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.915,2,0
+r030c046,QN1202,South Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.782,2,0
+r030c047,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.533,3,0
+r030c048,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),1.0,1,0
+r030c049,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),1.0,1,0
+r030c050,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.497,3,0
+r030c051,QN1304,Cambria Heights,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.955,1,0
+r030c052,QN1304,Cambria Heights,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r031c021,MN0191,The Battery-Governors Island-Ellis Island-Liberty Island,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),1.0,1,1
+r031c024,MN0101,Financial District-Battery Park City,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.996,1,0
+r031c025,BK0201,Brooklyn Heights,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.819,2,0
+r031c026,BK0202,Downtown Brooklyn-DUMBO-Boerum Hill,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.884,2,0
+r031c027,BK0261,Brooklyn Navy Yard,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.499,3,1
+r031c028,BK0261,Brooklyn Navy Yard,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.62,3,1
+r031c029,BK0103,South Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.486,2,0
+r031c030,BK0301,Bedford-Stuyvesant (West),BK03,BK03 Bedford-Stuyvesant (CD 3 Approximation),0.558,3,0
+r031c031,BK0401,Bushwick (West),BK04,BK04 Bushwick (CD 4 Equivalent),0.565,3,0
+r031c032,BK0401,Bushwick (West),BK04,BK04 Bushwick (CD 4 Equivalent),0.945,2,0
+r031c033,BK0402,Bushwick (East),BK04,BK04 Bushwick (CD 4 Equivalent),0.589,2,0
+r031c034,QN0502,Ridgewood,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.751,2,0
+r031c035,QN0503,Glendale,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.516,2,0
+r031c036,QN0574,Highland Park-Cypress Hills Cemeteries (North),QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.606,2,1
+r031c037,QN0574,Highland Park-Cypress Hills Cemeteries (North),QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.967,1,1
+r031c038,QN8291,Forest Park,QN82,QN82 Forest Park (JIA 82 Approximation),0.835,2,1
+r031c039,QN0905,Woodhaven,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.549,2,0
+r031c040,QN0902,Richmond Hill,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.756,2,0
+r031c041,QN0902,Richmond Hill,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),1.0,1,0
+r031c042,QN0902,Richmond Hill,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.861,2,0
+r031c043,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.537,3,0
+r031c044,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.869,2,0
+r031c045,QN1202,South Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.867,2,0
+r031c046,QN1202,South Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.803,2,0
+r031c047,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.922,2,0
+r031c048,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),1.0,1,0
+r031c049,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.992,1,0
+r031c050,QN1304,Cambria Heights,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.893,2,0
+r031c051,QN1304,Cambria Heights,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r032c024,MN0101,Financial District-Battery Park City,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.906,2,0
+r032c025,MN0101,Financial District-Battery Park City,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.969,1,0
+r032c026,BK0202,Downtown Brooklyn-DUMBO-Boerum Hill,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.721,3,0
+r032c027,BK0202,Downtown Brooklyn-DUMBO-Boerum Hill,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.82,2,0
+r032c028,BK0261,Brooklyn Navy Yard,BK02,BK02 Downtown Brooklyn-Fort Greene (CD 2 Approximation),0.764,3,1
+r032c029,BK0103,South Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.77,2,0
+r032c030,BK0103,South Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.571,3,0
+r032c031,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.997,1,0
+r032c032,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.721,2,0
+r032c033,BK0401,Bushwick (West),BK04,BK04 Bushwick (CD 4 Equivalent),0.845,3,0
+r032c034,QN0502,Ridgewood,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.851,2,0
+r032c035,QN0502,Ridgewood,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),1.0,1,0
+r032c036,QN0502,Ridgewood,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.542,3,0
+r032c037,QN0503,Glendale,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.743,3,0
+r032c038,QN0503,Glendale,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.694,4,0
+r032c039,QN0503,Glendale,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.768,2,0
+r032c040,QN8291,Forest Park,QN82,QN82 Forest Park (JIA 82 Approximation),0.939,1,1
+r032c041,QN8291,Forest Park,QN82,QN82 Forest Park (JIA 82 Approximation),0.541,3,1
+r032c042,QN0901,Kew Gardens,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.79,2,0
+r032c043,QN0901,Kew Gardens,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.361,3,0
+r032c044,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.809,2,0
+r032c045,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),1.0,1,0
+r032c046,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.552,2,0
+r032c047,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.456,3,0
+r032c048,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.967,1,0
+r032c049,QN1205,St. Albans,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.575,2,0
+r032c050,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.637,3,0
+r032c051,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.582,2,0
+r032c052,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.515,2,0
+r033c023,MN0101,Financial District-Battery Park City,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.981,1,0
+r033c024,MN0102,Tribeca-Civic Center,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.601,2,0
+r033c025,MN0301,Chinatown-Two Bridges,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),0.828,2,0
+r033c026,MN0301,Chinatown-Two Bridges,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),0.612,2,0
+r033c027,MN0302,Lower East Side,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),1.0,1,0
+r033c028,BK0102,Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.999,1,0
+r033c029,BK0102,Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.982,1,0
+r033c030,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.832,2,0
+r033c031,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),1.0,1,0
+r033c032,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.884,2,0
+r033c033,QN0502,Ridgewood,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.727,2,0
+r033c034,QN0502,Ridgewood,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.654,2,0
+r033c035,QN0502,Ridgewood,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.608,3,0
+r033c036,QN0572,Middle Village Cemetery,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.497,4,1
+r033c037,QN0504,Middle Village,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.861,2,0
+r033c038,QN0573,St. John Cemetery,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.532,2,1
+r033c039,QN0602,Forest Hills,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.826,3,0
+r033c040,QN0602,Forest Hills,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.809,3,0
+r033c041,QN0901,Kew Gardens,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.73,2,0
+r033c042,QN0901,Kew Gardens,QN09,QN09 Kew Gardens-Richmond Hill-Woodhaven (CD 9 Approximation),0.648,2,0
+r033c043,QN0805,Jamaica Hills-Briarwood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),1.0,1,0
+r033c044,QN0805,Jamaica Hills-Briarwood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.697,2,0
+r033c045,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.501,3,0
+r033c046,QN1201,Jamaica,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.827,2,0
+r033c047,QN1206,Hollis,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.481,3,0
+r033c048,QN1206,Hollis,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.953,1,0
+r033c049,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.576,2,0
+r033c050,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r033c051,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r034c024,MN0102,Tribeca-Civic Center,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.752,2,0
+r034c025,MN0102,Tribeca-Civic Center,MN01,MN01 Financial District-Tribeca (CD 1 Equivalent),0.549,2,0
+r034c026,MN0302,Lower East Side,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),0.526,3,0
+r034c027,MN0302,Lower East Side,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),0.738,2,0
+r034c028,MN0303,East Village,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),0.643,2,0
+r034c029,BK0102,Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.994,1,0
+r034c030,BK0102,Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.729,3,0
+r034c031,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.858,2,0
+r034c032,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.998,1,0
+r034c033,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.893,2,0
+r034c034,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),1.0,1,0
+r034c035,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.699,2,0
+r034c036,QN0504,Middle Village,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.437,3,0
+r034c037,QN0504,Middle Village,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),1.0,1,0
+r034c038,QN0504,Middle Village,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.494,2,0
+r034c039,QN0601,Rego Park,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.518,3,0
+r034c040,QN0602,Forest Hills,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),1.0,1,0
+r034c041,QN0602,Forest Hills,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.964,1,0
+r034c042,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.674,4,1
+r034c043,QN0801,Kew Gardens Hills,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.689,2,0
+r034c044,QN0802,Pomonok-Electchester-Hillcrest,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.422,3,0
+r034c045,QN0805,Jamaica Hills-Briarwood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.51,2,0
+r034c046,QN0804,Jamaica Estates-Holliswood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.936,1,0
+r034c047,QN0804,Jamaica Estates-Holliswood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.912,2,0
+r034c048,QN1206,Hollis,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.562,2,0
+r034c049,QN1206,Hollis,QN12,QN12 Jamaica-St. Albans-Hollis (CD 12 Approximation),0.527,2,0
+r034c050,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r034c051,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r034c052,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r035c024,MN0201,SoHo-Little Italy-Hudson Square,MN02,MN02 Greenwich Village-SoHo (CD 2 Equivalent),0.679,3,0
+r035c025,MN0202,Greenwich Village,MN02,MN02 Greenwich Village-SoHo (CD 2 Equivalent),0.532,2,0
+r035c026,MN0303,East Village,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),0.906,1,0
+r035c027,MN0303,East Village,MN03,MN03 Lower East Side-Chinatown (CD 3 Equivalent),0.873,2,0
+r035c029,BK0101,Greenpoint,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.79,2,0
+r035c030,BK0101,Greenpoint,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),1.0,1,0
+r035c031,BK0104,East Williamsburg,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.498,2,0
+r035c032,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.421,3,0
+r035c033,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.842,3,0
+r035c034,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.943,2,0
+r035c035,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.867,2,0
+r035c036,QN0504,Middle Village,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.55,3,0
+r035c037,QN0504,Middle Village,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.966,1,0
+r035c038,QN0601,Rego Park,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.937,1,0
+r035c039,QN0602,Forest Hills,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.964,1,0
+r035c040,QN0602,Forest Hills,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.996,1,0
+r035c041,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.86,3,1
+r035c042,QN0801,Kew Gardens Hills,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.926,2,0
+r035c043,QN0801,Kew Gardens Hills,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.725,2,0
+r035c044,QN0802,Pomonok-Electchester-Hillcrest,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),1.0,1,0
+r035c045,QN0802,Pomonok-Electchester-Hillcrest,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.656,3,0
+r035c046,QN0804,Jamaica Estates-Holliswood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.991,1,0
+r035c047,QN0804,Jamaica Estates-Holliswood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.685,2,0
+r035c048,QN0804,Jamaica Estates-Holliswood,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.768,2,0
+r035c049,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.959,1,0
+r035c050,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r035c051,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.704,2,0
+r035c052,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.988,1,0
+r036c024,MN0203,West Village,MN02,MN02 Greenwich Village-SoHo (CD 2 Equivalent),0.998,1,0
+r036c025,MN0203,West Village,MN02,MN02 Greenwich Village-SoHo (CD 2 Equivalent),0.765,2,0
+r036c026,MN0202,Greenwich Village,MN02,MN02 Greenwich Village-SoHo (CD 2 Equivalent),0.653,4,0
+r036c027,MN0602,Gramercy,MN06,MN06 East Midtown-Murray Hill (CD 6 Approximation),0.416,3,0
+r036c028,MN0601,Stuyvesant Town-Peter Cooper Village,MN06,MN06 East Midtown-Murray Hill (CD 6 Approximation),0.914,2,0
+r036c029,BK0101,Greenpoint,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.991,1,0
+r036c030,BK0101,Greenpoint,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),1.0,1,0
+r036c031,BK0101,Greenpoint,BK01,BK01 Williamsburg-Greenpoint (CD 1 Equivalent),0.636,2,0
+r036c032,QN0202,Sunnyside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),1.0,1,0
+r036c033,QN0202,Sunnyside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.791,2,0
+r036c034,QN0271,Calvary & Mount Zion Cemeteries,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.773,3,1
+r036c035,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.714,3,0
+r036c036,QN0501,Maspeth,QN05,QN05 Ridgewood-Maspeth-Middle Village (CD 5 Approximation),0.61,3,0
+r036c037,QN0401,Elmhurst,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),0.847,2,0
+r036c038,QN0601,Rego Park,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.59,2,0
+r036c039,QN0601,Rego Park,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.655,2,0
+r036c040,QN0602,Forest Hills,QN06,QN06 Forest Hills-Rego Park (CD 6 Approximation),0.977,1,0
+r036c041,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.828,3,1
+r036c042,QN0801,Kew Gardens Hills,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.596,2,0
+r036c043,QN0801,Kew Gardens Hills,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.839,2,0
+r036c044,QN0802,Pomonok-Electchester-Hillcrest,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.959,1,0
+r036c045,QN0802,Pomonok-Electchester-Hillcrest,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.606,2,0
+r036c046,QN0803,Fresh Meadows-Utopia,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.959,1,0
+r036c047,QN0803,Fresh Meadows-Utopia,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.581,3,0
+r036c048,QN0891,Cunningham Park,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.826,2,1
+r036c049,QN1104,Oakland Gardens-Hollis Hills,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.947,1,0
+r036c050,QN1303,Queens Village,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.489,3,0
+r036c051,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.778,2,0
+r036c052,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r036c053,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.964,1,0
+r036c054,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.995,1,0
+r037c024,MN0203,West Village,MN02,MN02 Greenwich Village-SoHo (CD 2 Equivalent),0.734,2,0
+r037c025,MN0401,Chelsea-Hudson Yards,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.555,4,0
+r037c026,MN0501,Midtown South-Flatiron-Union Square,MN05,MN05 Midtown-Flatiron-Union Square (CD 5 Approximation),0.535,2,0
+r037c027,MN0603,Murray Hill-Kips Bay,MN06,MN06 East Midtown-Murray Hill (CD 6 Approximation),0.844,2,0
+r037c029,QN0201,Long Island City-Hunters Point,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.592,2,0
+r037c030,QN0201,Long Island City-Hunters Point,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.683,3,0
+r037c031,QN0202,Sunnyside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.875,2,0
+r037c032,QN0202,Sunnyside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),1.0,1,0
+r037c033,QN0271,Calvary & Mount Zion Cemeteries,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.556,2,1
+r037c034,QN0203,Woodside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.833,2,0
+r037c035,QN0203,Woodside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.915,2,0
+r037c036,QN0401,Elmhurst,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),0.916,2,0
+r037c037,QN0401,Elmhurst,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),1.0,1,0
+r037c038,QN0402,Corona,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),0.758,2,0
+r037c039,QN0402,Corona,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),0.684,2,0
+r037c040,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.857,2,1
+r037c041,QN0871,Mount Hebron & Cedar Grove Cemeteries,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.638,3,1
+r037c042,QN0801,Kew Gardens Hills,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.484,3,0
+r037c043,QN0802,Pomonok-Electchester-Hillcrest,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.44,3,0
+r037c044,QN0706,Queensboro Hill,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.424,3,0
+r037c045,QN0803,Fresh Meadows-Utopia,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.737,2,0
+r037c046,QN0803,Fresh Meadows-Utopia,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),1.0,1,0
+r037c047,QN0891,Cunningham Park,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.664,2,1
+r037c048,QN1104,Oakland Gardens-Hollis Hills,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.723,2,0
+r037c049,QN1104,Oakland Gardens-Hollis Hills,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.928,2,0
+r037c050,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.542,3,0
+r037c051,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r037c052,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r037c053,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.89,2,0
+r037c054,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.998,1,0
+r038c024,MN0401,Chelsea-Hudson Yards,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.997,1,0
+r038c025,MN0401,Chelsea-Hudson Yards,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),1.0,1,0
+r038c026,MN0501,Midtown South-Flatiron-Union Square,MN05,MN05 Midtown-Flatiron-Union Square (CD 5 Approximation),0.752,2,0
+r038c027,MN0603,Murray Hill-Kips Bay,MN06,MN06 East Midtown-Murray Hill (CD 6 Approximation),0.477,3,0
+r038c028,MN0603,Murray Hill-Kips Bay,MN06,MN06 East Midtown-Murray Hill (CD 6 Approximation),0.956,1,0
+r038c029,QN0201,Long Island City-Hunters Point,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.958,1,0
+r038c030,QN0201,Long Island City-Hunters Point,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),1.0,1,0
+r038c031,QN0201,Long Island City-Hunters Point,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.748,3,0
+r038c032,QN0202,Sunnyside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.635,2,0
+r038c033,QN0202,Sunnyside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.842,2,0
+r038c034,QN0203,Woodside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.65,2,0
+r038c035,QN0203,Woodside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.995,1,0
+r038c036,QN0401,Elmhurst,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),0.676,3,0
+r038c037,QN0401,Elmhurst,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),0.889,2,0
+r038c038,QN0401,Elmhurst,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),0.609,2,0
+r038c039,QN0402,Corona,QN04,QN04 Elmhurst-Corona (CD 4 Approximation),1.0,1,0
+r038c040,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.889,2,1
+r038c041,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.809,2,1
+r038c042,QN0706,Queensboro Hill,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.992,1,0
+r038c043,QN0706,Queensboro Hill,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.804,3,0
+r038c044,QN0791,Kissena Park,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.858,2,1
+r038c045,QN0791,Kissena Park,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.485,4,1
+r038c046,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.959,1,0
+r038c047,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.651,3,0
+r038c048,QN0891,Cunningham Park,QN08,QN08 Fresh Meadows-Hillcrest-Briarwood (CD 8 Approximation),0.381,3,1
+r038c049,QN1104,Oakland Gardens-Hollis Hills,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.968,1,0
+r038c050,QN1191,Alley Pond Park,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.604,2,1
+r038c051,QN1191,Alley Pond Park,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.529,3,1
+r038c052,QN1302,Bellerose,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.994,1,0
+r038c053,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.742,2,0
+r038c054,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.997,1,0
+r039c024,MN0401,Chelsea-Hudson Yards,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.999,1,0
+r039c025,MN0401,Chelsea-Hudson Yards,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.876,2,0
+r039c026,MN0502,Midtown-Times Square,MN05,MN05 Midtown-Flatiron-Union Square (CD 5 Approximation),0.902,2,0
+r039c027,MN0502,Midtown-Times Square,MN05,MN05 Midtown-Flatiron-Union Square (CD 5 Approximation),0.434,3,0
+r039c028,MN0604,East Midtown-Turtle Bay,MN06,MN06 East Midtown-Murray Hill (CD 6 Approximation),0.813,2,0
+r039c029,MN0801,Upper East Side-Lenox Hill-Roosevelt Island,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.529,2,0
+r039c030,QN0201,Long Island City-Hunters Point,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.547,2,0
+r039c031,QN0105,Queensbridge-Ravenswood-Dutch Kills,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.803,3,0
+r039c032,QN0261,Sunnyside Yards (South),QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.322,5,1
+r039c033,QN0161,Sunnyside Yards (North),QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.407,4,1
+r039c034,QN0203,Woodside,QN02,QN02 Long Island City-Sunnyside-Woodside (CD 2 Approximation),0.656,2,0
+r039c035,QN0301,Jackson Heights,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.839,2,0
+r039c036,QN0301,Jackson Heights,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),1.0,1,0
+r039c037,QN0301,Jackson Heights,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.771,2,0
+r039c038,QN0303,North Corona,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.821,2,0
+r039c039,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.38,3,1
+r039c040,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.988,1,1
+r039c041,QN0707,Flushing-Willets Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.635,2,0
+r039c042,QN0707,Flushing-Willets Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.438,3,0
+r039c043,QN0705,East Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.96,1,0
+r039c044,QN0705,East Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.878,2,0
+r039c045,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.852,2,0
+r039c046,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),1.0,1,0
+r039c047,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.846,2,0
+r039c048,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.906,2,0
+r039c049,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.487,2,0
+r039c050,QN1191,Alley Pond Park,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.582,3,1
+r039c051,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.837,3,0
+r039c052,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.766,2,0
+r039c053,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r039c054,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.998,1,0
+r040c025,MN0401,Chelsea-Hudson Yards,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.798,2,0
+r040c026,MN0402,Hell's Kitchen,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.865,2,0
+r040c027,MN0502,Midtown-Times Square,MN05,MN05 Midtown-Flatiron-Union Square (CD 5 Approximation),0.995,1,0
+r040c028,MN0604,East Midtown-Turtle Bay,MN06,MN06 East Midtown-Murray Hill (CD 6 Approximation),0.537,2,0
+r040c029,MN0801,Upper East Side-Lenox Hill-Roosevelt Island,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.569,2,0
+r040c030,MN0801,Upper East Side-Lenox Hill-Roosevelt Island,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.661,2,0
+r040c031,QN0105,Queensbridge-Ravenswood-Dutch Kills,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),1.0,1,0
+r040c032,QN0105,Queensbridge-Ravenswood-Dutch Kills,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.502,2,0
+r040c033,QN0103,Astoria (Central),QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.529,2,0
+r040c034,QN0104,Astoria (East)-Woodside (North),QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),1.0,1,0
+r040c035,QN0104,Astoria (East)-Woodside (North),QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.412,3,0
+r040c036,QN0301,Jackson Heights,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.986,1,0
+r040c037,QN0301,Jackson Heights,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.797,2,0
+r040c038,QN0302,East Elmhurst,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.725,2,0
+r040c039,QN0303,North Corona,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.427,3,0
+r040c040,QN8191,Flushing Meadows-Corona Park,QN81,QN81 Flushing Meadows-Corona Park (JIA 81 Approximation),0.821,2,1
+r040c041,QN0707,Flushing-Willets Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.916,2,0
+r040c042,QN0707,Flushing-Willets Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r040c043,QN0705,East Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.541,3,0
+r040c044,QN0705,East Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.878,2,0
+r040c045,QN0705,East Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.478,3,0
+r040c046,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.946,2,0
+r040c047,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.588,2,0
+r040c048,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),1.0,1,0
+r040c049,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.764,2,0
+r040c050,QN1191,Alley Pond Park,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.732,3,1
+r040c051,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.972,1,0
+r040c052,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.927,2,0
+r040c053,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),0.872,2,0
+r040c054,QN1301,Glen Oaks-Floral Park-New Hyde Park,QN13,QN13 Queens Village-Bellerose-Rosedale (CD 13 Approximation),1.0,1,0
+r041c025,MN0402,Hell's Kitchen,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.999,1,0
+r041c026,MN0402,Hell's Kitchen,MN04,MN04 Chelsea-Hell's Kitchen (CD 4 Approximation),0.708,3,0
+r041c027,MN6491,Central Park,MN64,MN64 Central Park (JIA 64 Equivalent),0.582,2,1
+r041c028,MN0802,Upper East Side-Carnegie Hill,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.78,2,0
+r041c029,MN0801,Upper East Side-Lenox Hill-Roosevelt Island,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),1.0,1,0
+r041c030,MN0801,Upper East Side-Lenox Hill-Roosevelt Island,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.702,2,0
+r041c031,QN0105,Queensbridge-Ravenswood-Dutch Kills,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.696,2,0
+r041c032,QN0103,Astoria (Central),QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.88,2,0
+r041c033,QN0103,Astoria (Central),QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.536,2,0
+r041c034,QN0104,Astoria (East)-Woodside (North),QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.571,3,0
+r041c035,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.411,3,0
+r041c036,QN0302,East Elmhurst,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.705,3,0
+r041c037,QN0302,East Elmhurst,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),1.0,1,0
+r041c038,QN0302,East Elmhurst,QN03,QN03 Jackson Heights-East Elmhurst (CD 3 Approximation),0.717,2,0
+r041c040,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.528,2,0
+r041c041,QN0707,Flushing-Willets Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r041c042,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.592,2,0
+r041c043,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.985,1,0
+r041c044,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r041c045,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.69,2,0
+r041c046,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.64,2,0
+r041c047,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),1.0,1,0
+r041c048,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.892,2,0
+r041c049,QN1191,Alley Pond Park,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.659,2,1
+r041c050,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.996,1,0
+r041c051,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),1.0,1,0
+r041c052,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.994,1,0
+r042c026,MN0701,Upper West Side-Lincoln Square,MN07,MN07 Upper West Side (CD 7 Approximation),0.748,2,0
+r042c027,MN0701,Upper West Side-Lincoln Square,MN07,MN07 Upper West Side (CD 7 Approximation),0.839,2,0
+r042c028,MN6491,Central Park,MN64,MN64 Central Park (JIA 64 Equivalent),0.942,2,1
+r042c029,MN0802,Upper East Side-Carnegie Hill,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.76,2,0
+r042c030,MN0803,Upper East Side-Yorkville,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.711,2,0
+r042c031,MN0801,Upper East Side-Lenox Hill-Roosevelt Island,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.338,3,0
+r042c032,QN0102,Old Astoria-Hallets Point,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.929,2,0
+r042c033,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.591,2,0
+r042c034,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.992,1,0
+r042c035,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),1.0,1,0
+r042c036,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.581,2,0
+r042c037,QN8081,LaGuardia Airport,QN80,QN80 LaGuardia Airport (JIA 80 Approximation),0.759,2,1
+r042c038,QN8081,LaGuardia Airport,QN80,QN80 LaGuardia Airport (JIA 80 Approximation),0.759,2,1
+r042c039,QN8081,LaGuardia Airport,QN80,QN80 LaGuardia Airport (JIA 80 Approximation),0.999,1,1
+r042c040,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.997,1,0
+r042c041,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.882,2,0
+r042c042,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.608,3,0
+r042c043,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r042c044,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.996,1,0
+r042c045,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.691,3,0
+r042c046,QN1101,Auburndale,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.808,2,0
+r042c047,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),1.0,1,0
+r042c048,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.998,1,0
+r042c049,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.952,1,0
+r042c050,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),1.0,1,0
+r042c051,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.998,1,0
+r043c026,MN0701,Upper West Side-Lincoln Square,MN07,MN07 Upper West Side (CD 7 Approximation),0.689,2,0
+r043c027,MN0702,Upper West Side (Central),MN07,MN07 Upper West Side (CD 7 Approximation),0.605,3,0
+r043c028,MN6491,Central Park,MN64,MN64 Central Park (JIA 64 Equivalent),0.921,2,1
+r043c029,MN0802,Upper East Side-Carnegie Hill,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.737,2,0
+r043c030,MN0803,Upper East Side-Yorkville,MN08,MN08 Upper East Side-Roosevelt Island (CD 8 Equivalent),0.964,1,0
+r043c031,QN0102,Old Astoria-Hallets Point,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.726,3,0
+r043c032,QN0191,Astoria Park,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.577,3,1
+r043c033,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.967,1,0
+r043c034,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),1.0,1,0
+r043c035,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.998,1,0
+r043c036,QN8081,LaGuardia Airport,QN80,QN80 LaGuardia Airport (JIA 80 Approximation),0.998,1,1
+r043c037,QN8081,LaGuardia Airport,QN80,QN80 LaGuardia Airport (JIA 80 Approximation),1.0,1,1
+r043c038,QN8081,LaGuardia Airport,QN80,QN80 LaGuardia Airport (JIA 80 Approximation),0.997,1,1
+r043c039,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.988,1,0
+r043c040,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r043c041,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.99,1,0
+r043c042,QN0704,Murray Hill-Broadway Flushing,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.701,3,0
+r043c043,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.741,2,0
+r043c044,QN0703,Bay Terrace-Clearview,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.622,3,0
+r043c045,QN0703,Bay Terrace-Clearview,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.99,1,0
+r043c046,QN0703,Bay Terrace-Clearview,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.658,2,0
+r043c047,QN1102,Bayside,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.554,2,0
+r043c049,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.998,1,0
+r043c050,QN1103,Douglaston-Little Neck,QN11,QN11 Auburndale-Bayside-Douglaston (CD 11 Approximation),0.995,1,0
+r044c027,MN0702,Upper West Side (Central),MN07,MN07 Upper West Side (CD 7 Approximation),0.999,1,0
+r044c028,MN0702,Upper West Side (Central),MN07,MN07 Upper West Side (CD 7 Approximation),0.772,2,0
+r044c029,MN6491,Central Park,MN64,MN64 Central Park (JIA 64 Equivalent),0.896,2,1
+r044c030,MN1101,East Harlem (South),MN11,MN11 East Harlem (CD 11 Equivalent),0.627,3,0
+r044c031,MN1101,East Harlem (South),MN11,MN11 East Harlem (CD 11 Equivalent),0.964,1,0
+r044c032,MN1191,Randall's Island,MN11,MN11 East Harlem (CD 11 Equivalent),1.0,1,1
+r044c033,MN1191,Randall's Island,MN11,MN11 East Harlem (CD 11 Equivalent),0.704,2,1
+r044c034,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),1.0,1,0
+r044c035,QN0101,Astoria (North)-Ditmars-Steinway,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.999,1,0
+r044c036,QN0151,Rikers Island,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.998,1,1
+r044c037,QN0151,Rikers Island,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.946,2,1
+r044c038,QN8081,LaGuardia Airport,QN80,QN80 LaGuardia Airport (JIA 80 Approximation),0.602,2,1
+r044c039,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.996,1,0
+r044c040,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r044c041,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r044c042,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.853,2,0
+r044c043,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r044c044,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.957,1,0
+r044c045,QN0703,Bay Terrace-Clearview,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.677,2,0
+r044c046,QN0703,Bay Terrace-Clearview,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r044c047,QN0703,Bay Terrace-Clearview,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.865,2,0
+r045c027,MN0702,Upper West Side (Central),MN07,MN07 Upper West Side (CD 7 Approximation),0.998,1,0
+r045c028,MN0703,Upper West Side-Manhattan Valley,MN07,MN07 Upper West Side (CD 7 Approximation),0.402,3,0
+r045c029,MN6491,Central Park,MN64,MN64 Central Park (JIA 64 Equivalent),0.868,2,1
+r045c030,MN1101,East Harlem (South),MN11,MN11 East Harlem (CD 11 Equivalent),0.833,2,0
+r045c031,MN1102,East Harlem (North),MN11,MN11 East Harlem (CD 11 Equivalent),0.813,2,0
+r045c032,MN1191,Randall's Island,MN11,MN11 East Harlem (CD 11 Equivalent),0.998,1,1
+r045c033,MN1191,Randall's Island,MN11,MN11 East Harlem (CD 11 Equivalent),0.966,1,1
+r045c035,QN0151,Rikers Island,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.99,1,1
+r045c036,QN0151,Rikers Island,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.999,1,1
+r045c037,QN0151,Rikers Island,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.998,1,1
+r045c039,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.996,1,0
+r045c040,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.999,1,0
+r045c041,QN0701,College Point,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.993,1,0
+r045c042,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.677,2,0
+r045c043,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r045c044,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),1.0,1,0
+r045c045,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.588,2,0
+r045c046,QN0761,Fort Totten,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.677,2,1
+r045c047,QN0761,Fort Totten,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.998,1,1
+r046c028,MN0703,Upper West Side-Manhattan Valley,MN07,MN07 Upper West Side (CD 7 Approximation),0.991,1,0
+r046c029,MN0703,Upper West Side-Manhattan Valley,MN07,MN07 Upper West Side (CD 7 Approximation),0.478,4,0
+r046c030,MN1001,Harlem (South),MN10,MN10 Harlem (CD 10 Equivalent),0.697,3,0
+r046c031,MN1102,East Harlem (North),MN11,MN11 East Harlem (CD 11 Equivalent),1.0,1,0
+r046c032,MN1102,East Harlem (North),MN11,MN11 East Harlem (CD 11 Equivalent),0.766,2,0
+r046c033,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.533,2,0
+r046c034,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.998,1,0
+r046c035,BX0291,North & South Brother Islands,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.997,1,1
+r046c036,QN0151,Rikers Island,QN01,QN01 Astoria-Queensbridge (CD 1 Equivalent),0.98,1,1
+r046c037,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.999,1,0
+r046c042,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.62,2,0
+r046c043,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.997,1,0
+r046c044,QN0702,Whitestone-Beechhurst,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.995,1,0
+r046c047,QN0761,Fort Totten,QN07,QN07 Flushing-Murray Hill-Whitestone (CD 7 Approximation),0.997,1,1
+r047c028,MN0901,Morningside Heights,MN09,MN09 Morningside Heights-Hamilton Heights (CD 9 Equivalent),0.903,2,0
+r047c029,MN1001,Harlem (South),MN10,MN10 Harlem (CD 10 Equivalent),0.655,2,0
+r047c030,MN1001,Harlem (South),MN10,MN10 Harlem (CD 10 Equivalent),0.493,3,0
+r047c031,MN1102,East Harlem (North),MN11,MN11 East Harlem (CD 11 Equivalent),0.869,2,0
+r047c032,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),1.0,1,0
+r047c033,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),1.0,1,0
+r047c034,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.707,2,0
+r047c035,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.998,1,0
+r047c036,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),1.0,1,0
+r047c037,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),1.0,1,0
+r047c039,BX0902,Soundview-Clason Point,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.998,1,0
+r047c041,BX1091,Ferry Point Park-St. Raymond Cemetery,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.995,1,1
+r047c044,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.998,1,0
+r047c045,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.995,1,0
+r048c029,MN0901,Morningside Heights,MN09,MN09 Morningside Heights-Hamilton Heights (CD 9 Equivalent),0.851,2,0
+r048c030,MN1002,Harlem (North),MN10,MN10 Harlem (CD 10 Equivalent),0.449,4,0
+r048c031,MN1002,Harlem (North),MN10,MN10 Harlem (CD 10 Equivalent),0.769,2,0
+r048c032,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.711,3,0
+r048c033,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.823,2,0
+r048c034,BX0101,Mott Haven-Port Morris,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.504,2,0
+r048c035,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.496,2,0
+r048c036,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),1.0,1,0
+r048c037,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.949,2,0
+r048c038,BX0991,Soundview Park,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.529,3,1
+r048c039,BX0902,Soundview-Clason Point,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.971,1,0
+r048c040,BX0902,Soundview-Clason Point,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.539,2,0
+r048c041,BX1091,Ferry Point Park-St. Raymond Cemetery,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.987,1,1
+r048c042,BX1091,Ferry Point Park-St. Raymond Cemetery,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.547,2,1
+r048c043,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.996,1,0
+r048c044,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.992,1,0
+r049c029,MN0902,Manhattanville-West Harlem,MN09,MN09 Morningside Heights-Hamilton Heights (CD 9 Equivalent),0.781,2,0
+r049c030,MN1002,Harlem (North),MN10,MN10 Harlem (CD 10 Equivalent),0.595,3,0
+r049c031,MN1002,Harlem (North),MN10,MN10 Harlem (CD 10 Equivalent),0.648,2,0
+r049c032,BX0401,Concourse-Concourse Village,BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.584,2,0
+r049c033,BX0102,Melrose,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.894,2,0
+r049c034,BX0102,Melrose,BX01,BX01 Melrose-Mott Haven-Port Morris (CD 1 Approximation),0.492,3,0
+r049c035,BX0202,Longwood,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.542,2,0
+r049c036,BX0201,Hunts Point,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.587,3,0
+r049c037,BX0991,Soundview Park,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.548,3,1
+r049c038,BX0902,Soundview-Clason Point,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),1.0,1,0
+r049c039,BX0903,Castle Hill-Unionport,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.7,2,0
+r049c040,BX0903,Castle Hill-Unionport,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.994,1,0
+r049c041,BX1091,Ferry Point Park-St. Raymond Cemetery,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.919,2,1
+r049c042,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.845,2,0
+r049c043,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),1.0,1,0
+r049c044,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.996,1,0
+r050c029,MN0903,Hamilton Heights-Sugar Hill,MN09,MN09 Morningside Heights-Hamilton Heights (CD 9 Equivalent),0.93,2,0
+r050c030,MN0903,Hamilton Heights-Sugar Hill,MN09,MN09 Morningside Heights-Hamilton Heights (CD 9 Equivalent),1.0,1,0
+r050c031,MN1002,Harlem (North),MN10,MN10 Harlem (CD 10 Equivalent),0.597,2,0
+r050c032,BX0401,Concourse-Concourse Village,BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.557,3,0
+r050c033,BX0401,Concourse-Concourse Village,BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.919,1,0
+r050c034,BX0301,Morrisania,BX03,BX03 Morrisania-Crotona Park East (CD 3 Approximation),0.744,3,0
+r050c035,BX0202,Longwood,BX02,BX02 Longwood-Hunts Point (CD 2 Approximation),0.508,3,0
+r050c036,BX0303,Crotona Park East,BX03,BX03 Morrisania-Crotona Park East (CD 3 Approximation),0.539,3,0
+r050c037,BX0901,Soundview-Bruckner-Bronx River,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.996,1,0
+r050c038,BX0901,Soundview-Bruckner-Bronx River,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.668,2,0
+r050c039,BX0903,Castle Hill-Unionport,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.559,3,0
+r050c040,BX0903,Castle Hill-Unionport,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.934,2,0
+r050c041,BX0903,Castle Hill-Unionport,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.486,3,0
+r050c042,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.75,2,0
+r050c043,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.998,1,0
+r050c044,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.993,1,0
+r051c030,MN1201,Washington Heights (South),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.706,2,0
+r051c031,BX0402,Highbridge,BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.443,4,0
+r051c032,BX0402,Highbridge,BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.433,3,0
+r051c033,BX0401,Concourse-Concourse Village,BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.732,2,0
+r051c034,BX0302,Claremont Village-Claremont (East),BX03,BX03 Morrisania-Crotona Park East (CD 3 Approximation),0.575,2,0
+r051c035,BX0303,Crotona Park East,BX03,BX03 Morrisania-Crotona Park East (CD 3 Approximation),0.771,3,0
+r051c036,BX0303,Crotona Park East,BX03,BX03 Morrisania-Crotona Park East (CD 3 Approximation),0.611,3,0
+r051c037,BX0901,Soundview-Bruckner-Bronx River,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.979,1,0
+r051c038,BX0901,Soundview-Bruckner-Bronx River,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.412,3,0
+r051c039,BX0903,Castle Hill-Unionport,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.618,3,0
+r051c040,BX1001,Westchester Square,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.657,2,0
+r051c041,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),1.0,1,0
+r051c042,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.822,2,0
+r052c030,MN1201,Washington Heights (South),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.998,1,0
+r052c031,MN1201,Washington Heights (South),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.914,2,0
+r052c032,BX0402,Highbridge,BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.773,2,0
+r052c033,BX0403,Mount Eden-Claremont (West),BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.827,2,0
+r052c034,BX0403,Mount Eden-Claremont (West),BX04,BX04 Highbridge-Concourse (CD 4 Approximation),0.559,3,0
+r052c035,BX0391,Crotona Park,BX03,BX03 Morrisania-Crotona Park East (CD 3 Approximation),0.501,2,1
+r052c036,BX0602,Tremont,BX06,BX06 Tremont-Belmont-West Farms (CD 6 Approximation),0.377,4,0
+r052c037,BX0601,West Farms,BX06,BX06 Tremont-Belmont-West Farms (CD 6 Approximation),0.874,2,0
+r052c038,BX0901,Soundview-Bruckner-Bronx River,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.485,3,0
+r052c039,BX0904,Parkchester,BX09,BX09 Soundview-Parkchester (CD 9 Approximation),0.775,3,0
+r052c040,BX1001,Westchester Square,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.984,1,0
+r052c041,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.743,3,0
+r052c042,BX1002,Throgs Neck-Schuylerville,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.558,2,0
+r052c043,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.967,1,0
+r052c046,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.996,1,0
+r053c030,MN1201,Washington Heights (South),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.721,2,0
+r053c031,MN1201,Washington Heights (South),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.449,3,0
+r053c032,BX0501,University Heights (South)-Morris Heights,BX05,BX05 Morris Heights-Mount Hope (CD 5 Approximation),0.726,4,0
+r053c033,BX0501,University Heights (South)-Morris Heights,BX05,BX05 Morris Heights-Mount Hope (CD 5 Approximation),0.516,3,0
+r053c034,BX0502,Mount Hope,BX05,BX05 Morris Heights-Mount Hope (CD 5 Approximation),0.714,3,0
+r053c035,BX0602,Tremont,BX06,BX06 Tremont-Belmont-West Farms (CD 6 Approximation),0.994,1,0
+r053c036,BX0601,West Farms,BX06,BX06 Tremont-Belmont-West Farms (CD 6 Approximation),0.332,4,0
+r053c037,BX2791,Bronx Park,BX27,BX27 Bronx Park (JIA 27 Approximation),0.712,3,1
+r053c038,BX1101,Pelham Parkway-Van Nest,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.738,2,0
+r053c039,BX1102,Morris Park,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.971,1,0
+r053c040,BX1161,Hutchinson Metro Center,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.792,2,1
+r053c041,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.775,2,0
+r053c042,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.667,2,0
+r053c045,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.997,1,0
+r053c046,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.993,1,0
+r053c047,BX1071,Hart Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.996,1,1
+r054c031,MN1202,Washington Heights (North),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.998,1,0
+r054c032,MN1202,Washington Heights (North),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.799,2,0
+r054c033,BX0501,University Heights (South)-Morris Heights,BX05,BX05 Morris Heights-Mount Hope (CD 5 Approximation),0.926,1,0
+r054c034,BX0501,University Heights (South)-Morris Heights,BX05,BX05 Morris Heights-Mount Hope (CD 5 Approximation),0.586,2,0
+r054c035,BX0502,Mount Hope,BX05,BX05 Morris Heights-Mount Hope (CD 5 Approximation),0.446,4,0
+r054c036,BX0603,Belmont,BX06,BX06 Tremont-Belmont-West Farms (CD 6 Approximation),0.781,2,0
+r054c037,BX2791,Bronx Park,BX27,BX27 Bronx Park (JIA 27 Approximation),0.924,2,1
+r054c038,BX1101,Pelham Parkway-Van Nest,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.715,2,0
+r054c039,BX1102,Morris Park,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.995,1,0
+r054c040,BX1102,Morris Park,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.965,1,0
+r054c041,BX1161,Hutchinson Metro Center,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.605,3,1
+r054c042,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.701,2,1
+r054c043,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.991,1,1
+r054c044,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.991,1,1
+r054c045,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.759,2,1
+r054c046,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.966,1,0
+r054c047,BX1071,Hart Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.997,1,1
+r054c048,BX1071,Hart Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),1.0,1,1
+r055c031,MN1202,Washington Heights (North),MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),1.0,1,0
+r055c032,MN1203,Inwood,MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.536,3,0
+r055c033,BX0701,University Heights (North)-Fordham,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),0.628,3,0
+r055c034,BX0503,Fordham Heights,BX05,BX05 Morris Heights-Mount Hope (CD 5 Approximation),0.467,3,0
+r055c035,BX0603,Belmont,BX06,BX06 Tremont-Belmont-West Farms (CD 6 Approximation),0.485,3,0
+r055c036,BX0603,Belmont,BX06,BX06 Tremont-Belmont-West Farms (CD 6 Approximation),0.624,2,0
+r055c037,BX2791,Bronx Park,BX27,BX27 Bronx Park (JIA 27 Approximation),0.711,2,1
+r055c038,BX1104,Allerton,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.777,3,0
+r055c039,BX1103,Pelham Gardens,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.72,2,0
+r055c040,BX1103,Pelham Gardens,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.777,2,0
+r055c041,BX1103,Pelham Gardens,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.409,5,0
+r055c042,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.745,2,1
+r055c043,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.997,1,1
+r055c044,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.999,1,1
+r055c045,BX1003,Pelham Bay-Country Club-City Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.58,2,0
+r055c047,BX1071,Hart Island,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.996,1,1
+r056c032,MN1292,Inwood Hill Park,MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.372,3,1
+r056c033,MN1203,Inwood,MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.952,1,0
+r056c034,BX0701,University Heights (North)-Fordham,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),0.886,2,0
+r056c035,BX0701,University Heights (North)-Fordham,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),0.576,3,0
+r056c036,BX0702,Bedford Park,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),0.752,2,0
+r056c037,BX2791,Bronx Park,BX27,BX27 Bronx Park (JIA 27 Approximation),0.835,2,1
+r056c038,BX1104,Allerton,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.782,3,0
+r056c039,BX1103,Pelham Gardens,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.724,2,0
+r056c040,BX1103,Pelham Gardens,BX11,BX11 Pelham Parkway-Morris Park (CD 11 Approximation),0.937,2,0
+r056c041,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.616,3,0
+r056c042,BX1004,Co-op City,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.995,1,0
+r056c043,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.753,2,1
+r056c044,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.998,1,1
+r056c045,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.999,1,1
+r057c031,MN1292,Inwood Hill Park,MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.997,1,1
+r057c032,MN1292,Inwood Hill Park,MN12,MN12 Washington Heights-Inwood (CD 12 Equivalent),0.946,1,1
+r057c033,BX0802,Kingsbridge-Marble Hill,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.401,4,0
+r057c034,BX0801,Kingsbridge Heights-Van Cortlandt Village,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.645,4,0
+r057c035,BX0702,Bedford Park,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),1.0,1,0
+r057c036,BX0703,Norwood,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),0.584,2,0
+r057c037,BX2791,Bronx Park,BX27,BX27 Bronx Park (JIA 27 Approximation),0.37,3,1
+r057c038,BX1201,Williamsbridge-Olinville,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.856,2,0
+r057c039,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.412,3,0
+r057c040,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),1.0,1,0
+r057c041,BX1004,Co-op City,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.883,2,0
+r057c042,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.71,2,1
+r057c043,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),1.0,1,1
+r057c044,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.998,1,1
+r057c045,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.998,1,1
+r058c033,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),1.0,1,0
+r058c034,BX0802,Kingsbridge-Marble Hill,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.681,2,0
+r058c035,BX0801,Kingsbridge Heights-Van Cortlandt Village,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.509,3,0
+r058c036,BX0702,Bedford Park,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),0.545,3,0
+r058c037,BX0703,Norwood,BX07,BX07 Fordham-Bedford Park-Norwood (CD 7 Approximation),0.742,2,0
+r058c038,BX1201,Williamsbridge-Olinville,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.864,2,0
+r058c039,BX1201,Williamsbridge-Olinville,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.98,1,0
+r058c040,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.986,1,0
+r058c041,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.849,2,0
+r058c042,BX1004,Co-op City,BX10,BX10 Co-op City-Throgs Neck (CD 10 Approximation),0.95,1,0
+r058c043,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.995,1,1
+r058c044,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),1.0,1,1
+r058c045,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.96,1,1
+r058c046,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.995,1,1
+r059c032,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.999,1,0
+r059c033,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),1.0,1,0
+r059c034,BX0802,Kingsbridge-Marble Hill,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.487,3,0
+r059c035,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),0.821,2,1
+r059c036,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),0.848,3,1
+r059c037,BX1271,Woodlawn Cemetery,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.92,2,1
+r059c038,BX1201,Williamsbridge-Olinville,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.998,1,0
+r059c039,BX1201,Williamsbridge-Olinville,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.575,3,0
+r059c040,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),1.0,1,0
+r059c041,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.994,1,0
+r059c042,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.609,3,0
+r059c043,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.663,2,1
+r059c044,BX2891,Pelham Bay Park,BX28,BX28 Pelham Bay Park (JIA 28 Approximation),0.702,2,1
+r060c033,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.999,1,0
+r060c034,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),1.0,1,0
+r060c035,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.546,2,0
+r060c036,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),1.0,1,1
+r060c037,BX1271,Woodlawn Cemetery,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.634,3,1
+r060c038,BX1271,Woodlawn Cemetery,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.585,3,1
+r060c039,BX1203,Wakefield-Woodlawn,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.983,1,0
+r060c040,BX1203,Wakefield-Woodlawn,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.715,2,0
+r060c041,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.861,2,0
+r060c042,BX1202,Eastchester-Edenwald-Baychester,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.995,1,0
+r061c033,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),1.0,1,0
+r061c034,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),1.0,1,0
+r061c035,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),0.97,1,1
+r061c036,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),1.0,1,1
+r061c037,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),0.539,2,1
+r061c038,BX1203,Wakefield-Woodlawn,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.999,1,0
+r061c039,BX1203,Wakefield-Woodlawn,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),1.0,1,0
+r061c040,BX1203,Wakefield-Woodlawn,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.999,1,0
+r062c034,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.999,1,0
+r062c035,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.585,2,0
+r062c036,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),0.999,1,1
+r062c037,BX2691,Van Cortlandt Park,BX26,BX26 Van Cortlandt Park (JIA 26 Equivalent),0.997,1,1
+r062c039,BX1203,Wakefield-Woodlawn,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.997,1,0
+r062c040,BX1203,Wakefield-Woodlawn,BX12,BX12 Wakefield-Williamsbridge-Eastchester (CD 12 Approximation),0.994,1,0
+r063c033,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.999,1,0
+r063c034,BX0803,Riverdale-Spuyten Duyvil,BX08,BX08 Riverdale-Kingsbridge-Marble Hill (CD 8 Approximation),0.999,1,0
