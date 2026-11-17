@@ -69,8 +69,11 @@ pd.read_csv("data/features/hex_features.csv", comment="#")
 | `destinations.csv` | `features_destinations.py` | Hospitals, clinics, colleges, museums, libraries, courthouses, government offices, ferry landings, shopping centers, major stadiums and arenas; distance to nearest hospital and college | NYC Facilities Database, PLUTO |
 | `ntl_trend.csv` | `features_ntl_trend.py` | Mean night light for every year 2014–2025, change and growth per year | VIIRS annual V2.1 + V2.2 (Earth Engine) |
 | `walk.csv` | `features_walk.py` | Walking distance along streets to the nearest subway entrance, detour ratio, area and stations reachable in an 800 m walk, intersection density | OpenStreetMap (BBBike extract), MTA subway entrances |
+| `demographics.csv` | `features_demographics.py` | Population (2020 Census blocks) and jobs (LODES 2021), totals and per km² | Census 2020, LEHD LODES8 |
+| `rail.csv` | `features_rail.py` | Walking distance to LIRR, Metro-North and PATH, nearest station and its weekday trains, stations within an 800 m walk, walk to any rail including the subway | MTA LIRR + Metro-North GTFS, PATH GTFS, OSM walking network |
+| `bus.csv` | `features_bus.py` | Bus stops, routes (local, SBS, express) and weekday and 7-10 am buses per hexagon; distance to nearest stop | MTA bus GTFS (5 boroughs + MTA Bus) |
 | `proposals.csv` | `features_proposals.py` | Distance to the Interborough Express, Second Avenue Subway Phase 2 and Utica Avenue alignments. **For validation only, not a model input** | OpenStreetMap; line geometry in `data/proposals.geojson` |
-| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (94 columns) | All of the above |
+| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (123 columns) | All of the above |
 
 Rebuild everything (raw downloads go to `data/raw/`, which is git-ignored, about 350 MB):
 
@@ -83,6 +86,8 @@ python scripts/features_destinations.py
 python scripts/features_ntl_trend.py --project ml-ntl-dataset
 python scripts/features_proposals.py
 python scripts/features_walk.py           # ~2 minutes
+python scripts/features_rail.py           # after walk (reuses its network)
+python scripts/features_bus.py
 python scripts/features_merge.py
 ```
 
