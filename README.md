@@ -34,7 +34,7 @@ The feeds don't include GPS. They give each train's upcoming stops and predicted
 
 ## Hex grid and night-time light
 
-Use **View** in the side panel to switch between **3D city**, **Night lights** (top-down satellite view), **Hex grid** and **Station distance** (each hexagon colored by straight-line distance from its center to the nearest subway station).
+Use **View** in the side panel to switch between **3D city**, **Night lights** (top-down satellite view), **Hex grid**, **Station distance** (each hexagon colored by straight-line distance from its center to the nearest subway station), **Walk distance** (walking distance along streets to the nearest subway entrance, from `data/features/walk.csv`) and **Population** (residents per km², 2020 Census blocks, from `data/features/demographics.csv`).
 
 **Hex grid** (`scripts/build_hexgrid.py`): 1,402 pointy-top hexagons with a 500 m circumradius (0.65 km² each), laid out in UTM 18N so all cells are the same true size. Cells are cut to the shoreline (NYC's shoreline-clipped borough boundaries) and cells that are 90%+ water are dropped, so the grid traces the five boroughs. Each records its borough, land area, the subway stations inside it (each station counted in exactly one cell) and the distance from its center to the nearest station. 322 hexagons contain a station; 1,080 don't. With ~464 m satellite pixels, each cell covers about 4 pixels, so neighbouring cells' night-light values are partly shared.
 
