@@ -72,8 +72,10 @@ pd.read_csv("data/features/hex_features.csv", comment="#")
 | `demographics.csv` | `features_demographics.py` | Population (2020 Census blocks) and jobs (LODES 2021), totals and per km² | Census 2020, LEHD LODES8 |
 | `rail.csv` | `features_rail.py` | Walking distance to LIRR, Metro-North and PATH, nearest station and its weekday trains, stations within an 800 m walk, walk to any rail including the subway | MTA LIRR + Metro-North GTFS, PATH GTFS, OSM walking network |
 | `bus.csv` | `features_bus.py` | Bus stops, routes (local, SBS, express) and weekday and 7-10 am buses per hexagon; distance to nearest stop | MTA bus GTFS (5 boroughs + MTA Bus) |
+| `acs.csv` | `features_acs.py` | Income, rent, poverty, unemployment, car-free households, renters, age, how people commute and commute length (tracts spread to hexagons via 2020 block population and housing) | ACS 2020-2024 5-year summary files, 2020 Census blocks |
+| `ridership.csv` | `features_ridership.py` | Weekday, Saturday and Sunday subway entries (2025) and the 2019 weekday baseline, summed per hexagon. **The model's target, not an input.** Per-station values are in `data/ridership/station_complexes.csv` | MTA Subway Hourly Ridership (data.ny.gov) |
 | `proposals.csv` | `features_proposals.py` | Distance to the Interborough Express, Second Avenue Subway Phase 2 and Utica Avenue alignments. **For validation only, not a model input** | OpenStreetMap; line geometry in `data/proposals.geojson` |
-| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (123 columns) | All of the above |
+| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (150 columns) | All of the above |
 
 Rebuild everything (raw downloads go to `data/raw/`, which is git-ignored, about 350 MB):
 
@@ -88,6 +90,8 @@ python scripts/features_proposals.py
 python scripts/features_walk.py           # ~2 minutes
 python scripts/features_rail.py           # after walk (reuses its network)
 python scripts/features_bus.py
+python scripts/features_acs.py
+python scripts/features_ridership.py      # ~15 minutes the first time (one request per day)
 python scripts/features_merge.py
 ```
 

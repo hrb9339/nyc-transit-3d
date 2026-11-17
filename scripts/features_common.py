@@ -84,8 +84,8 @@ def overpass(query, cache):
     raise RuntimeError("all Overpass servers failed")
 
 
-def write_features(df, name, title, sources, columns, notes=()):
-    """Write `df` to data/features/<name>.csv with a commented header.
+def write_features(df, name, title, sources, columns, notes=(), path=None):
+    """Write `df` to data/features/<name>.csv (or `path`) with a commented header.
 
     sources: list of (description, url)
     columns: dict of column name -> meaning (every column in df must be listed)
@@ -102,8 +102,8 @@ def write_features(df, name, title, sources, columns, notes=()):
         lines += ["#", "# Notes:"] + [f"#   {n}" for n in notes]
     lines.append("#")
 
-    FEATURES.mkdir(parents=True, exist_ok=True)
-    path = FEATURES / f"{name}.csv"
+    path = Path(path) if path else FEATURES / f"{name}.csv"
+    path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
         df.to_csv(f, index=False, lineterminator="\n")
