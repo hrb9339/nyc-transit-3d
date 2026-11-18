@@ -99,6 +99,26 @@ python scripts/features_merge.py
 
 Teammates adding a dataset: write `scripts/features_<name>.py` that calls `write_features()` from `scripts/features_common.py` (it enforces the header and a description for every column), then rerun `features_merge.py`.
 
+## Model tables
+
+`python scripts/build_training_table.py` (after the feature scripts) writes `data/model/`:
+
+| File | Rows | What |
+|---|---|---|
+| `training.csv` | 424 subway station complexes | Target `weekday_riders` (train on `log_weekday_riders`), the features of the station's hexagon, and competition columns (other stations within 1 km, nearest other station) |
+| `candidates.csv` | 1,080 hexagons with no station | The same features for a new station at the hexagon center, plus `uncovered_share_any_rail`: share of its 800 m walk area not already near the subway, LIRR, Metro-North or PATH |
+| `feature_columns.csv` | one per column | Role of every column (`feature`, `target`, `group`, `info`, `ranking`, `excluded`) and why. Use the `feature` rows as model inputs |
+
+Columns measuring distance to the existing subway are excluded: they are about zero for every station and large for every candidate, so they can't be learned from. Neighborhood (`nta2020`) is the grouping for holdout cross-validation. Staten Island has no training stations (the Railway collects fares at only 2 stations), so predictions there are extrapolation.
+
+```python
+import pandas as pd
+cols = pd.read_csv("data/model/feature_columns.csv")
+features = cols[cols.role == "feature"].column.tolist()
+train = pd.read_csv("data/model/training.csv", comment="#")
+X, y, groups = train[features], train.log_weekday_riders, train.nta2020
+```
+
 ## Files
 
 - `index.html`, `style.css`, `app.js`: the frontend

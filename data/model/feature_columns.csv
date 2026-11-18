@@ -1,0 +1,149 @@
+column,role,in_training,in_candidates,meaning
+station_complex_id,id,1,0,MTA station complex id
+station_complex,id,1,0,station complex name
+hex_id,excluded,1,1,"hexagon id (matches data/hexgrid.geojson) [not an input: identifier or bookkeeping, not a property of the place]"
+weekday_riders,target,1,0,"mean weekday entries, 2025 (the thing to predict)"
+log_weekday_riders,target,1,0,"log(1 + weekday_riders): train on this, ridership is very skewed"
+weekday_riders_median,info,1,0,"median weekday entries, 2025"
+saturday_riders,info,1,0,"mean Saturday entries, 2025"
+sunday_riders,info,1,0,"mean Sunday entries, 2025"
+weekday_riders_2019,info,1,0,"mean weekday entries, 2019 (pre-COVID check)"
+days_with_data,info,1,0,days in 2025 with ridership (Rockaway stations were closed for months)
+complexes_in_hex,info,1,0,station complexes sharing this hexagon (they share its features)
+ride_minutes_to_midtown,info,1,0,"scheduled ride to Times Sq/Grand Central; not known for a new station until its line is chosen, so not a default feature"
+ride_minutes_to_downtown,info,1,0,scheduled ride to Fulton St; same caveat
+other_stations_1km,feature,1,1,other station complexes within 1000 m (competition)
+nearest_other_station_m,feature,1,1,"straight-line distance to the nearest other station complex, m"
+nta2020,group,1,1,2020 neighborhood code: hold out whole neighborhoods in cross-validation
+borough,group,1,1,borough name
+land_km2,feature,1,1,"land area of the hexagon after cutting to the shoreline, km²"
+ntl_mean,feature,1,1,"2025 mean night-time radiance on the hexagon's land, nW/cm²/sr (VIIRS annual V2.2)"
+ntl_sum,feature,1,1,"2025 sum of lights (radiance summed over pixels, weighted by share inside the hexagon)"
+ntl_density,feature,1,1,ntl_sum / land_km2
+lit_pixels,feature,1,1,pixels with radiance > 1
+bright_pixels,feature,1,1,pixels with radiance > 50
+acs_population,feature,1,1,"[acs] people (ACS estimate, B01003)"
+households,feature,1,1,[acs] households (B08201)
+workers,feature,1,1,[acs] workers 16+ (B08301)
+median_hh_income,feature,1,1,"[acs] median household income, 2024 dollars (household-weighted mean of tract medians, B19013)"
+median_gross_rent,feature,1,1,"[acs] median gross rent per month, dollars (household-weighted mean of tract medians, B25064)"
+share_below_poverty,feature,1,1,[acs] share of people below the poverty line (B17001)
+unemployment_rate,feature,1,1,[acs] unemployed / civilian labor force (B23025)
+share_no_vehicle,feature,1,1,[acs] share of households with no car (B08201)
+share_renters,feature,1,1,[acs] share of occupied homes that are rented (B25003)
+share_under18,feature,1,1,[acs] share of people under 18 (B01001)
+share_65plus,feature,1,1,[acs] share of people 65 and over (B01001)
+share_commute_bus,feature,1,1,[acs] share of workers commuting by bus (B08301)
+share_commute_rail,feature,1,1,"[acs] share of workers commuting by long-distance/commuter rail, e.g. LIRR (B08301)"
+share_commute_drive_alone,feature,1,1,[acs] share of workers driving alone (B08301)
+share_commute_walk_bike,feature,1,1,[acs] share of workers walking or cycling (B08301)
+share_work_from_home,feature,1,1,[acs] share of workers working from home (B08301)
+share_commute_60min_plus,feature,1,1,[acs] share of commuters (not working from home) traveling 60+ minutes (B08303)
+transit_commuters,feature,1,1,[acs] workers commuting by public transit (count)
+no_vehicle_households,feature,1,1,[acs] households with no car (count)
+bus_stops,feature,1,1,[bus] bus stops inside the hexagon with service on the sample weekday
+bus_routes,feature,1,1,[bus] distinct bus routes stopping in the hexagon
+sbs_routes,feature,1,1,[bus] Select Bus Service routes stopping in the hexagon
+express_routes,feature,1,1,"[bus] express routes (BM, BxM, QM, SIM, X) stopping in the hexagon"
+bus_stop_events_weekday,feature,1,1,[bus] bus stops made in the hexagon on the weekday (a trip stopping at 3 stops here counts 3)
+bus_trips_weekday,feature,1,1,[bus] distinct bus trips stopping in the hexagon at least once on the weekday
+bus_trips_peak_per_hour,feature,1,1,"[bus] distinct bus trips per hour stopping in the hexagon, 7-10 am"
+express_trips_peak_per_hour,feature,1,1,"[bus] express bus trips per hour stopping in the hexagon, 7-10 am (a sign of long commutes to Manhattan)"
+bus_trips_per_km2,feature,1,1,[bus] bus_trips_weekday per km² of hexagon land
+nearest_bus_stop_m,feature,1,1,"[bus] straight-line distance from the hexagon center to the nearest served bus stop, m"
+population,feature,1,1,[demographics] 2020 Census population allocated to the hexagon
+jobs,feature,1,1,[demographics] LODES8 WAC total jobs (2021) allocated to the hexagon
+pop_density,feature,1,1,[demographics] population / land_km2
+job_density,feature,1,1,[demographics] jobs / land_km2
+hospitals,feature,1,1,[destinations] number of hospitals (factype HOSPITAL or ACUTE CARE HOSPITAL)
+clinics,feature,1,1,"[destinations] number of clinics and diagnostic/treatment centers (other HOSPITALS AND CLINICS, excluding mobile and school-based)"
+colleges,feature,1,1,[destinations] number of colleges and universities (facsubgrp COLLEGES OR UNIVERSITIES)
+museums,feature,1,1,[destinations] number of museums (facsubgrp MUSEUMS)
+libraries,feature,1,1,[destinations] number of public libraries (facsubgrp PUBLIC LIBRARIES)
+courthouses,feature,1,1,[destinations] number of courthouses (facsubgrp COURTHOUSES AND JUDICIAL)
+gov_offices,feature,1,1,[destinations] number of city government offices (facsubgrp CITY GOVERNMENT OFFICES)
+ferry_landings,feature,1,1,[destinations] number of ferry landings and ports (facsubgrp PORTS AND FERRY LANDINGS)
+shopping_centers,feature,1,1,[destinations] number of shopping-center lots (PLUTO building class K6)
+shopping_center_floor_m2,feature,1,1,"[destinations] floor area of those shopping centers, m²"
+venues,feature,1,1,"[destinations] number of major stadiums and arenas (~5,000+ seats): Yankee Stadium; Citi Field; Madison Square Garden; Barclays Center; Aqueduct Racetrack; Columbia Baker Athletics Complex; Forest Hills Stadium; Staten Island ballpark; Maimonides Park"
+destinations,feature,1,1,[destinations] major trip attractors: hospitals + colleges + museums + courthouses + shopping centers + venues
+nearest_hospital_m,feature,1,1,"[destinations] straight-line distance from the hexagon center to the nearest hospital, m"
+nearest_college_m,feature,1,1,"[destinations] straight-line distance from the hexagon center to the nearest college, m"
+lot_area_km2,feature,1,1,"[landuse] total tax-lot area in the hexagon, km² (excludes streets and water)"
+lot_coverage,feature,1,1,[landuse] lot area / hexagon land area (the rest is mostly streets)
+share_residential,feature,1,1,"[landuse] share of the hexagon's lot area that is 1-2 family, walk-up and elevator residential (land use 01-03)"
+share_mixed,feature,1,1,[landuse] share of the hexagon's lot area that is mixed residential and commercial (04)
+share_commercial,feature,1,1,[landuse] share of the hexagon's lot area that is commercial and office (05)
+share_industrial,feature,1,1,[landuse] share of the hexagon's lot area that is industrial and manufacturing (06)
+share_transport_utility,feature,1,1,"[landuse] share of the hexagon's lot area that is transportation and utility: airports, rail yards, bus depots, power plants (07)"
+share_institution,feature,1,1,"[landuse] share of the hexagon's lot area that is public facilities and institutions: schools, hospitals, government (08)"
+share_open_space,feature,1,1,"[landuse] share of the hexagon's lot area that is open space and outdoor recreation: parks, beaches (09)"
+share_parking,feature,1,1,[landuse] share of the hexagon's lot area that is parking facilities (10)
+share_vacant,feature,1,1,[landuse] share of the hexagon's lot area that is vacant land (11)
+share_cemetery,feature,1,1,[landuse] share of the hexagon's lot area that is cemeteries (building class Z8)
+share_airport,feature,1,1,[landuse] share of the hexagon's lot area that is airports (building class T1)
+share_unbuilt_unlivable,feature,1,1,"[landuse] share of the hexagon's lot area that is land nobody lives on: open space + cemeteries + airports + transport/utility lots that have no housing and almost no buildings (rail yards, depots)"
+res_units,feature,1,1,[landuse] residential units (homes)
+res_units_per_km2,feature,1,1,[landuse] residential units per km² of land
+buildings,feature,1,1,[landuse] number of buildings
+floor_area_m2,feature,1,1,"[landuse] total building floor area, m²"
+res_floor_m2,feature,1,1,"[landuse] residential floor area, m²"
+com_floor_m2,feature,1,1,"[landuse] commercial floor area (office + retail + other commercial), m²"
+office_floor_m2,feature,1,1,"[landuse] office floor area, m² (a proxy for jobs)"
+retail_floor_m2,feature,1,1,"[landuse] retail floor area, m²"
+industrial_floor_m2,feature,1,1,"[landuse] factory and industrial floor area, m²"
+built_far,feature,1,1,[landuse] floor area / lot area (built density; Midtown towers are 10+)
+median_year_built,feature,1,1,[landuse] median year built of lots with a building (point-assigned lots only)
+km_to_midtown,feature,1,1,"[midtown] straight-line distance from the center to Midtown (between Times Sq and Grand Central), km"
+km_to_downtown,feature,1,1,"[midtown] straight-line distance from the center to Fulton St, km"
+nonresidential_nta,feature,1,1,"[neighborhoods] 1 if the main NTA is a non-residential NTA (ntatype 5-9: large park, cemetery, airport, military base, Rikers Island), else 0"
+ntl_2014,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2014, nW/cm²/sr"
+ntl_2015,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2015, nW/cm²/sr"
+ntl_2016,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2016, nW/cm²/sr"
+ntl_2017,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2017, nW/cm²/sr"
+ntl_2018,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2018, nW/cm²/sr"
+ntl_2019,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2019, nW/cm²/sr"
+ntl_2020,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2020, nW/cm²/sr"
+ntl_2021,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2021, nW/cm²/sr"
+ntl_2022,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2022, nW/cm²/sr"
+ntl_2023,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2023, nW/cm²/sr"
+ntl_2024,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2024, nW/cm²/sr"
+ntl_2025,feature,1,1,"[ntl_trend] mean radiance on the hexagon's land in 2025, nW/cm²/sr"
+ntl_early,feature,1,1,[ntl_trend] average of 2014-2016 mean radiance
+ntl_late,feature,1,1,[ntl_trend] average of 2023-2025 mean radiance
+ntl_change,feature,1,1,"[ntl_trend] ntl_late minus ntl_early, nW/cm²/sr"
+ntl_change_pct,feature,1,1,[ntl_trend] (ntl_late - ntl_early) / (ntl_early + 1) x 100; the +1 keeps dark cells from blowing up
+ntl_trend_pct_per_year,feature,1,1,[ntl_trend] growth per year from a straight-line fit of log(radiance + 1) over 2014-2025
+walk_to_other_rail_m,feature,1,1,"[rail] walking distance from the hexagon center to the nearest LIRR, Metro-North or PATH station, m (capped at 5,000)"
+other_rail_capped,feature,1,1,"[rail] 1 if that walk is over 5,000 m (or impossible) and was capped"
+straight_to_other_rail_m,feature,1,1,"[rail] straight-line distance to the nearest such station, m (ignores rivers)"
+nearest_other_rail_weekday_trains,feature,1,1,[rail] trains stopping at that station on a weekday (all directions)
+nearest_other_rail_peak_per_hour,feature,1,1,"[rail] trains per hour stopping there, 7-10 am weekday"
+walk_to_lirr_m,feature,1,1,"[rail] walking distance to the nearest LIRR station, m (capped at 5,000)"
+walk_to_metro_north_m,feature,1,1,"[rail] walking distance to the nearest Metro-North station, m (capped at 5,000)"
+walk_to_path_m,feature,1,1,"[rail] walking distance to the nearest PATH station, m (capped at 5,000)"
+other_rail_within_800,feature,1,1,"[rail] 1 if any LIRR, Metro-North or PATH station is within an 800 m walk"
+other_rail_stations_800m,feature,1,1,"[rail] number of LIRR, Metro-North and PATH stations within an 800 m walk"
+other_rail_trains_800m,feature,1,1,[rail] weekday trains summed over those stations
+center_snap_m,feature,1,1,"[walk] distance from the center to the nearest walkable path (large = center in a park, airport or marsh)"
+walkshed_800_km2,feature,1,1,"[walk] area reachable within an 800 m walk (concave hull of reachable nodes + 25 m), km²"
+walkshed_ratio,feature,1,1,[walk] walkshed area / area of an 800 m circle (2.01 km²); low = poor street grid or water
+street_km_800m_walk,feature,1,1,[walk] km of walkable streets and paths within an 800 m walk
+intersections_per_km2,feature,1,1,[walk] street/path intersections (3+ segments) per km² of hexagon land
+boro_Bronx,feature,1,1,1 if the hexagon is in Bronx
+boro_Brooklyn,feature,1,1,1 if the hexagon is in Brooklyn
+boro_Manhattan,feature,1,1,1 if the hexagon is in Manhattan
+boro_Queens,feature,1,1,1 if the hexagon is in Queens
+ntaname,info,0,1,neighborhood name
+uncovered_share_subway,ranking,0,1,candidates: share of the 800 m walk area around the center not within 800 m of a subway entrance
+uncovered_share_any_rail,ranking,0,1,"same, counting LIRR/Metro-North/PATH as covered too: new riders ~ predicted riders x this"
+dist_ibx_m,excluded,0,1,"[proposals] straight-line distance from the hexagon center to the Interborough Express (planned light rail) alignment, m [not an input: proposed lines are kept for checking results, not for training]"
+near_ibx,excluded,0,1,"[proposals] 1 if within 800 m of the Interborough Express alignment, else 0 [not an input: proposed lines are kept for checking results, not for training]"
+dist_sas2_m,excluded,0,1,"[proposals] straight-line distance from the hexagon center to the Second Avenue Subway Phase 2 (under construction) alignment, m [not an input: proposed lines are kept for checking results, not for training]"
+near_sas2,excluded,0,1,"[proposals] 1 if within 800 m of the Second Avenue Subway Phase 2 alignment, else 0 [not an input: proposed lines are kept for checking results, not for training]"
+dist_utica_m,excluded,0,1,"[proposals] straight-line distance from the hexagon center to the Utica Avenue subway extension (proposed) alignment, m [not an input: proposed lines are kept for checking results, not for training]"
+near_utica,excluded,0,1,"[proposals] 1 if within 800 m of the Utica Avenue subway extension alignment, else 0 [not an input: proposed lines are kept for checking results, not for training]"
+near_any_proposal,excluded,0,1,"[proposals] 1 if within 800 m of any of the three lines [not an input: proposed lines are kept for checking results, not for training]"
+walk_to_entrance_m,excluded,0,1,"[walk] walking distance from the hexagon center to the nearest subway entrance, m (capped at 5,000) [not an input: distance to the existing subway: ~0 for every station, large for every candidate; replaced by other_stations_1km and nearest_other_station_m]"
+walk_to_any_rail_m,excluded,0,1,"[rail] walking distance to the nearest subway entrance or other rail station, m (capped at 5,000) [not an input: distance to the existing subway: ~0 for every station, large for every candidate; replaced by other_stations_1km and nearest_other_station_m]"
+boro_Staten Island,info,0,1,"1 if the hexagon is in Staten Island (no training stations there, so not a feature; see notes)"
