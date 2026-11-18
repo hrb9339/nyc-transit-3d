@@ -74,8 +74,9 @@ pd.read_csv("data/features/hex_features.csv", comment="#")
 | `bus.csv` | `features_bus.py` | Bus stops, routes (local, SBS, express) and weekday and 7-10 am buses per hexagon; distance to nearest stop | MTA bus GTFS (5 boroughs + MTA Bus) |
 | `acs.csv` | `features_acs.py` | Income, rent, poverty, unemployment, car-free households, renters, age, how people commute and commute length (tracts spread to hexagons via 2020 block population and housing) | ACS 2020-2024 5-year summary files, 2020 Census blocks |
 | `ridership.csv` | `features_ridership.py` | Weekday, Saturday and Sunday subway entries (2025) and the 2019 weekday baseline, summed per hexagon. **The model's target, not an input.** Per-station values are in `data/ridership/station_complexes.csv` | MTA Subway Hourly Ridership (data.ny.gov) |
+| `midtown.csv` | `features_midtown.py` | Door-to-door subway time to Midtown (Times Sq / Grand Central) and Lower Manhattan (Fulton St): walk + wait + scheduled ride with transfers; straight-line distance to each. Ride time per station complex in `data/ridership/station_travel_time.csv` | MTA subway GTFS (`data/network.json`), Staten Island Ferry, OSM walking network |
 | `proposals.csv` | `features_proposals.py` | Distance to the Interborough Express, Second Avenue Subway Phase 2 and Utica Avenue alignments. **For validation only, not a model input** | OpenStreetMap; line geometry in `data/proposals.geojson` |
-| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (150 columns) | All of the above |
+| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (156 columns) | All of the above |
 
 Rebuild everything (raw downloads go to `data/raw/`, which is git-ignored, about 350 MB):
 
@@ -92,6 +93,7 @@ python scripts/features_rail.py           # after walk (reuses its network)
 python scripts/features_bus.py
 python scripts/features_acs.py
 python scripts/features_ridership.py      # ~15 minutes the first time (one request per day)
+python scripts/features_midtown.py        # after walk and ridership
 python scripts/features_merge.py
 ```
 

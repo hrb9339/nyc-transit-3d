@@ -1,0 +1,450 @@
+# Scheduled subway ride time from each ridership station complex to Midtown and Lower Manhattan
+# Built 2026-11-17 by scripts/features_midtown.py
+#
+# Sources:
+#   - MTA subway GTFS (scheduled station-to-station times, via scripts/build_data.py -> data/network.json): https://new.mta.info/developers
+#   - Staten Island Ferry schedule (25-minute crossing): https://www.siferry.com/
+#   - OpenStreetMap pedestrian network (from features_walk.py): https://download.bbbike.org/osm/bbbike/NewYork/NewYork.osm.pbf
+#
+# Columns:
+#   station_complex_id: MTA station complex id (matches data/ridership/station_complexes.csv)
+#   station_complex: station complex name
+#   ride_minutes_to_midtown: scheduled minutes from the complex to Times Sq or Grand Central, with transfers, no initial wait (0 = the complex is in Midtown)
+#   ride_minutes_to_downtown: same, to Fulton St
+#   km_to_midtown: straight-line distance to Midtown, km
+#   km_to_downtown: straight-line distance to Fulton St, km
+#
+# Notes:
+#   Walking 75 m/min; 5 min average wait at the first station; transfers between platforms within 300 m cost the walk (x1.3) + 3 min. Waits at transfers are not modelled beyond that, so lines with rare service look a little faster than they are.
+#   Ride times are scheduled weekday-style times between consecutive stations (median over trips), not live data.
+#   Staten Island includes the ferry (25 min + 15 min average wait) between St George and Whitehall St/South Ferry.
+#   For a hexagon with no station, this is the time using existing stations; a new station would make it shorter.
+#   Access to the subway is on foot only (no bus to the station), so places far from the subway (eastern Queens, southern Staten Island) get long times; that is the gap this project looks for, but real trips there often use a bus. bus.csv has the bus service to read alongside.
+#
+station_complex_id,station_complex,ride_minutes_to_midtown,ride_minutes_to_downtown,km_to_midtown,km_to_downtown
+611,"Times Sq-42 St/Port Authority Bus Terminal (1,2,3,7,A,C,E,N,Q,R,W,S)",0.0,11.5,0.53,5.36
+610,"Grand Central-42 St (4,5,6,7,S)",0.0,10.0,0.43,5.33
+607,"34 St-Herald Sq (B,D,F,M,N,Q,R,W)",1.5,12.5,0.71,4.72
+602,"14 St-Union Sq (4,5,6,L,N,Q,R,W)",4.0,6.0,2.23,3.15
+628,"Fulton St (2,3,4,5,A,C,J,Z)",10.0,0.0,5.35,0.02
+164,"34 St-Penn Station (A,C,E)",9.1,11.0,1.0,4.85
+318,"34 St-Penn Station (1,2,3)",1.5,10.0,0.89,4.7
+614,"59 St-Columbus Circle (1,A,C,B,D)",3.5,14.5,1.58,6.84
+624,"Chambers St/WTC/Park Place/Cortlandt St (2,3,A,C,E,R,W)",9.5,0.0,5.16,0.32
+447,Flushing-Main St (7),28.9,40.0,12.82,16.01
+616,"Jackson Hts-Roosevelt Av/74 St-Broadway (7,E,F,M,R)",16.5,27.6,7.67,10.66
+225,"47-50 Sts-Rockefeller Ctr (B,D,F,M)",7.8,15.5,0.52,5.85
+612,"Lexington Av/51-53 Sts (6,E,F)",2.0,12.0,1.02,6.14
+609,"42 St-Bryant Pk/5 Av (7,B,D,F,M)",1.5,14.0,0.13,5.31
+613,"Lexington Av/59 St (4,5,6,N,R,W)",2.5,12.5,1.52,6.76
+618,"14 St/8 Av (A,C,E,L)",11.2,8.5,2.3,3.4
+397,"86 St (4,5,6)",6.5,16.5,3.59,8.89
+167,"W 4 St-Wash Sq (A,C,E,B,D,F,M)",5.5,6.5,2.88,2.56
+623,"Canal St (6,J,Z,N,Q,R,W)",8.5,3.0,4.23,1.15
+601,"14 St/6 Av (1,2,3,L,F,M)",4.0,7.5,2.25,3.21
+617,"Atlantic Av-Barclays Ctr (2,3,4,5,B,D,N,Q,R)",18.0,10.0,7.76,3.84
+619,"Broadway-Lafayette St/Bleecker St (6,B,D,F,M)",7.0,6.0,3.36,2.03
+313,"72 St (1,2,3)",4.0,15.5,2.71,7.91
+636,"Jay St-MetroTech (A,C,F,R)",18.5,5.0,6.87,2.67
+120,Bedford Av (L),14.7,16.7,4.58,4.39
+310,"96 St (1,2,3)",6.5,18.0,4.5,9.79
+9,"57 St-7 Av (N,Q,R,W)",2.5,15.5,1.19,6.49
+477,72 St (Q),7.5,21.5,2.56,7.75
+278,"Jamaica Center-Parsons/Archer (E,J,Z)",32.5,43.6,16.3,17.5
+625,"Delancey St-Essex St (F,M,J,Z)",13.3,6.0,3.98,1.95
+279,"Sutphin Blvd-Archer Av-JFK Airport (E,J,Z)",31.0,42.1,15.83,16.93
+620,"Borough Hall/Court St (2,3,4,5,R)",17.5,5.5,6.79,2.37
+471,34 St-Hudson Yards (7),3.0,18.0,1.72,5.12
+635,"Whitehall St-South Ferry (1,R,W)",13.0,7.5,6.3,0.94
+398,77 St (6),6.0,16.0,2.85,8.15
+10,"49 St (N,R,W)",1.5,13.0,0.69,5.89
+119,1 Av (L),10.7,12.7,2.56,3.22
+228,"23 St (F,M)",6.8,13.0,1.55,3.87
+403,33 St (6),2.0,9.5,0.88,4.56
+622,"Brooklyn Bridge-City Hall/Chambers St (4,5,6,J,Z)",8.5,1.5,4.9,0.5
+405,23 St-Baruch College (6),4.0,7.5,1.62,3.78
+451,Junction Blvd (7),22.9,34.0,9.49,12.48
+261,"Forest Hills-71 Av (E,F,M,R)",22.5,33.6,12.13,13.87
+606,"Court Sq-23 St (7,E,F,G)",8.0,22.0,3.19,6.73
+153,"125 St (A,C,B,D)",14.8,22.5,6.81,12.17
+316,50 St (1),1.5,13.0,0.88,6.09
+476,86 St (Q),9.5,23.5,3.66,8.91
+604,"161 St-Yankee Stadium (4,B,D)",17.5,27.5,9.47,14.82
+392,"125 St (4,5,6)",11.0,21.0,6.7,12.02
+399,68 St-Hunter College (6),4.0,14.0,2.17,7.45
+231,"Grand St (B,D)",12.3,4.5,4.1,1.51
+414,"Bowling Green (4,5)",12.5,2.5,6.11,0.77
+345,"Crown Hts-Utica Av (3,4)",28.5,18.0,10.31,7.81
+162,"50 St (C,E)",1.5,13.0,1.01,6.11
+450,103 St-Corona Plaza (7),23.9,35.0,10.06,13.04
+26,"DeKalb Av (B,Q,R)",16.5,11.6,7.03,3.08
+605,"168 St-Washington Hts (1,A,C)",19.5,29.5,10.25,15.6
+259,"Kew Gardens-Union Tpke (E,F)",25.5,36.6,13.46,14.96
+630,"Myrtle-Wyckoff Avs (M,L)",26.7,23.5,8.43,8.19
+151,"145 St (A,C,B,D)",18.3,26.0,8.47,13.83
+165,"23 St (C,E)",11.1,10.0,1.65,4.07
+314,66 St-Lincoln Center (1),5.0,16.5,2.16,7.37
+404,28 St (6),3.0,8.5,1.23,4.18
+276,"5 Av/53 St (E,F)",10.3,17.5,0.88,6.22
+51,"Kings Hwy (B,Q)",33.0,28.1,16.26,12.02
+14,"23 St (R,W)",3.5,12.5,1.55,3.82
+452,90 St-Elmhurst Av (7),21.9,33.0,8.89,11.89
+333,"Wall St (2,3)",11.5,1.0,5.73,0.37
+265,"Grand Av-Newtown (M,R)",20.0,31.1,9.02,11.45
+277,"7 Av (E,B,D)",1.5,13.0,0.98,6.28
+223,"Lexington Av/63 St (M,Q)",5.5,16.6,1.77,7.02
+327,"Chambers St (1,2,3)",8.5,2.0,4.87,0.62
+264,"Woodhaven Blvd (M,R)",21.5,32.6,9.78,12.0
+434,"3 Av-149 St (2,5)",18.0,28.0,8.76,14.03
+475,96 St (Q),11.5,25.5,4.45,9.72
+254,Jamaica-179 St (F),32.5,43.6,17.33,18.94
+359,"Flatbush Av-Brooklyn College (2,5)",37.0,26.5,13.76,9.97
+169,"Canal St (A,C,E)",8.5,4.0,4.18,1.22
+464,Vernon Blvd-Jackson Av (7),5.0,19.4,2.69,5.85
+396,96 St (6),8.5,18.5,4.36,9.68
+273,"Queens Plaza (E,F,R)",12.0,22.1,3.79,7.38
+311,86 St (1),6.5,18.0,3.87,9.13
+328,WTC Cortlandt (1),9.5,4.0,5.34,0.41
+179,"Nostrand Av (A,C)",25.3,11.5,8.58,5.87
+629,"Metropolitan Av/Lorimer St (G,L)",16.2,18.2,5.2,4.84
+456,61 St-Woodside (7),17.5,31.9,6.71,9.71
+413,"Wall St (4,5)",10.5,1.0,5.75,0.42
+16,"8 St-NYU (R,W)",5.5,7.5,2.79,2.6
+232,2 Av (F),11.8,11.0,3.47,2.13
+407,Astor Pl (6),5.5,7.5,2.77,2.65
+32,"36 St (D,N,R)",24.0,19.6,11.13,6.1
+168,"Spring St (C,E)",12.8,5.5,3.6,1.84
+324,Houston St (1),7.0,6.5,3.49,2.04
+8,"5 Av/59 St (N,R,W)",5.0,18.1,1.39,6.75
+224,57 St (M),8.0,17.0,1.16,6.52
+1,"Astoria-Ditmars Blvd (N,W)",20.5,30.6,6.33,10.85
+312,79 St (1),5.5,17.0,3.33,8.54
+626,"Franklin Av-Medgar Evers College/Botanic Garden (2,3,4,5,S)",25.5,15.0,9.47,6.05
+453,82 St-Jackson Hts (7),20.9,32.0,8.3,11.3
+234,East Broadway (F),14.8,9.0,4.53,1.56
+307,116 St-Columbia University (1),10.5,22.0,6.15,11.46
+181,"Utica Av (A,C)",28.3,14.5,9.34,7.36
+235,York St (F),17.3,6.5,5.86,2.03
+458,46 St-Bliss St (7),14.5,28.9,5.48,8.41
+58,"Coney Island-Stillwell Av (D,F,N,Q)",44.0,33.0,19.6,14.89
+3,"30 Av (N,W)",18.0,28.1,5.28,9.65
+449,111 St (7),24.9,36.0,10.67,13.7
+461,"Queensboro Plaza (7,N,W)",9.5,21.1,3.52,7.29
+263,"63 Dr-Rego Park (M,R)",23.0,34.1,10.49,12.56
+35,"59 St (N,R)",28.5,24.1,12.87,7.67
+266,"Elmhurst Av (M,R)",18.5,29.6,8.51,11.23
+159,"81 St-Museum of Natural History (C,B)",10.3,18.0,3.15,8.49
+439,"125 St (2,3)",13.5,25.0,6.7,12.07
+319,28 St (1),3.0,10.5,1.24,4.31
+393,116 St (6),12.5,22.5,6.0,11.32
+320,23 St (1),4.0,9.5,1.61,3.92
+127,DeKalb Av (L),25.2,27.2,7.72,7.6
+608,"4 Av-9 St (F,G,R)",23.0,12.0,9.28,4.66
+237,"Carroll St (F,G)",22.8,9.0,8.26,3.47
+101,"Marcy Av (M,J,Z)",20.8,13.5,5.46,4.25
+395,103 St (6),10.0,20.0,4.99,10.3
+13,"28 St (R,W)",2.5,14.0,1.11,4.26
+54,"Sheepshead Bay (B,Q)",37.0,32.1,18.7,14.4
+17,"Prince St (R,W)",8.0,5.0,3.56,1.81
+44,"Church Av (B,Q)",25.5,20.6,11.6,7.62
+240,"7 Av (F,G)",24.3,10.5,9.74,5.39
+4,"Broadway (N,W)",16.5,26.6,4.82,9.03
+308,Cathedral Pkwy (110 St) (1),9.5,21.0,5.69,10.99
+175,"Hoyt-Schermerhorn Sts (A,C,G)",19.0,6.5,7.28,3.08
+236,"Bergen St (F,G)",21.3,7.5,7.57,3.02
+271,"Steinway St (M,R)",14.5,26.1,5.16,9.02
+409,Spring St (6),8.0,5.0,3.75,1.64
+309,103 St (1),8.5,20.0,5.17,10.48
+366,Parkchester (6),26.0,36.0,13.47,18.48
+97,"Myrtle Av (M,J,Z)",24.8,17.5,7.41,6.28
+71,8 Av (N),31.5,27.1,13.45,8.32
+323,Christopher St-Stonewall (1),5.5,6.5,2.9,2.64
+38,86 St (R),34.0,29.6,15.1,9.84
+158,"86 St (C,B)",11.8,19.5,3.7,9.05
+221,21 St-Queensbridge (M),10.0,24.0,3.28,7.37
+305,137 St-City College (1),14.5,26.0,7.91,13.25
+283,Greenpoint Av (G),15.2,23.0,3.41,5.11
+438,"135 St (2,3)",15.0,26.5,7.53,12.89
+603,"149 St-Grand Concourse (2,4,5)",15.0,25.0,8.51,13.84
+2,"Astoria Blvd (N,W)",19.0,29.1,5.68,10.13
+55,"Brighton Beach (B,Q)",39.0,34.1,19.66,15.22
+173,"High St (A,C)",18.7,3.0,6.11,1.89
+460,33 St-Rawson St (7),12.0,26.4,4.41,7.55
+160,"72 St (C,B)",8.8,16.5,2.44,7.75
+459,40 St-Lowery St (7),13.5,27.9,5.0,8.02
+284,Nassau Av (G),16.7,21.5,4.15,5.06
+394,110 St (6),11.0,21.0,5.54,10.87
+147,175 St (A),23.8,31.5,10.96,16.31
+301,181 St (1),21.5,33.0,11.35,16.71
+122,Graham Av (L),17.2,19.2,5.41,5.43
+138,Canarsie-Rockaway Pkwy (L),42.7,33.7,13.69,11.4
+157,"96 St (C,B)",13.8,21.5,4.42,9.77
+41,"7 Av (B,Q)",20.0,13.0,8.58,4.74
+303,157 St (1),18.0,29.5,9.41,14.76
+47,"Newkirk Plaza (B,Q)",28.5,23.6,13.3,9.15
+126,Jefferson St (L),23.7,25.7,7.23,7.2
+42,"Prospect Park (B,Q,S)",23.5,18.6,10.39,6.62
+371,Hunts Point Av (6),20.5,30.5,10.7,15.81
+337,"Nevins St (2,3,4,5)",19.0,8.5,7.3,3.35
+146,181 St (A),24.8,32.5,11.46,16.8
+188,"Euclid Av (A,C)",35.8,22.0,12.72,12.11
+356,"Church Av (2,5)",32.5,22.0,11.77,8.22
+440,"116 St (2,3)",12.0,23.5,5.99,11.35
+501,St George (SIR),53.0,47.5,14.5,9.21
+34,53 St (R),28.0,23.6,12.4,7.23
+243,"Church Av (F,G)",28.3,14.5,12.21,7.7
+289,Bedford-Nostrand Avs (G),26.2,12.5,7.53,5.13
+222,Roosevelt Island (M),8.0,22.0,2.47,7.15
+382,Fordham Rd (4),27.5,37.5,13.86,19.22
+306,125 St (1),13.0,24.5,7.11,12.45
+98,"Flushing Av (M,J)",24.3,17.0,6.88,5.75
+129,Halsey St (L),28.2,29.2,9.22,8.92
+304,145 St (1),16.0,27.5,8.48,13.82
+295,231 St (1),30.0,41.5,15.3,20.67
+384,Burnside Av (4),25.0,35.0,12.68,18.04
+143,Inwood-207 St (A),30.3,38.0,13.69,19.06
+388,167 St (4),19.5,29.5,10.38,15.74
+28,Union St (R),21.0,16.6,8.51,4.19
+33,45 St (R),26.5,22.1,11.91,6.78
+381,Kingsbridge Rd (4),28.5,38.5,14.5,19.85
+262,"67 Av (M,R)",24.5,35.6,11.31,13.24
+448,Mets-Willets Point (7),26.4,37.5,11.49,14.58
+213,"Fordham Rd (B,D)",28.8,36.5,13.86,19.2
+270,"46 St (M,R)",16.0,27.6,5.78,9.51
+426,"E 180 St (2,5)",29.0,39.0,13.36,18.53
+125,Morgan Av (L),21.7,23.7,6.71,6.34
+36,Bay Ridge Av (R),30.5,26.1,13.68,8.43
+621,"Broadway Junction (A,C,J,Z,L)",31.3,18.0,10.59,9.41
+355,"Winthrop St (2,5)",31.0,20.5,11.13,7.68
+177,Clinton-Washington Avs (C),23.8,10.0,7.97,4.64
+377,3 Av-138 St (6),14.0,24.0,7.83,13.12
+255,169 St (F),31.5,42.6,16.6,18.11
+155,"Cathedral Pkwy (110 St) (C,B)",16.8,24.5,5.54,10.9
+321,18 St (1),5.0,8.5,1.98,3.55
+215,"Tremont Av (B,D)",26.3,34.0,12.5,17.84
+329,Rector St (1),10.5,1.5,5.83,0.56
+430,"Simpson St (2,5)",24.0,34.0,10.79,15.95
+300,191 St (1),23.0,34.5,12.07,17.43
+68,Bay Pkwy (D),42.0,37.6,16.92,12.06
+340,"Grand Army Plaza (2,3)",20.0,13.0,8.79,4.96
+218,"167 St (B,D)",23.3,31.5,10.34,15.68
+441,"110 St-Malcolm X Plaza (2,3)",11.0,22.5,5.6,10.97
+358,"Newkirk Av-Little Haiti (2,5)",35.0,24.5,12.97,9.26
+118,3 Av (L),9.7,11.7,2.38,3.14
+124,Montrose Av (L),19.7,21.7,6.23,5.76
+269,"Northern Blvd (M,R)",17.5,29.1,6.39,9.84
+192,Rockaway Blvd (A),41.8,28.0,14.22,14.25
+256,Parsons Blvd (F),29.5,40.6,15.92,17.29
+387,170 St (4),21.0,31.0,10.97,16.32
+123,Grand St (L),18.7,20.7,5.82,5.69
+43,Parkside Av (Q),25.0,20.1,11.09,7.23
+76,Bay Pkwy (N),39.0,34.6,15.78,11.12
+95,"Gates Av (J,Z)",27.8,20.5,8.73,7.59
+52,Avenue U (Q),35.0,30.1,17.31,13.05
+72,Fort Hamilton Pkwy (N),32.5,28.1,13.76,8.73
+299,Dyckman St (1),24.5,36.0,12.74,18.1
+5,"36 Av (N,W)",14.5,24.6,4.41,8.42
+180,Kingston-Throop Avs (C),26.8,13.0,8.92,6.58
+424,"Pelham Pkwy (2,5)",33.0,43.0,14.96,20.18
+292,Fulton St (G),22.3,8.5,7.44,3.75
+334,"Clark St (2,3)",16.0,4.0,6.35,1.88
+379,Mosholu Pkwy (4),32.0,42.0,16.18,21.53
+154,"116 St (C,B)",16.3,24.0,6.11,11.47
+65,79 St (D),38.0,33.6,15.68,10.73
+326,Franklin St (1),9.5,4.0,4.4,1.04
+144,Dyckman St (A),28.8,36.5,13.2,18.56
+107,"Broad St (J,Z)",11.5,1.0,5.83,0.47
+46,Cortelyou Rd (Q),28.0,23.1,12.64,8.53
+195,Ozone Park-Lefferts Blvd (A),46.3,32.5,15.18,15.62
+198,Howard Beach-JFK Airport (A),47.8,34.0,16.47,15.99
+30,Prospect Av (R),24.5,18.9,9.88,5.11
+378,Woodlawn (4),34.0,44.0,17.04,22.38
+94,Halsey St (J),28.8,21.5,9.31,8.16
+346,Sutter Av-Rutland Rd (3),31.0,20.5,11.1,8.79
+241,"15 St-Prospect Park (F,G)",25.8,12.0,10.4,6.01
+66,18 Av (D),39.5,35.1,16.3,11.34
+291,Clinton-Washington Avs (G),23.8,10.0,7.42,4.24
+109,Fresh Pond Rd (M),35.8,28.5,8.98,9.48
+242,"Fort Hamilton Pkwy (F,G)",28.3,14.5,11.47,7.12
+210,Norwood-205 St (D),34.3,42.0,15.97,21.3
+293,Van Cortlandt Park-242 St (1),33.0,44.5,16.57,21.94
+428,"174 St (2,5)",27.5,37.5,12.18,17.4
+432,"Prospect Av (2,5)",21.5,31.5,9.92,15.11
+50,Avenue M (Q),33.0,28.1,15.26,11.05
+369,Elder Av (6),24.0,34.0,11.98,17.08
+96,Kosciuszko St (J),26.3,19.0,8.08,6.94
+77,Kings Hwy (N),41.0,36.6,16.66,12.01
+211,"Bedford Park Blvd (B,D)",30.5,40.0,15.46,20.79
+59,9 Av (D),28.0,23.6,12.0,7.17
+212,"Kingsbridge Rd (B,D)",30.3,38.0,14.58,19.93
+368,Morrison Av-Soundview (6),25.0,35.0,12.33,17.41
+365,Castle Hill Av (6),28.0,38.0,14.16,19.11
+298,207 St (1),26.0,37.5,13.38,18.74
+290,Classon Av (G),25.3,11.5,7.46,4.68
+336,"Hoyt St (2,3)",18.5,6.5,7.05,2.9
+360,Pelham Bay Park (6),36.0,46.0,16.95,21.92
+37,77 St (R),32.0,27.6,14.28,9.03
+354,"Sterling St (2,5)",29.5,19.0,10.46,7.13
+39,Bay Ridge-95 St (R),36.0,31.6,15.81,10.54
+49,Avenue J (Q),31.0,26.1,14.42,10.24
+421,"Gun Hill Rd (2,5)",38.5,48.5,16.85,22.14
+152,"135 St (C,B)",16.8,24.5,7.65,13.02
+22,"Rector St (R,W)",10.5,1.5,5.84,0.55
+325,Canal St (1),8.5,4.0,4.03,1.43
+627,"Franklin Av (C,S)",25.3,11.5,8.38,5.42
+176,Lafayette Av (C),22.3,8.5,7.57,3.91
+20,"City Hall (R,W)",8.5,1.5,5.0,0.37
+427,"West Farms Sq-E Tremont Av (2,5)",29.5,39.5,12.86,18.05
+288,Myrtle-Willoughby Avs (G),24.2,14.5,7.15,5.27
+457,52 St (7),15.5,29.9,5.94,8.91
+183,Rockaway Av (C),31.8,18.0,10.26,8.84
+385,176 St (4),23.5,33.5,12.03,17.39
+463,Hunters Point Av (7),6.0,20.4,3.06,6.14
+74,18 Av (N),36.5,32.1,14.82,10.03
+182,Ralph Av (C),29.8,16.0,9.8,8.14
+352,New Lots Av (3),39.5,29.0,12.76,11.54
+258,"Briarwood (E,F)",27.5,38.6,14.49,15.83
+217,"170 St (B,D)",25.3,33.5,11.09,16.43
+615,"62 St/New Utrecht Av (D,N)",34.5,30.1,14.3,9.41
+189,Grant Av (A),37.3,23.5,13.04,12.62
+433,"Jackson Av (2,5)",20.0,30.0,9.33,14.54
+83,"Woodhaven Blvd (J,Z)",39.0,36.0,12.86,13.34
+67,20 Av (D),41.0,36.6,16.65,11.73
+383,183 St (4),26.5,36.5,13.32,18.67
+380,Bedford Park Blvd-Lehman College (4),30.5,40.0,15.35,20.69
+280,Jamaica-Van Wyck (E),28.5,39.6,15.05,16.17
+286,Broadway (G),21.2,17.0,5.94,4.89
+376,Brook Av (6),15.5,25.5,7.95,13.17
+347,Saratoga Av (3),32.5,22.0,11.66,9.44
+64,71 St (D),36.5,32.1,14.99,10.07
+455,69 St (7),19.5,33.9,7.25,10.25
+130,Wilson Av (L),30.7,26.7,9.77,9.09
+110,Forest Av (M),33.8,26.5,8.62,8.89
+156,"103 St (C,B)",15.3,23.0,4.98,10.33
+341,"Eastern Pkwy-Brooklyn Museum (2,3)",25.0,14.5,9.22,5.6
+296,Marble Hill-225 St (1),28.5,40.0,14.69,20.06
+357,"Beverly Rd (2,5)",34.0,23.5,12.4,8.76
+339,"Bergen St (2,3)",21.5,11.0,8.14,4.27
+75,20 Av (N),37.5,33.1,15.17,10.46
+53,Neck Rd (Q),36.0,31.1,17.77,13.5
+238,"Smith-9 Sts (F,G)",24.8,11.0,9.01,4.17
+373,E 149 St (6),19.5,29.5,9.19,14.33
+363,Westchester Sq-E Tremont Av (6),30.5,40.5,15.1,20.05
+348,Rockaway Av (3),34.5,24.0,11.87,9.89
+60,Fort Hamilton Pkwy (D),30.0,25.6,12.6,7.76
+113,Knickerbocker Av (M),28.8,21.5,8.07,7.56
+386,Mt Eden Av (4),22.5,32.5,11.52,16.87
+294,238 St (1),31.5,43.0,16.03,21.39
+99,"Lorimer St (M,J)",22.8,15.5,6.27,5.16
+209,Far Rockaway-Mott Av (A),66.8,53.0,25.36,24.38
+257,Sutphin Blvd (F),29.5,40.6,15.41,16.67
+344,Kingston Av (3),28.5,18.0,9.97,7.16
+145,190 St (A),26.8,34.5,12.33,17.68
+108,Middle Village-Metropolitan Av (M),37.8,30.5,9.1,10.0
+429,"Freeman St (2,5)",25.5,35.5,11.34,16.54
+87,"Crescent St (J,Z)",38.3,30.5,12.04,11.72
+45,Beverley Rd (Q),27.0,22.1,12.29,8.19
+214,"182-183 Sts (B,D)",27.8,35.5,13.23,18.57
+391,"138 St-Grand Concourse (4,5)",13.5,23.5,7.9,13.22
+6,"39 Av-Dutch Kills (N,W)",13.5,23.6,4.13,7.94
+190,80 St (A),38.8,25.0,13.27,13.04
+114,Central Av (M),26.8,19.5,7.74,6.94
+69,25 Av (D),43.5,39.1,17.36,12.59
+216,"174-175 Sts (B,D)",27.8,35.5,11.86,17.2
+367,St Lawrence Av (6),26.5,36.5,12.91,17.95
+416,Wakefield-241 St (2),46.0,56.0,19.91,25.22
+444,Gun Hill Rd (5),35.5,45.5,17.17,22.35
+272,"36 St (M,R)",12.5,24.1,4.47,8.16
+149,163 St-Amsterdam Av (C),21.3,29.0,9.76,15.12
+85,"75 St-Elderts Ln (J,Z)",40.8,33.0,11.92,12.08
+78,Avenue U (N),42.5,38.0,17.38,12.73
+31,25 St (R),26.0,20.4,10.48,5.57
+423,"Allerton Av (2,5)",35.0,45.0,15.69,20.95
+103,"Bowery (J,Z)",12.3,4.5,3.88,1.65
+244,Ditmas Av (F),30.3,16.5,13.09,8.58
+442,Eastchester-Dyre Av (5),40.0,50.0,19.6,24.8
+268,"65 St (M,R)",18.0,29.1,7.04,10.25
+350,Pennsylvania Av (3),37.0,26.5,12.34,10.8
+361,Buhre Av (6),33.5,43.5,16.26,21.21
+353,"President St-Medgar Evers College (2,5)",27.0,16.5,9.91,6.73
+61,50 St (D),31.5,27.1,13.12,8.26
+245,18 Av (F),31.8,18.0,13.8,9.29
+418,"233 St (2,5)",42.5,52.5,18.67,23.98
+136,New Lots Av (L),39.2,30.2,12.66,10.81
+343,Nostrand Av (3),27.0,16.5,9.71,6.6
+287,Flushing Av (G),22.7,16.0,6.52,5.0
+48,Avenue H (Q),30.0,25.1,13.95,9.78
+260,"75 Av (E,F)",24.5,35.6,12.82,14.45
+250,Kings Hwy (F),38.3,24.5,16.76,12.23
+431,"Intervale Av (2,5)",23.0,33.0,10.43,15.6
+111,Seneca Av (M),32.3,25.0,8.45,8.51
+56,Ocean Pkwy (Q),41.0,33.5,19.76,15.21
+372,Longwood Av (6),21.5,31.5,9.96,15.08
+90,"Van Siclen Av (J,Z)",34.8,27.0,11.36,10.45
+436,Harlem-148 St (3),18.5,30.0,8.65,14.01
+445,Pelham Pkwy (5),33.0,43.0,15.79,20.96
+437,145 St (3),17.0,28.5,8.31,13.67
+186,Van Siclen Av (C),35.3,21.5,11.87,10.77
+93,"Chauncey St (J,Z)",30.3,23.0,9.93,8.77
+135,Livonia Av (L),35.5,25.0,12.11,10.41
+70,Bay 50 St (D),46.0,37.0,18.34,13.61
+134,Sutter Av (L),36.2,27.2,11.56,10.03
+375,Cypress Av (6),16.5,26.5,8.07,13.23
+82,"104 St (J,Z)",38.0,37.5,13.31,13.93
+419,"225 St (2,5)",41.0,51.0,18.06,23.36
+191,88 St (A),40.3,26.5,13.74,13.64
+100,"Hewes St (M,J)",21.8,14.5,5.75,4.62
+137,East 105 St (L),41.2,32.2,13.42,11.3
+57,"W 8 St-NY Aquarium (F,Q)",42.5,31.5,19.75,15.11
+133,Atlantic Av (L),34.7,25.7,10.97,9.66
+446,Morris Park (5),32.0,42.0,15.12,20.29
+248,Avenue N (F),35.3,21.5,15.43,10.91
+220,"155 St (B,D)",19.8,27.5,9.21,14.58
+443,Baychester Av (5),38.0,48.0,18.36,23.56
+84,85 St-Forest Pkwy (J),41.0,34.5,12.34,12.65
+417,"Nereid Av (2,5)",44.0,54.0,19.29,24.6
+88,"Norwood Av (J,Z)",36.8,29.0,11.78,11.27
+187,Shepherd Av (C),37.3,23.5,12.3,11.47
+252,Avenue X (F),41.8,28.0,18.26,13.66
+349,Junius St (3),35.5,25.0,12.07,10.31
+249,Avenue P (F),36.8,23.0,16.12,11.6
+420,"219 St (2,5)",40.0,50.0,17.57,22.87
+131,Bushwick Av-Aberdeen St (L),32.2,25.2,10.2,9.19
+79,86 St (N),43.5,37.0,17.91,13.26
+81,111 St (J),36.0,39.0,13.79,14.57
+80,"121 St (J,Z)",35.0,40.5,14.25,15.22
+150,155 St (C),19.8,27.5,9.15,14.51
+185,Liberty Av (C),33.8,20.0,11.38,10.21
+422,"Burke Av (2,5)",36.5,46.5,16.22,21.5
+364,Zerega Av (6),29.0,39.0,14.59,19.54
+297,215 St (1),27.0,38.5,13.99,19.35
+351,Van Siclen Av (3),38.0,27.5,12.55,11.18
+89,Cleveland St (J),35.8,28.0,11.61,10.94
+425,"Bronx Park East (2,5)",31.0,41.0,14.22,19.4
+194,111 St (A),44.8,31.0,14.81,15.13
+91,"Alabama Av (J,Z)",33.3,25.5,11.06,9.94
+282,21 St (G),6.0,20.4,2.92,6.21
+362,Middletown Rd (6),32.0,42.0,15.81,20.76
+251,Avenue U (F),40.3,26.5,17.55,12.98
+62,55 St (D),33.0,28.6,13.66,8.79
+374,E 143 St-St Mary's St (6),18.5,28.5,8.72,13.85
+141,Park Pl (S),28.0,18.6,9.03,5.78
+193,104 St (A),43.3,29.5,14.57,14.73
+204,Beach 67 St (A),58.3,44.5,23.91,22.21
+370,Whitlock Av (6),22.5,32.5,11.39,16.52
+246,Avenue I (F),32.8,19.0,14.29,9.78
+253,Neptune Av (F),43.8,30.0,19.21,14.6
+205,Beach 60 St (A),59.8,46.0,24.26,22.69
+208,Beach 25 St (A),65.3,51.5,25.28,24.16
+247,Bay Pkwy (F),33.8,20.0,14.8,10.28
+197,Aqueduct-N Conduit Av (A),45.8,32.0,15.69,15.41
+86,Cypress Hills (J),40.3,32.5,11.64,11.66
+203,"Rockaway Park-Beach 116 St (A,S)",63.3,49.5,22.84,20.44
+200,"Beach 90 St (A,S)",57.8,44.0,23.26,21.29
+502,Tompkinsville (SIR),56.0,50.5,15.19,9.88
+207,Beach 36 St (A),63.3,49.5,25.21,23.94
+196,Aqueduct Racetrack (A),44.8,31.0,15.31,15.14
+206,Beach 44 St (A),61.8,48.0,24.94,23.53
+201,"Beach 98 St (A,S)",59.3,45.5,23.16,21.04
+202,"Beach 105 St (A,S)",61.3,47.5,23.01,20.76
+199,"Broad Channel (A,S)",54.3,40.5,21.39,19.77
