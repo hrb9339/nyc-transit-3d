@@ -99,23 +99,29 @@ const Views = (() => {
   }
 
   async function loadHexes() {
-    const [grid, demo, walk] = await Promise.all([
+    const [grid, demo, walk, stud] = await Promise.all([
       fetch("data/hexgrid.geojson", { cache: "no-store" }).then((r) => r.json()),
       loadFeatureCsv("demographics"),
       loadFeatureCsv("walk"),
+      loadFeatureCsv("students"),
     ]);
     hasHexNtl = grid.features.some((f) => f.properties.ntl_mean != null);
     for (const f of grid.features) {
       const p = f.properties;
       const d = demo.get(p.hex_id) || {};
       const w = walk.get(p.hex_id) || {};
+      const s = stud.get(p.hex_id) || {};
       p.population = d.population ?? null;
       p.jobs = d.jobs ?? null;
       p.pop_density = d.pop_density ?? null;
+      p.students = s.students ?? null;
+      p.students_college = s.students_college ?? null;
       p.walk_m = w.walk_to_entrance_m ?? null;
       p.walk_capped = w.walk_capped ?? 0;
     }
     map.addSource("hexgrid", { type: "geojson", data: grid });
+    // Heatmap views use the hexagon centers too; the hexgrid source copies the data, so this is safe.
+    await Heatmaps.init(map, grid, loadFeatureCsv);
 
     const props = grid.features.map((f) => f.properties);
     stats.distance = bandStats(props.map((p) => p.nearest_station_m), DIST_BANDS);
@@ -178,6 +184,9 @@ const Views = (() => {
         rows.push(["Population (2020)", `${Math.round(p.population).toLocaleString()} (${Math.round(p.pop_density).toLocaleString()} per km²)`]);
         rows.push(["Jobs (2021)", Math.round(p.jobs).toLocaleString()]);
       }
+      if (p.students != null) {
+        rows.push(["Students", `${Math.round(p.students).toLocaleString()}${p.students_college ? ` (${Math.round(p.students_college).toLocaleString()} college)` : ""}`]);
+      }
       if (p.ntl_mean != null) {
         rows.push(["Mean radiance", `${(+p.ntl_mean).toFixed(1)} nW/cm²/sr`]);
         rows.push(["Sum of lights", `${(+p.ntl_sum).toFixed(0)}`]);
@@ -220,9 +229,10 @@ const Views = (() => {
     show(DIST_LAYERS, name === "distance");
     show(WALK_LAYERS, name === "walk");
     show(POP_LAYERS, name === "population");
+    Heatmaps.show(name);
 
-    // Let the lights or the banded colors read as the main picture.
-    const muted = ["night", "distance", "walk", "population"].includes(name);
+    // Let the lights, the banded colors or the heatmaps read as the main picture.
+    const muted = ["night", "distance", "walk", "population", ...Heatmaps.views].includes(name);
     map.setPaintProperty("subway-lines", "line-opacity", muted ? 0.35 : 1);
     map.setPaintProperty("subway-glow", "line-opacity", muted ? 0 : 0.35);
 
@@ -231,6 +241,11 @@ const Views = (() => {
       map.easeTo({ center: [-73.94, 40.72], zoom: 11, pitch: 50, bearing: -20, duration: 1500 });
     } else {
       map.fitBounds(NYC_BOUNDS, { pitch: 0, bearing: 0, padding: 30, duration: 1500 });
+      if (Heatmaps.views.includes(name)) {
+        legend("&nbsp;");
+        Heatmaps.renderLegend(name, document.getElementById("legend"));
+        return;
+      }
       legend({ night: nightLegend, hex: hexLegend, distance: distanceLegend, walk: walkLegend, population: populationLegend }[name]());
     }
   }

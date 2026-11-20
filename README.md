@@ -34,7 +34,11 @@ The feeds don't include GPS. They give each train's upcoming stops and predicted
 
 ## Hex grid and night-time light
 
-Use **View** in the side panel to switch between **3D city**, **Night lights** (top-down satellite view), **Hex grid**, **Station distance** (each hexagon colored by straight-line distance from its center to the nearest subway station), **Walk distance** (walking distance along streets to the nearest subway entrance, from `data/features/walk.csv`) and **Population** (residents per km², 2020 Census blocks, from `data/features/demographics.csv`).
+Use **View** in the side panel to switch between **3D city**, **Night lights** (top-down satellite view), **Hex grid**, **Station distance** (each hexagon colored by straight-line distance from its center to the nearest subway station), **Walk distance** (walking distance along streets to the nearest subway entrance, from `data/features/walk.csv`) **Population** (residents per km², 2020 Census blocks, from `data/features/demographics.csv`), and three heatmaps:
+
+- **Ridership by hour**: mean subway entries at each station complex in each clock hour over the last 6 months (`data/ridership/hourly_web.json`). Switch weekday / Saturday / Sunday, drag the hour slider, click a bar in the citywide chart, or press **Play** to step through the day. Zoom in for station dots; hover one for its 24-hour profile.
+- **Students**: enrollment at every public, charter and private K-12 school and college (`data/students/students_web.json`), with a checkbox per school type.
+- **People heatmap**: residents, workers, students, or the weekday daytime population `Pop_day = W + S + a·R` per km² of land, with a slider for `a` (the share of residents assumed to stay near home, an assumption from the proposal, default 0.5).
 
 **Hex grid** (`scripts/build_hexgrid.py`): 1,402 pointy-top hexagons with a 500 m circumradius (0.65 km² each), laid out in UTM 18N so all cells are the same true size. Cells are cut to the shoreline (NYC's shoreline-clipped borough boundaries) and cells that are 90%+ water are dropped, so the grid traces the five boroughs. Each records its borough, land area, the subway stations inside it (each station counted in exactly one cell) and the distance from its center to the nearest station. 322 hexagons contain a station; 1,080 don't. With ~464 m satellite pixels, each cell covers about 4 pixels, so neighbouring cells' night-light values are partly shared.
 
@@ -74,9 +78,10 @@ pd.read_csv("data/features/hex_features.csv", comment="#")
 | `bus.csv` | `features_bus.py` | Bus stops, routes (local, SBS, express) and weekday and 7-10 am buses per hexagon; distance to nearest stop | MTA bus GTFS (5 boroughs + MTA Bus) |
 | `acs.csv` | `features_acs.py` | Income, rent, poverty, unemployment, car-free households, renters, age, how people commute and commute length (tracts spread to hexagons via 2020 block population and housing) | ACS 2020-2024 5-year summary files, 2020 Census blocks |
 | `ridership.csv` | `features_ridership.py` | Weekday, Saturday and Sunday subway entries (2025) and the 2019 weekday baseline, summed per hexagon. **The model's target, not an input.** Per-station values are in `data/ridership/station_complexes.csv` | MTA Subway Hourly Ridership (data.ny.gov) |
+| `students.csv` | `features_students.py` | Students enrolled in public/charter K-12 (CCD 2023-24), private K-12 (PSS 2021-22) and college (IPEDS fall 2023, excluding online-only) per hexagon, school and campus counts, students per km². Counted where the school is. Every school with its enrollment: `data/students/schools.csv` | NCES CCD, PSS, IPEDS |
 | `midtown.csv` | `features_midtown.py` | Door-to-door subway time to Midtown (Times Sq / Grand Central) and Lower Manhattan (Fulton St): walk + wait + scheduled ride with transfers; straight-line distance to each. Ride time per station complex in `data/ridership/station_travel_time.csv` | MTA subway GTFS (`data/network.json`), Staten Island Ferry, OSM walking network |
 | `proposals.csv` | `features_proposals.py` | Distance to the Interborough Express, Second Avenue Subway Phase 2 and Utica Avenue alignments. **For validation only, not a model input** | OpenStreetMap; line geometry in `data/proposals.geojson` |
-| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (156 columns) | All of the above |
+| `hex_features.csv` | `features_merge.py` | All of the above plus the base grid columns (163 columns) | All of the above |
 
 Rebuild everything (raw downloads go to `data/raw/`, which is git-ignored, about 350 MB):
 
@@ -93,6 +98,8 @@ python scripts/features_rail.py           # after walk (reuses its network)
 python scripts/features_bus.py
 python scripts/features_acs.py
 python scripts/features_ridership.py      # ~15 minutes the first time (one request per day)
+python scripts/features_ridership_hourly.py  # last 6 months by hour of day, ~2 minutes (not a feature table)
+python scripts/features_students.py
 python scripts/features_midtown.py        # after walk and ridership
 python scripts/features_merge.py
 ```
@@ -124,6 +131,8 @@ X, y, groups = train[features], train.log_weekday_riders, train.nta2020
 - `index.html`, `style.css`, `app.js`: the frontend
 - `realtime.js`: live train feed parsing, positioning and animation
 - `views.js`: 3D city / night lights / hex grid / station distance views and legend
+- `heatmaps.js`: ridership-by-hour, students and people heatmap views and their controls
+- `data/ridership/station_hourly.csv`: entries per station complex per hour (weekday / Saturday / Sunday), last 6 months; `hourly_web.json` is the same for the map
 - `scripts/build_hexgrid.py`, `scripts/gee_ntl.py`: hexagon grid and Earth Engine night-light statistics
 - `data/hexgrid.geojson` (with night-light values), `data/hexgrid_land.geojson` (land-clipped, for statistics)
 - `data/network.json`: station-to-station track segments + scheduled travel times

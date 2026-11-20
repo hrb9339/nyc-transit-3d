@@ -17,6 +17,8 @@ const map = new maplibregl.Map({
   ...VIEWS["Overview"],
   maxPitch: 80,
   antialias: true,
+  // With browser zoom below 100% (devicePixelRatio < 1) the canvas otherwise ends up smaller than the window.
+  pixelRatio: Math.max(window.devicePixelRatio, 1),
 });
 
 map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
