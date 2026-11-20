@@ -86,7 +86,7 @@ nonresidential_nta,1e-05
 courthouses,1e-05
 ferry_landings,1e-05
 boro_Bronx,-0.0
-share_airport,-0.0
+share_airport,0.0
 shopping_centers,-0.0
 walk_to_metro_north_m,0.0
 res_units,-0.0

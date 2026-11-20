@@ -5,17 +5,23 @@ features of the hexagon it is in (data/model/training.csv, inputs = rows with
 role 'feature' in data/model/feature_columns.csv) plus the student counts from
 data/features/students.csv, joined by hex_id.
 
-Evaluation holds out whole neighborhoods (2020 NTAs, GroupKFold), because nearby
-stations look alike and a random split would flatter the model. A stricter
-leave-one-borough-out run is reported too. Models, each adding one thing:
+Evaluation holds out whole neighborhoods (2020 NTAs, GroupKFold, repeated with 3
+shuffles and averaged), because nearby stations look alike and a random split
+would flatter the model. A stricter leave-one-borough-out run is reported too.
+Models, each adding one thing:
 
   mean        predict the average station (floor any model must beat)
   people      linear fit on log(residents + jobs + students in the hexagon), 1 feature
   linear      ridge regression on all features (log-transformed, standardized)
   rf_no_stud  Random Forest on all features except the student counts
   rf          Random Forest on all features
+and, if scripts/features_catchment.py has been run, the same described by what is
+within an 800 m walk instead of the 500 m hexagon:
+  people_walk, linear_walk, rf_walk   walk-area features (+ competition + borough)
+  rf_both                             hexagon and walk-area features together
 
-Then: permutation importance (on held-out folds), the Second Avenue Subway check
+The Random Forest with the lowest held-out error is the final model. Then:
+permutation importance (on held-out folds), the Second Avenue Subway check
 (train without its three 2017 stations, predict them), and the final Random
 Forest scored on every candidate hexagon, ranked by new riders =
 predicted riders x share of the 800 m walk area not already near rail.
@@ -51,6 +57,7 @@ from features_common import DATA
 MODEL = DATA / "model"
 OUT = MODEL / "results"
 SEED = 0
+REPEATS = 3   # neighborhood CV shuffles
 STUDENT_COLS = ["students", "students_k12_public", "students_k12_private", "students_college",
                 "student_density", "k12_schools", "college_campuses"]
 SAS = {"477": "72 St (Q)", "476": "86 St (Q)", "475": "96 St (Q)"}   # Second Avenue Subway, opened 2017-01-01
@@ -64,29 +71,57 @@ def load():
     stud = pd.read_csv(DATA / "features" / "students.csv", comment="#")
     train = train.merge(stud, on="hex_id", how="left", validate="many_to_one")
     cand = cand.merge(stud, on="hex_id", how="left", validate="one_to_one")
+    # What is within an 800 m walk (scripts/features_catchment.py), if it has been built.
+    ws_feats = []
+    if (MODEL / "catchment_stations.csv").exists():
+        ws_s = pd.read_csv(MODEL / "catchment_stations.csv", comment="#", dtype={"station_complex_id": str})
+        ws_c = pd.read_csv(MODEL / "catchment_candidates.csv", comment="#")
+        ws_feats = [c for c in ws_s.columns if c.startswith("ws_") and c != "ws_snap_m"]
+        train = train.merge(ws_s, on="station_complex_id", how="left", validate="one_to_one")
+        cand = cand.merge(ws_c, on="hex_id", how="left", validate="one_to_one")
     for c in train.columns:   # pandas reads 0/1 dummies as int, keep everything numeric as float
-        if c in feats:
+        if c in feats or c in ws_feats:
             train[c] = train[c].astype(float)
-    return train, cand, feats + STUDENT_COLS
+    return train, cand, feats + STUDENT_COLS, ws_feats
 
 
-def models(feats):
-    nonneg = feats   # all features are counts, shares or distances (>= 0); log1p tames the long tails
-    log_scale = make_pipeline(SimpleImputer(strategy="median"),
-                              FunctionTransformer(lambda x: np.log1p(np.clip(x, 0, None))),
-                              StandardScaler())
-    people = ColumnTransformer([("p", make_pipeline(
-        SimpleImputer(strategy="median"),
-        FunctionTransformer(lambda x: np.log1p(x.sum(axis=1, keepdims=True)))), ["population", "jobs", "students"])])
-    rf = RandomForestRegressor(n_estimators=500, min_samples_leaf=2, max_features=0.33, n_jobs=-1, random_state=SEED)
+STATION_COLS = ["other_stations_1km", "nearest_other_station_m"]   # competition, same for both feature sets
+
+
+def models(feats, ws_feats):
+    def log_linear():
+        # all features are counts, shares or distances (>= 0); log1p tames the long tails
+        return make_pipeline(SimpleImputer(strategy="median"),
+                             FunctionTransformer(lambda x: np.log1p(np.clip(x, 0, None))),
+                             StandardScaler(), RidgeCV(alphas=np.logspace(-2, 4, 25)))
+
+    def people(cols):
+        return make_pipeline(ColumnTransformer([("p", make_pipeline(
+            SimpleImputer(strategy="median"),
+            FunctionTransformer(lambda x: np.log1p(x.sum(axis=1, keepdims=True)))), cols)]), LinearRegression())
+
+    def rf():
+        return make_pipeline(SimpleImputer(strategy="median"), RandomForestRegressor(
+            n_estimators=500, min_samples_leaf=2, max_features=0.33, n_jobs=-1, random_state=SEED))
+
     no_stud = [f for f in feats if f not in STUDENT_COLS]
-    return {
+    specs = {
         "mean": (DummyRegressor(), feats),
-        "people": (make_pipeline(people, LinearRegression()), feats),
-        "linear": (make_pipeline(log_scale, RidgeCV(alphas=np.logspace(-2, 4, 25))), nonneg),
-        "rf_no_stud": (make_pipeline(SimpleImputer(strategy="median"), clone(rf)), no_stud),
-        "rf": (make_pipeline(SimpleImputer(strategy="median"), clone(rf)), feats),
+        "people": (people(["population", "jobs", "students"]), feats),
+        "linear": (log_linear(), feats),
+        "rf_no_stud": (rf(), no_stud),
+        "rf": (rf(), feats),
     }
+    if ws_feats:
+        boro = [f for f in feats if f.startswith("boro_")]
+        walk = ws_feats + STATION_COLS + boro
+        specs |= {
+            "people_walk": (people(["ws_population", "ws_jobs", "ws_students"]), walk),
+            "linear_walk": (log_linear(), walk),
+            "rf_walk": (rf(), walk),
+            "rf_both": (rf(), feats + ws_feats),
+        }
+    return specs
 
 
 def metrics(y_log, p_log):
@@ -113,38 +148,49 @@ def cross_validate(train, specs, y, splitter, groups):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    train, cand, feats = load()
+    train, cand, feats, ws_feats = load()
     y = train.log_weekday_riders.to_numpy()
-    specs = models(feats)
-    print(f"{len(train)} stations, {train.nta2020.nunique()} neighborhoods, {len(feats)} features "
-          f"({len(STUDENT_COLS)} student columns joined from data/features/students.csv)")
+    specs = models(feats, ws_feats)
+    print(f"{len(train)} stations, {train.nta2020.nunique()} neighborhoods, {len(feats)} hexagon features "
+          f"(incl. {len(STUDENT_COLS)} student columns), {len(ws_feats)} 800 m walk features")
 
-    # ---- cross-validation: whole neighborhoods held out, then whole boroughs
+    # ---- cross-validation: whole neighborhoods held out (5 folds, repeated with 3 shuffles so one
+    # lucky split doesn't decide a comparison), then whole boroughs
     schemes = {
-        "neighborhood_5fold": (GroupKFold(n_splits=5, shuffle=True, random_state=SEED), train.nta2020),
+        **{f"neighborhood_5fold_s{s}": (GroupKFold(n_splits=5, shuffle=True, random_state=s), train.nta2020)
+           for s in range(REPEATS)},
         "leave_one_borough_out": (LeaveOneGroupOut(), train.borough),
     }
     rows, oof_main = [], None
     for scheme, (splitter, groups) in schemes.items():
         oof = cross_validate(train, specs, y, splitter, groups)
-        if scheme == "neighborhood_5fold":
+        if scheme == "neighborhood_5fold_s0":
             oof_main = oof
         for name, p in oof.items():
             rows.append({"scheme": scheme, "model": name, **metrics(y, p)})
         print(f"  {scheme}: done")
-    cv = pd.DataFrame(rows)
+    runs = pd.DataFrame(rows)
+    runs["scheme"] = runs.scheme.str.replace(r"_s\d+$", "", regex=True)
+    cv = runs.groupby(["scheme", "model"], sort=False).mean().reset_index()
+    cv["r2_log_sd"] = runs.groupby(["scheme", "model"], sort=False).r2_log.std().values   # spread over shuffles
     cv.round(4).to_csv(OUT / "cv_metrics.csv", index=False)
+
+    # The Random Forest variant with the lowest held-out-neighborhood error is the final model.
+    nb_rf = cv[(cv.scheme == "neighborhood_5fold") & cv.model.str.startswith("rf")]
+    best = nb_rf.sort_values("rmse_log").model.iloc[0]
+    print(f"  best Random Forest: {best}")
 
     oof_df = train[["station_complex_id", "station_complex", "borough", "nta2020", "hex_id", "weekday_riders"]].copy()
     for name, p in oof_main.items():
         oof_df[f"pred_{name}"] = np.round(np.expm1(p))
-    oof_df["rf_error_pct"] = np.round((oof_df.pred_rf - oof_df.weekday_riders) / oof_df.weekday_riders * 100, 1)
-    oof_df.sort_values("rf_error_pct", key=abs, ascending=False).to_csv(OUT / "oof_predictions.csv", index=False)
+    oof_df["best_error_pct"] = np.round((oof_df[f"pred_{best}"] - oof_df.weekday_riders)
+                                        / oof_df.weekday_riders * 100, 1)
+    oof_df.sort_values("best_error_pct", key=abs, ascending=False).to_csv(OUT / "oof_predictions.csv", index=False)
 
-    # ---- permutation importance on held-out neighborhoods (RF)
-    est, cols = specs["rf"]
+    # ---- permutation importance on held-out neighborhoods (best RF)
+    est, cols = specs[best]
     imp = np.zeros(len(cols))
-    splitter, groups = schemes["neighborhood_5fold"]
+    splitter, groups = schemes["neighborhood_5fold_s0"]
     for tr, te in splitter.split(train, y, groups):
         m = clone(est).fit(train.iloc[tr][cols], y[tr])
         r = permutation_importance(m, train.iloc[te][cols], y[te], n_repeats=5, random_state=SEED,
@@ -185,12 +231,14 @@ def main():
     top = cand_out[cand_out.eligible == 1].head(15)
     fmt = lambda df: df.round(3).to_markdown()
     lines = [
-        f"# Ridership model: first results ({date.today().isoformat()})",
+        f"# Ridership model results ({date.today().isoformat()})",
         "",
-        f"{len(train)} subway station complexes, target log(1 + mean weekday entries, 2025), {len(feats)} features. "
-        "Scores are on stations the model did not train on.",
+        f"{len(train)} subway station complexes, target log(1 + mean weekday entries, 2025). "
+        f"Hexagon features: {len(feats)} (the station's 500 m hexagon); walk features: {len(ws_feats)} (what is "
+        "within an 800 m walk, `_walk` models). Scores are on stations the model did not train on. "
+        f"Final model (lowest held-out error among the Random Forests): **{best}**.",
         "",
-        "## Whole neighborhoods held out (5 folds by NTA)",
+        f"## Whole neighborhoods held out (5 folds by NTA, mean of {REPEATS} shuffles; r2_log_sd = spread)",
         "", fmt(nb.drop(columns="scheme")), "",
         "## Whole boroughs held out", "", fmt(lobo.drop(columns="scheme")), "",
         "`r2_log`, `mae_log`, `rmse_log` are on the log scale the model trains on; `mae_riders` is in weekday "

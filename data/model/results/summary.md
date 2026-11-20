@@ -1,26 +1,34 @@
-# Ridership model: first results (2026-11-20)
+# Ridership model results (2026-11-20)
 
-424 subway station complexes, target log(1 + mean weekday entries, 2025), 127 features. Scores are on stations the model did not train on.
+424 subway station complexes, target log(1 + mean weekday entries, 2025). Hexagon features: 127 (the station's 500 m hexagon); walk features: 122 (what is within an 800 m walk, `_walk` models). Scores are on stations the model did not train on. Final model (lowest held-out error among the Random Forests): **rf**.
 
-## Whole neighborhoods held out (5 folds by NTA)
+## Whole neighborhoods held out (5 folds by NTA, mean of 3 shuffles; r2_log_sd = spread)
 
-| model      |   r2_log |   mae_log |   rmse_log |   mae_riders |   rmse_riders |   median_abs_pct_err |   spearman |
-|:-----------|---------:|----------:|-----------:|-------------:|--------------:|---------------------:|-----------:|
-| mean       |   -0.015 |     0.768 |      0.984 |      6596.9  |       14248.8 |               58.719 |     -0.152 |
-| people     |    0.362 |     0.607 |      0.78  |      5500.95 |       12007.9 |               47.349 |      0.6   |
-| linear     |    0.588 |     0.486 |      0.627 |      4953.86 |       11408.2 |               38.793 |      0.762 |
-| rf_no_stud |    0.566 |     0.492 |      0.644 |      4935.18 |       11963.9 |               37.479 |      0.746 |
-| rf         |    0.57  |     0.491 |      0.64  |      4905.17 |       11879.3 |               36.493 |      0.749 |
+| model       |   r2_log |   mae_log |   rmse_log |   mae_riders |   rmse_riders |   median_abs_pct_err |   spearman |   r2_log_sd |
+|:------------|---------:|----------:|-----------:|-------------:|--------------:|---------------------:|-----------:|------------:|
+| mean        |   -0.015 |     0.767 |      0.985 |      6592.1  |       14257.2 |               58.444 |     -0.135 |       0.008 |
+| people      |    0.378 |     0.6   |      0.771 |      5420.75 |       11965.1 |               47.162 |      0.606 |       0.014 |
+| linear      |    0.57  |     0.487 |      0.64  |      4854.37 |       11378.8 |               37.522 |      0.759 |       0.017 |
+| rf_no_stud  |    0.569 |     0.49  |      0.642 |      4882.65 |       11779.1 |               36.207 |      0.744 |       0.01  |
+| rf          |    0.573 |     0.489 |      0.639 |      4856.88 |       11736.9 |               35.258 |      0.746 |       0.007 |
+| people_walk |    0.439 |     0.577 |      0.732 |      5292.39 |       11673.5 |               46.603 |      0.632 |       0.011 |
+| linear_walk |    0.595 |     0.484 |      0.621 |      4885.15 |       11550.4 |               38.281 |      0.764 |       0.012 |
+| rf_walk     |    0.546 |     0.507 |      0.658 |      4980.19 |       11721.4 |               38.759 |      0.733 |       0.011 |
+| rf_both     |    0.562 |     0.499 |      0.647 |      4929.58 |       11633.5 |               37.777 |      0.742 |       0.012 |
 
 ## Whole boroughs held out
 
-| model      |   r2_log |   mae_log |   rmse_log |   mae_riders |   rmse_riders |   median_abs_pct_err |   spearman |
-|:-----------|---------:|----------:|-----------:|-------------:|--------------:|---------------------:|-----------:|
-| mean       |   -0.225 |     0.852 |      1.081 |      7047.74 |       14633.6 |               65.695 |     -0.408 |
-| people     |    0.363 |     0.612 |      0.78  |      5497.65 |       12417.8 |               48.655 |      0.59  |
-| linear     |    0.394 |     0.587 |      0.76  |      5531.31 |       10749.6 |               44.294 |      0.669 |
-| rf_no_stud |    0.472 |     0.533 |      0.71  |      5107.9  |       12634.3 |               37.165 |      0.714 |
-| rf         |    0.469 |     0.535 |      0.712 |      5098.62 |       12574.9 |               37.787 |      0.706 |
+| model       |   r2_log |   mae_log |   rmse_log |   mae_riders |   rmse_riders |   median_abs_pct_err |   spearman |   r2_log_sd |
+|:------------|---------:|----------:|-----------:|-------------:|--------------:|---------------------:|-----------:|------------:|
+| mean        |   -0.225 |     0.852 |      1.081 |      7047.74 |       14633.6 |               65.695 |     -0.408 |         nan |
+| people      |    0.363 |     0.612 |      0.78  |      5497.65 |       12417.8 |               48.655 |      0.59  |         nan |
+| linear      |    0.394 |     0.587 |      0.76  |      5531.31 |       10749.6 |               44.294 |      0.669 |         nan |
+| rf_no_stud  |    0.472 |     0.533 |      0.71  |      5107.9  |       12634.3 |               37.165 |      0.714 |         nan |
+| rf          |    0.469 |     0.535 |      0.712 |      5098.62 |       12574.9 |               37.787 |      0.706 |         nan |
+| people_walk |    0.434 |     0.583 |      0.735 |      5322.68 |       12003.7 |               47.937 |      0.622 |         nan |
+| linear_walk |    0.508 |     0.545 |      0.685 |      5020.48 |       11557.5 |               40.967 |      0.709 |         nan |
+| rf_walk     |    0.442 |     0.556 |      0.73  |      5292.75 |       12659.9 |               39.712 |      0.683 |         nan |
+| rf_both     |    0.454 |     0.548 |      0.722 |      5249.85 |       12655.5 |               38.669 |      0.696 |         nan |
 
 `r2_log`, `mae_log`, `rmse_log` are on the log scale the model trains on; `mae_riders` is in weekday entries; `median_abs_pct_err` is the typical miss in percent; `spearman` is rank agreement (what matters for ranking sites).
 

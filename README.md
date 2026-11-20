@@ -127,6 +127,8 @@ X, y, groups = train[features], train.log_weekday_riders, train.nta2020
 
 ## First model
 
+`python scripts/features_catchment.py` (after `features_walk.py`, which leaves the walking network in `data/raw/walk_graph.npz`) describes each station complex and each candidate hexagon center by what is within an 800 m walk instead of its 500 m hexagon: hexagon counts carried over by land share, rates averaged by overlap area, students counted exactly from the school points. Writes `data/model/catchment_stations.csv` and `catchment_candidates.csv` (`ws_*` columns).
+
 `python scripts/model_ridership.py` (needs `pip install scikit-learn tabulate`) trains on `data/model/training.csv` plus the student columns from `data/features/students.csv` (joined by `hex_id`, so the training table doesn't need rebuilding for them) and writes `data/model/results/`:
 
 | File | What |
@@ -137,7 +139,7 @@ X, y, groups = train[features], train.log_weekday_riders, train.nta2020
 | `importance.csv` | Permutation importance of each feature on held-out neighborhoods |
 | `candidate_predictions.csv` | Every hexagon without a station: predicted riders (with 10th-90th percentile across trees), new riders = predicted × share of the 800 m walk area not already near rail, eligibility, rank |
 
-Models, each adding one thing: the mean, a 1-feature fit on people in the hexagon, ridge regression on all features, and a Random Forest without and with the student counts. The script also trains without the three Second Avenue Subway stations (opened 2017) and predicts them.
+Models, each adding one thing: the mean, a 1-feature fit on people in the hexagon, ridge regression on all features, and a Random Forest without and with the student counts; then the same with the 800 m walk-area features (`_walk`) and a Random Forest with both. Neighborhood holdout is repeated over 3 shuffles and averaged. The Random Forest with the lowest held-out error scores the candidates. The script also trains without the three Second Avenue Subway stations (opened 2017) and predicts them.
 
 ## Files
 
@@ -145,6 +147,7 @@ Models, each adding one thing: the mean, a 1-feature fit on people in the hexago
 - `realtime.js`: live train feed parsing, positioning and animation
 - `views.js`: 3D city / night lights / hex grid / station distance views and legend
 - `ridership.js`: the ridership-by-hour view and its controls
+- `scripts/features_catchment.py`: 800 m walking-catchment features for stations and candidates (`data/model/catchment_*.csv`)
 - `scripts/model_ridership.py`: baselines vs Random Forest, neighborhood holdout, candidate ranking (`data/model/results/`)
 - `data/ridership/station_hourly.csv`: entries per station complex per hour (weekday / Saturday / Sunday), last 6 months; `hourly_web.json` is the same for the map
 - `scripts/build_hexgrid.py`, `scripts/gee_ntl.py`: hexagon grid and Earth Engine night-light statistics
