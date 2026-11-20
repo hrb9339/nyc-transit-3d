@@ -34,11 +34,10 @@ The feeds don't include GPS. They give each train's upcoming stops and predicted
 
 ## Hex grid and night-time light
 
-Use **View** in the side panel to switch between **3D city**, **Night lights** (top-down satellite view), **Hex grid**, **Station distance** (each hexagon colored by straight-line distance from its center to the nearest subway station), **Walk distance** (walking distance along streets to the nearest subway entrance, from `data/features/walk.csv`) **Population** (residents per km², 2020 Census blocks, from `data/features/demographics.csv`), and three heatmaps:
+Use **View** in the side panel to switch between **3D city**, **Night lights** (top-down satellite view), **Hex grid**, **Station distance** (each hexagon colored by straight-line distance from its center to the nearest subway station), **Walk distance** (walking distance along streets to the nearest subway entrance, from `data/features/walk.csv`) **People** and **Ridership by hour**:
 
-- **Ridership by hour**: mean subway entries at each station complex in each clock hour over the last 6 months (`data/ridership/hourly_web.json`). Switch weekday / Saturday / Sunday, drag the hour slider, click a bar in the citywide chart, or press **Play** to step through the day. Zoom in for station dots; hover one for its 24-hour profile.
-- **Students**: enrollment at every public, charter and private K-12 school and college (`data/students/students_web.json`), with a checkbox per school type.
-- **People heatmap**: residents, workers, students, or the weekday daytime population `Pop_day = W + S + a·R` per km² of land, with a slider for `a` (the share of residents assumed to stay near home, an assumption from the proposal, default 0.5).
+- **People**: hexagons colored by people per km² of land, with a switch between **Residents** (2020 Census blocks), **Workers** (LODES jobs), **Students** (`data/features/students.csv`; zoom in to see each school, colored by type) and **Daytime**, the weekday daytime population `Pop_day = W + S + a·R` from the proposal, with a slider for `a` (the share of residents assumed to stay near home, an assumption, default 0.5). All four share one color scale so they can be compared.
+- **Ridership by hour**: a circle at each station complex whose area is its mean entries in the selected clock hour over the last 6 months (`data/ridership/hourly_web.json`). Switch weekday / Saturday / Sunday, drag the hour slider, click a bar in the citywide chart, or press **Play** to step through the day. Hover a station for its 24-hour profile. Ridership is drawn at stations rather than on hexagons because that is where it is counted (only 322 of the 1,402 hexagons have a station).
 
 **Hex grid** (`scripts/build_hexgrid.py`): 1,402 pointy-top hexagons with a 500 m circumradius (0.65 km² each), laid out in UTM 18N so all cells are the same true size. Cells are cut to the shoreline (NYC's shoreline-clipped borough boundaries) and cells that are 90%+ water are dropped, so the grid traces the five boroughs. Each records its borough, land area, the subway stations inside it (each station counted in exactly one cell) and the distance from its center to the nearest station. 322 hexagons contain a station; 1,080 don't. With ~464 m satellite pixels, each cell covers about 4 pixels, so neighbouring cells' night-light values are partly shared.
 
@@ -131,7 +130,7 @@ X, y, groups = train[features], train.log_weekday_riders, train.nta2020
 - `index.html`, `style.css`, `app.js`: the frontend
 - `realtime.js`: live train feed parsing, positioning and animation
 - `views.js`: 3D city / night lights / hex grid / station distance views and legend
-- `heatmaps.js`: ridership-by-hour, students and people heatmap views and their controls
+- `ridership.js`: the ridership-by-hour view and its controls
 - `data/ridership/station_hourly.csv`: entries per station complex per hour (weekday / Saturday / Sunday), last 6 months; `hourly_web.json` is the same for the map
 - `scripts/build_hexgrid.py`, `scripts/gee_ntl.py`: hexagon grid and Earth Engine night-light statistics
 - `data/hexgrid.geojson` (with night-light values), `data/hexgrid_land.geojson` (land-clipped, for statistics)

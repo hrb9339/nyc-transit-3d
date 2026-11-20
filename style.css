@@ -176,6 +176,10 @@ footer { margin-top: 18px; font-size: 11px; color: var(--muted); line-height: 1.
 .hour-row button { flex: none; width: 76px; }
 .a-row[hidden] { display: none; }
 .maplibregl-popup-content .hour-bars { margin-top: 6px; }
+.size-keys { display: flex; align-items: flex-end; gap: 10px; margin: 2px 0 8px; color: var(--muted); font-size: 11px; }
+.size-key { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.legend-kinds { flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; }
+.legend-kinds i { border-radius: 50%; }
 .legend-title { font-weight: 650; margin-bottom: 8px; }
 .legend-bar { height: 10px; border-radius: 5px; }
 .legend-scale { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 4px; }
