@@ -84,17 +84,19 @@ def overpass(query, cache):
     raise RuntimeError("all Overpass servers failed")
 
 
-def write_features(df, name, title, sources, columns, notes=(), path=None):
+def write_features(df, name, title, sources, columns, notes=(), path=None, script=None):
     """Write `df` to data/features/<name>.csv (or `path`) with a commented header.
 
     sources: list of (description, url)
     columns: dict of column name -> meaning (every column in df must be listed)
     notes:   extra lines (method, caveats)
+    script:  script named in the header (default scripts/features_<name>.py)
     """
     missing = [c for c in df.columns if c not in columns]
     if missing:
         raise ValueError(f"columns without a description: {missing}")
-    lines = [f"# {title}", f"# Built {date.today().isoformat()} by scripts/features_{name}.py", "#", "# Sources:"]
+    script = script or f"features_{name}.py"
+    lines = [f"# {title}", f"# Built {date.today().isoformat()} by scripts/{script}", "#", "# Sources:"]
     lines += [f"#   - {desc}: {url}" for desc, url in sources]
     lines += ["#", "# Columns:"]
     lines += [f"#   {col}: {columns[col]}" for col in df.columns]
