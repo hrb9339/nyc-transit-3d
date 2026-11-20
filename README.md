@@ -125,12 +125,27 @@ train = pd.read_csv("data/model/training.csv", comment="#")
 X, y, groups = train[features], train.log_weekday_riders, train.nta2020
 ```
 
+## First model
+
+`python scripts/model_ridership.py` (needs `pip install scikit-learn tabulate`) trains on `data/model/training.csv` plus the student columns from `data/features/students.csv` (joined by `hex_id`, so the training table doesn't need rebuilding for them) and writes `data/model/results/`:
+
+| File | What |
+|---|---|
+| `summary.md` | All results on one page |
+| `cv_metrics.csv` | MAE / RMSE / R² (log scale), MAE in riders, median % error and rank correlation for each model, with whole neighborhoods held out (5-fold by NTA) and whole boroughs held out |
+| `oof_predictions.csv` | Every station's held-out prediction from each model, sorted by Random Forest error |
+| `importance.csv` | Permutation importance of each feature on held-out neighborhoods |
+| `candidate_predictions.csv` | Every hexagon without a station: predicted riders (with 10th-90th percentile across trees), new riders = predicted × share of the 800 m walk area not already near rail, eligibility, rank |
+
+Models, each adding one thing: the mean, a 1-feature fit on people in the hexagon, ridge regression on all features, and a Random Forest without and with the student counts. The script also trains without the three Second Avenue Subway stations (opened 2017) and predicts them.
+
 ## Files
 
 - `index.html`, `style.css`, `app.js`: the frontend
 - `realtime.js`: live train feed parsing, positioning and animation
 - `views.js`: 3D city / night lights / hex grid / station distance views and legend
 - `ridership.js`: the ridership-by-hour view and its controls
+- `scripts/model_ridership.py`: baselines vs Random Forest, neighborhood holdout, candidate ranking (`data/model/results/`)
 - `data/ridership/station_hourly.csv`: entries per station complex per hour (weekday / Saturday / Sunday), last 6 months; `hourly_web.json` is the same for the map
 - `scripts/build_hexgrid.py`, `scripts/gee_ntl.py`: hexagon grid and Earth Engine night-light statistics
 - `data/hexgrid.geojson` (with night-light values), `data/hexgrid_land.geojson` (land-clipped, for statistics)
