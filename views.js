@@ -1,7 +1,8 @@
 // Map views: the default 3D city, a top-down night-lights view (VIIRS), the hexagonal
 // analysis grid, distance to the nearest subway station (straight line and walking),
-// and population density.
-// Data comes from scripts/build_hexgrid.py, scripts/gee_ntl.py and data/features/*.csv.
+// and people per km² (residents, workers, students, or the daytime mix).
+// Data comes from scripts/build_hexgrid.py, scripts/gee_ntl.py and data/features/*.csv;
+// the ridership-by-hour view is in ridership.js.
 
 const Views = (() => {
   const NYC_BOUNDS = [[-74.26, 40.49], [-73.70, 40.92]];
@@ -14,15 +15,32 @@ const Views = (() => {
     { max: 3200, color: "#f46d43", label: "1,600–3,200 m" },
     { max: Infinity, color: "#a50026", label: "3,200 m+" },
   ];
-  // Residents per km² of land (2020 Census blocks, data/features/demographics.csv).
+  // People per km² of land. One scale for residents, workers, students and the daytime mix,
+  // so switching between them compares like with like.
   const POP_BANDS = [
+    { max: 0, color: "#1f1a2b", label: "none" },
     { max: 1000, color: "#2b1145", label: "under 1,000" },
     { max: 5000, color: "#5c1a6b", label: "1,000–5,000" },
     { max: 10000, color: "#a3306e", label: "5,000–10,000" },
     { max: 20000, color: "#e0583f", label: "10,000–20,000" },
     { max: 40000, color: "#f9a23a", label: "20,000–40,000" },
-    { max: Infinity, color: "#fde68a", label: "40,000+" },
+    { max: 80000, color: "#fde68a", label: "40,000–80,000" },
+    { max: Infinity, color: "#fffbeb", label: "80,000+" },
   ];
+  const PEOPLE = {
+    residents: { label: "Residents", what: "Residents (where people live)", src: "2020 Census blocks" },
+    workers: { label: "Workers", what: "Jobs (where people work)", src: "LODES 2021, by workplace" },
+    students: { label: "Students", what: "Students (where schools and colleges are)", src: "NCES CCD 2023-24, PSS 2021-22, IPEDS fall 2023" },
+    daytime: { label: "Daytime", what: "Weekday daytime population W + S + a·R", src: "workers + students + share a of residents" },
+  };
+  const SCHOOL_KINDS = {
+    public: { label: "Public", color: "#4da3ff" },
+    charter: { label: "Charter", color: "#a78bfa" },
+    private: { label: "Private", color: "#34d399" },
+    college: { label: "College", color: "#fbbf24" },
+  };
+  const people = { mode: "residents", a: 0.5 };   // a: share of residents assumed to stay near home by day
+  let grid = null;
 
   let map;
   let current = "city";
@@ -36,6 +54,7 @@ const Views = (() => {
   const DIST_LAYERS = ["dist-fill", "dist-line"];
   const WALK_LAYERS = ["walk-fill", "walk-line"];
   const POP_LAYERS = ["pop-fill", "pop-line"];
+  const SCHOOL_LAYERS = ["school-dots"];
 
   // ---------- Data ----------
 
@@ -98,20 +117,84 @@ const Views = (() => {
     return expr;
   }
 
+  // Density for the selected group, written onto every hexagon as `dens`.
+  function peopleValue(p, mode = people.mode) {
+    if (p.population == null) return null;
+    const v = { residents: p.population, workers: p.jobs, students: p.students || 0 };
+    return mode === "daytime" ? v.workers + v.students + people.a * v.residents : v[mode];
+  }
+
+  function updatePeople() {
+    const props = grid.features.map((f) => f.properties);
+    for (const p of props) {
+      const v = peopleValue(p);
+      p.dens = v == null || !p.land_km2 ? null : v / p.land_km2;
+    }
+    stats.population = bandStats(props.map((p) => p.dens), POP_BANDS);
+    stats.population.total = props.reduce((s, p) => s + (peopleValue(p) || 0), 0);
+    map.getSource("hexgrid").setData(grid);
+    show(SCHOOL_LAYERS, current === "population" && people.mode === "students");
+  }
+
+  async function loadSchools() {
+    try {
+      const r = await fetch("data/students/students_web.json", { cache: "no-store" });
+      if (!r.ok) throw new Error(r.status);
+      const data = await r.json();
+      map.addSource("schools", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: data.points.map(([lon, lat, n, kind, name]) => ({
+            type: "Feature", geometry: { type: "Point", coordinates: [lon, lat] }, properties: { n, kind, name },
+          })),
+        },
+      });
+    } catch {
+      return;
+    }
+    map.addLayer({
+      id: "school-dots", type: "circle", source: "schools", minzoom: 12.5,
+      layout: { visibility: "none" },
+      paint: {
+        "circle-radius": ["interpolate", ["linear"], ["sqrt", ["get", "n"]], 0, 2, 30, 5, 230, 20],
+        "circle-color": ["match", ["get", "kind"], ...Object.entries(SCHOOL_KINDS).flatMap(([k, v]) => [k, v.color]), "#999"],
+        "circle-opacity": 0.75,
+        "circle-stroke-color": "rgba(0,0,0,0.6)",
+        "circle-stroke-width": 0.6,
+      },
+    });
+    const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 8 });
+    map.on("mousemove", "school-dots", (e) => {
+      const p = e.features[0].properties;
+      const wrap = document.createElement("div");
+      wrap.innerHTML = `<div class="popup-title"></div><div class="popup-meta"></div>`;
+      wrap.querySelector(".popup-title").textContent = p.name;
+      wrap.querySelector(".popup-meta").textContent = `${SCHOOL_KINDS[p.kind].label} · ${(+p.n).toLocaleString()} students`;
+      popup.setLngLat(e.lngLat).setDOMContent(wrap).addTo(map);
+    });
+    map.on("mouseleave", "school-dots", () => popup.remove());
+  }
+
   async function loadHexes() {
-    const [grid, demo, walk] = await Promise.all([
+    const [gridData, demo, walk, stud] = await Promise.all([
       fetch("data/hexgrid.geojson", { cache: "no-store" }).then((r) => r.json()),
       loadFeatureCsv("demographics"),
       loadFeatureCsv("walk"),
+      loadFeatureCsv("students"),
     ]);
+    grid = gridData;
     hasHexNtl = grid.features.some((f) => f.properties.ntl_mean != null);
     for (const f of grid.features) {
       const p = f.properties;
       const d = demo.get(p.hex_id) || {};
       const w = walk.get(p.hex_id) || {};
+      const s = stud.get(p.hex_id) || {};
       p.population = d.population ?? null;
       p.jobs = d.jobs ?? null;
       p.pop_density = d.pop_density ?? null;
+      p.students = s.students ?? null;
+      p.students_college = s.students_college ?? null;
       p.walk_m = w.walk_to_entrance_m ?? null;
       p.walk_capped = w.walk_capped ?? 0;
     }
@@ -120,8 +203,7 @@ const Views = (() => {
     const props = grid.features.map((f) => f.properties);
     stats.distance = bandStats(props.map((p) => p.nearest_station_m), DIST_BANDS);
     stats.walk = bandStats(props.map((p) => p.walk_m), DIST_BANDS);
-    stats.population = bandStats(props.map((p) => p.pop_density), POP_BANDS);
-    stats.population.total = props.reduce((s, p) => s + (p.population || 0), 0);
+    updatePeople();
 
     // Night lights on a log scale (radiance spans ~1 to 300+), else station count.
     const fill = hasHexNtl
@@ -143,11 +225,11 @@ const Views = (() => {
       },
     });
 
-    // Banded choropleths: straight-line distance, walking distance, population density.
+    // Banded choropleths: straight-line distance, walking distance, people per km².
     for (const [id, prop, bands] of [
       ["dist", "nearest_station_m", DIST_BANDS],
       ["walk", "walk_m", DIST_BANDS],
-      ["pop", "pop_density", POP_BANDS],
+      ["pop", "dens", POP_BANDS],
     ]) {
       map.addLayer({
         id: `${id}-fill`, type: "fill", source: "hexgrid",
@@ -177,6 +259,10 @@ const Views = (() => {
       if (p.population != null) {
         rows.push(["Population (2020)", `${Math.round(p.population).toLocaleString()} (${Math.round(p.pop_density).toLocaleString()} per km²)`]);
         rows.push(["Jobs (2021)", Math.round(p.jobs).toLocaleString()]);
+        if (p.students != null) {
+          rows.push(["Students", `${Math.round(p.students).toLocaleString()}${p.students_college ? ` (${Math.round(p.students_college).toLocaleString()} college)` : ""}`]);
+        }
+        rows.push([`Daytime (a = ${people.a.toFixed(2)})`, Math.round(peopleValue(p, "daytime")).toLocaleString()]);
       }
       if (p.ntl_mean != null) {
         rows.push(["Mean radiance", `${(+p.ntl_mean).toFixed(1)} nW/cm²/sr`]);
@@ -220,9 +306,11 @@ const Views = (() => {
     show(DIST_LAYERS, name === "distance");
     show(WALK_LAYERS, name === "walk");
     show(POP_LAYERS, name === "population");
+    show(SCHOOL_LAYERS, name === "population" && people.mode === "students");
+    Ridership.show(name);
 
-    // Let the lights or the banded colors read as the main picture.
-    const muted = ["night", "distance", "walk", "population"].includes(name);
+    // Let the lights, the banded colors or the ridership circles read as the main picture.
+    const muted = ["night", "distance", "walk", "population", "ridership"].includes(name);
     map.setPaintProperty("subway-lines", "line-opacity", muted ? 0.35 : 1);
     map.setPaintProperty("subway-glow", "line-opacity", muted ? 0 : 0.35);
 
@@ -231,7 +319,13 @@ const Views = (() => {
       map.easeTo({ center: [-73.94, 40.72], zoom: 11, pitch: 50, bearing: -20, duration: 1500 });
     } else {
       map.fitBounds(NYC_BOUNDS, { pitch: 0, bearing: 0, padding: 30, duration: 1500 });
+      if (name === "ridership") {
+        legend("&nbsp;");
+        Ridership.renderLegend(document.getElementById("legend"));
+        return;
+      }
       legend({ night: nightLegend, hex: hexLegend, distance: distanceLegend, walk: walkLegend, population: populationLegend }[name]());
+      if (name === "population") bindPopulationLegend();
     }
   }
 
@@ -278,10 +372,46 @@ const Views = (() => {
   function populationLegend() {
     const s = stats.population;
     if (s.median == null) return `<b>Population data not found.</b><br>Run <code>python scripts/features_demographics.py</code>.`;
-    return `<div class="legend-title">Population density</div>
-      ${bandRows(POP_BANDS, s)}
-      <div class="legend-note">Residents per km² of land, share of hexagons · 2020 Census blocks ·
-        ${(s.total / 1e6).toFixed(2)} million people in the grid</div>`;
+    return `<div class="legend-title">People per km²</div>
+      <div class="seg">${Object.entries(PEOPLE).map(([k, v]) =>
+        `<button type="button" data-people="${k}" class="${k === people.mode ? "active" : ""}">${v.label}</button>`).join("")}</div>
+      ${people.mode === "daytime" ? `<div class="a-row">
+        <span>a = <b data-a-label>${people.a.toFixed(2)}</b></span>
+        <input type="range" min="0" max="1" step="0.05" value="${people.a}" data-a aria-label="Share of residents near home by day" />
+      </div>` : ""}
+      <div data-pop-body>${populationBody()}</div>`;
+  }
+
+  // The part of the legend that changes with the a slider (redrawn without touching the slider).
+  function populationBody() {
+    const s = stats.population;
+    const m = PEOPLE[people.mode];
+    const total = s.total >= 1e6 ? `${(s.total / 1e6).toFixed(2)} million` : Math.round(s.total).toLocaleString();
+    return `${bandRows(POP_BANDS, s)}
+      ${people.mode === "students" ? `<div class="legend-swatches legend-kinds">${Object.values(SCHOOL_KINDS).map((k) =>
+        `<span><i style="background:${k.color}"></i>${k.label}</span>`).join("")}</div>` : ""}
+      <div class="legend-note">${m.what} per km² of land, share of hexagons · ${m.src} · ${total} in the grid
+        ${people.mode === "daytime" ? "· a is the share of residents assumed to stay near home (an assumption, not learned)" : ""}
+        ${people.mode === "students" ? "· counted at the school, not at home · zoom in for schools" : ""}</div>`;
+  }
+
+  function bindPopulationLegend() {
+    const el = document.getElementById("legend");
+    el.querySelectorAll("[data-people]").forEach((b) => (b.onclick = () => {
+      people.mode = b.dataset.people;
+      updatePeople();
+      legend(populationLegend());
+      bindPopulationLegend();
+    }));
+    const slider = el.querySelector("[data-a]");
+    if (slider) {
+      slider.oninput = () => {
+        people.a = +slider.value;
+        updatePeople();
+        el.querySelector("[data-a-label]").textContent = people.a.toFixed(2);
+        el.querySelector("[data-pop-body]").innerHTML = populationBody();
+      };
+    }
   }
 
   function hexLegend() {
@@ -302,7 +432,8 @@ const Views = (() => {
   return {
     async init(mapInstance) {
       map = mapInstance;
-      await Promise.all([loadNtl(), loadHexes()]);
+      await Promise.all([loadNtl(), loadHexes(), Ridership.init(map)]);
+      await loadSchools();
       document.querySelectorAll("#views-mode button").forEach((b) => (b.onclick = () => setView(b.dataset.view)));
     },
     get current() { return current; },

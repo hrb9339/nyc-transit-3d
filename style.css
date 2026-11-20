@@ -158,6 +158,28 @@ footer { margin-top: 18px; font-size: 11px; color: var(--muted); line-height: 1.
   #panel:not(.hidden) ~ #legend { left: 332px; top: 16px; }
 }
 #legend code { font-size: 11px; color: var(--accent); }
+#legend button {
+  font: inherit; font-size: 11px; color: var(--text); background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; cursor: pointer;
+}
+#legend button.active { border-color: var(--accent); color: var(--accent); background: rgba(77, 163, 255, 0.1); }
+#legend input[type="range"] { flex: 1; min-width: 0; accent-color: var(--accent); }
+#legend input[type="checkbox"] { margin: 0; accent-color: var(--accent); }
+#legend label.legend-band { cursor: pointer; }
+.seg { display: flex; gap: 4px; margin-bottom: 8px; }
+.seg button { flex: 1; }
+.hour-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.hour-head span { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.hour-bars { display: block; width: 100%; height: auto; }
+.hour-bars rect[data-hour] { cursor: pointer; }
+.hour-row, .a-row { display: flex; align-items: center; gap: 8px; margin: 6px 0 8px; }
+.hour-row button { flex: none; width: 76px; }
+.a-row[hidden] { display: none; }
+.maplibregl-popup-content .hour-bars { margin-top: 6px; }
+.size-keys { display: flex; align-items: flex-end; gap: 10px; margin: 2px 0 8px; color: var(--muted); font-size: 11px; }
+.size-key { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.legend-kinds { flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; }
+.legend-kinds i { border-radius: 50%; }
 .legend-title { font-weight: 650; margin-bottom: 8px; }
 .legend-bar { height: 10px; border-radius: 5px; }
 .legend-scale { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 4px; }
